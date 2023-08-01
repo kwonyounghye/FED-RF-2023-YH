@@ -1,0 +1,128 @@
+@charset "utf-8";
+/* 서브페이지용 CSS - sub.css */
+
+/* 공통외부 CSS 합치기 */
+@import url(./common.css);
+
+/* 서브페이지 공통 글자 설정 */
+
+/* 서브타이틀 */
+h2.stit {
+    color: #121212;
+    font-size: 38px;
+    font-weight: normal;
+    font-family: "Cute Font";
+    text-align: center;
+    text-shadow: 2px 2px 2px #00008a;
+    outline: 1px solid red;
+
+    /* 서브페이지 공통 글자 */
+
+    /* 
+    [ outline 요소 ] 
+    box모델의 필수속성은 아니지만 박스의 외곽선을 표현해주며
+    박스자체의 크기에 영향을 주지 않음!
+    outline : 두께 종류 색상
+    -> border와 셋팅이 같음!
+    단, border-radius 둥근모서리는 모더만 적용되었으나
+    아웃트라인도 됨 이제는
+    -> 주로 사용되는 예는 input 입력창에서
+    포커스가 갈 경우 외곽선표시가 됨
+    */
+
+    padding: 40px;
+    /* 배경넣기 */
+    background: url(../images/afigf4.jpg) no-repeat center/cover;
+    /* background: 색이반고윙/크; */
+    /* 배경넣기: 속성별쓰기 */
+    /* 반복여부 */
+    background-repeat: no-repeat;
+    /* 배경위치: 가로 세로 */
+    background-position: center;
+    /* 배경크기: 가로 세로(cover - 박스채우기) */
+    background-size: cover;
+    margin-bottom: 30px;
+    /* 박스 그림자 */
+    box-shadow: inset 0px 0px 25px 10px #03a9f46b
+    0 0 4px 5px honeydew;
+    /* [ box-shadow 속성 ]
+    - 박스 외부/내부 그림자 설정 속성
+    - 값 : x축 y축 blur spread 색
+    text-shadow와 달리 spread 속성이 있음
+    이것은 그림자를 커지게 함!
+    - 내부그림자 옵션: inset
+    - 그림자 다중 설정: 콤마로 연속 사용 가능
+    */
+}
+
+/* IT/과학 배경 이미지 */
+/* .st4의 적용 우선순위를 높이기 위해 부모 요소를 써줌! */
+#cont .st4 {
+    /* 배경이미지 */
+    background-image: url(../images/afigf4.jpg);
+    /* 배경위치변경(세로 y축) */
+    background-position-y: bottom;
+    color:limegreen;
+}
+
+/* 언론사로고 */
+.prlogo img {
+    height: 32px;
+/* 
+    이미지는 기본 비율을 가지고 있어서
+    가로, 세로 중 한쪽만 크기를 주면
+    나머지 방향은 자동으로 비율을 유지함!
+    가로, 세로를 다 주면 비율이 깨짐!
+    */
+}
+
+/* 기사타이틀 */
+.atit {
+    font-size:30px;
+}
+
+/* 기사이미지 박스 */
+.afig {
+    margin-bottom: 20px;
+
+}
+.afig img {
+    width: 100%;
+}
+
+/* 기사 이미지 설명 */
+.afig figcaption {
+    font-size: 15px;
+    text-align: center;
+    color: #767676;
+}
+
+/* 기사 문단 */
+.acont p {
+    font-size: 17px;
+    color: #303038;
+    
+    /* 자간 : ls */
+    letter-spacing: 2px;
+    /* 단어 간격 : ws*/
+    word-spacing: 1px;
+    /* 양쪽 정렬 */
+    text-align: justify;
+}
+
+/* 유튜브 동영상 박스 */
+.mvbx {
+    height: 550px;
+}
+/* 
+div와 같은 block 요소는
+width 설정을 하지 않으면
+width:auto로 자동설정됨.
+이는 싸고 있는 박스 컨텐트 영역을
+자동으로 채워준다! */
+
+.mvbx iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+}

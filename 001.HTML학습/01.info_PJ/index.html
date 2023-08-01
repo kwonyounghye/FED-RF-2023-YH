@@ -8,68 +8,10 @@
         <!-- css 인라인 코딩 영역 -->
         <!-- CSS인터널방식 코딩 영역 -->
         <style>
-            /* CSS 영역 내 주석문 */
-
-            /* [ 모든 요소 공통 디자인요소 : 박스모델 ] 
-               1. 크기 : width 가로, height 세로
-               2. 경계선 : border
-               3. 내부여백 : padding
-               4. 외부여백 : margin
-               (여백공통방향 : top, bottom, left, right)
-               _________________________________________
-
-               [ CSS 속성셋팅 형식 ]
-               선택자 {
-                속성: 값;
-               }
-               [ CSS 선택자 ]
-               1. 타입선택자 : 태그명(div, p, a 등)
-               2. 아이디선택자 : #아이디명
-               3. 클래스선택자 : .클래스명
-               4. 자식선택자 : 띄어쓰기(div a)
-               5. 직계자식선택자 : 오른쪽 꺽쇠 (div > a)
-               6. 종속선택자 : 요소명#아이디명 / 요소명.클래스명
-               (div.mymy -> div인데 클래스가 mymy)
-            */
-
-            /* 레이아웃 박스 공통 디자인 */
-            .bx {
-                /* 크기 : w800 -> 가로크기*/
-                width: 800px;
-                /* 외곽선 : bd -> 두께 종류 색상*/
-                border: 4px double darkblue;
-                /* 패딩 */
-                padding: 20px;
-                /* 마진 : 마영오! 중앙으로*/
-                margin: 0 auto;
-                /* 양쪽마진을 auto로 쓰면 등분할되어 블록박스가 중앙위치함 */
-                /* [ 마진/패딩공통 개수별 정의 ] 
-                margin: 4방향;(1개)
-                margin: 위아래 양쪽;(2개)
-                margin: 위 양쪽 아래;(3개)
-                margin: 위 오른 아래 왼쪽(4개 - 시계방향)
-                */
-
-                /* 텍스트 중앙 : tac */
-                text-align: center;
-            }
-            /* 메인이미지 */
-            .cimg {
-                width: 100%;
-                /* w100p */
-            }
-            /* 1. 상단영역 */
-            #top {
-                background-color: aquamarine;
-            }
-
-            /* 2. 메인영역 */
-            #cont {
-                margin: 20px auto;
-            }
         </style>
+        <!-- 외부공통 CSS 호출 -->
+        <link rel="stylesheet" href="./css/main.css">
     </head>
-    <!-- http://localhost:5500/001.HTML%ED%95%99%EC%8A%B5/01.info_PJ/index.html -->
     <body>
         <!-- 1. 상단 영역 : 제목, 메뉴 -->
         <header id="top" class="bx">
@@ -88,10 +30,10 @@
                     <!-- 절대경로 -->
                     <!-- <img src="https://t1.daumcdn.net/daumtop_chanel/op/20200723055344399.png" alt="다음로고"> -->
                 </a>
-                <a href="sub1.html">정치</a>
-                <a href="sub2.html">경제</a>
-                <a href="sub3.html">사회</a>
-                <a href="sub4.html">IT/과학</a>
+                <a href="sub1.html">정치</a> |
+                <a href="sub2.html">경제</a> |
+                <a href="sub3.html">사회</a> |
+                <a href="sub4.html">IT/과학</a> |
                 <a href="sub5.html">TV/연예</a>
             </nav>
         </header>
@@ -101,11 +43,29 @@
         </main>
         <!-- 3. 하단 영역 : 회사정보 -->
         <footer id="info" class="bx">
-            <address>서울시 강남구 역삼동 119 대호B 8F <br>
-                대표: kylie <br>
-                전화: 010-3166-9763</address>
+            <address>서울시 강남구 역삼동 119 대호B 8F <br />
+                대표: <span class="utxt">kylie</span> <br />
+                전화: <b class="utxt">01031669763</b></address>
         </footer>
         <!-- 
+
+            [ 웹표준이란? ]
+            - 모든 브라우저에서 하나의 소스로
+            동일한 디스플레이 및 기능이 작동하도록
+            정한 웹 코딩의 표준안이다!
+
+            [ 웹접근성이란? ]
+            - 평등의 원칙! 즉, 장애인 차별금지법에 따라
+            이미지(alt속성), 동영상(자막) 등에 설명을 추가하여
+            정보제공에 차별이 없도록 하는 것!
+
+            [img 요소 : 이미지 연결 요소]
+            - 필수속성
+            1) src : 이미지경로
+            (source)
+            2) alt : 이미지 설명(웹접근성)
+            (alternative text - 대체 텍스트)
+
         [ 레이아웃을 위한 블록 요소 ]
         div : 영역을 나누고 묶어주는 요소
         [ HTML5에서 등장한 div 친구들 ]
