@@ -140,10 +140,10 @@ width:auto로 자동설정됨.
     border-radius: 50%; /* 원형 */
     /* 줄간격으로 세로 글자 중앙 
     높이값과 같음*/
-    line-height: 70px;
+    line-height: 100px;
     /* 가로정렬중앙 */
     text-align: center;
-    font-size: 10px;
+    font-size: 20px;
     
     /* a요소 기본 글자색 변경, 밑줄 없앰 */
 color:firebrick;
