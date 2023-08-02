@@ -110,6 +110,20 @@ h2.stit {
     text-align: justify;
 }
 
+
+
+/* 강조 em 요소 디자인 변경 */
+.acont p em {
+    /* 이탤릭 해제 */
+    font-style: normal;
+    /* 글자색 변경 */
+    color: darkviolet;
+    /* /글자 두껍게 */
+    font-weight: bold;
+    /* 글자 그림자 */
+    text-shadow: 2px 2px 2px gold;
+}
+
 /* 유튜브 동영상 박스 */
 .mvbx {
     height: 550px;
