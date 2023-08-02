@@ -146,11 +146,11 @@ width:auto로 자동설정됨.
     font-size: 20px;
     
     /* a요소 기본 글자색 변경, 밑줄 없앰 */
-color:firebrick;
-text-decoration: none; 
-background-color: #ccc;   
+    color:firebrick;
+    text-decoration: none; 
+    background-color: #ccc;   
 }
-/* 마우스 오버시 변경 */
+    /* 마우스 오버시 변경 */
 .alink a:hover {
     color: blueviolet;
     background-color: wheat;
