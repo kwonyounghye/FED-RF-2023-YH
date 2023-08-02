@@ -14,7 +14,8 @@ h2.stit {
     font-family: "Cute Font";
     text-align: center;
     text-shadow: 2px 2px 2px #00008a;
-    outline: 1px solid red;
+    border-radius: 10px;
+    /* outline: 1px solid red; */
 
     /* 서브페이지 공통 글자 */
 
@@ -54,7 +55,24 @@ h2.stit {
     - 그림자 다중 설정: 콤마로 연속 사용 가능
     */
 }
-
+/* 정치 배경 이미지 */
+#cont .st1 {
+    /* 배경이미지 */
+    background-image: url(../images/);
+    color:lavender;
+}
+/* 경제 배경 이미지 */
+#cont .st2 {
+    /* 배경이미지 */
+    background-image: url(../images/);
+    color:lightsalmon;
+}
+/* 사회 배경 이미지 */
+#cont .st3 {
+    /* 배경이미지 */
+    background-image: url(../images/);
+    color:violet;
+}
 /* IT/과학 배경 이미지 */
 /* .st4의 적용 우선순위를 높이기 위해 부모 요소를 써줌! */
 #cont .st4 {
@@ -63,6 +81,15 @@ h2.stit {
     /* 배경위치변경(세로 y축) */
     background-position-y: bottom;
     color:limegreen;
+}
+/* TV/연예 배경 이미지 */
+/* .st5의 적용 우선순위를 높이기 위해 부모 요소를 써줌! */
+#cont .st5 {
+    /* 배경이미지 */
+    background-image: url(../images/);
+    /* 배경위치변경(세로 y축) */
+    background-position-y: -40px;
+    color:yellowgreen;
 }
 
 /* 언론사로고 */
@@ -86,6 +113,7 @@ h2.stit {
     margin-bottom: 20px;
 
 }
+/* 기사 이미지 */
 .afig img {
     width: 100%;
 }
@@ -101,13 +129,20 @@ h2.stit {
 .acont p {
     font-size: 17px;
     color: #303038;
-    
     /* 자간 : ls */
     letter-spacing: 2px;
     /* 단어 간격 : ws*/
     word-spacing: 1px;
     /* 양쪽 정렬 */
     text-align: justify;
+    /* 줄간격 lh */
+    line-height: 2.1;
+    /* 글자 라인간 간격을 조정함
+    숫자만 쓰면 배수임(글자 높이 값에 대한 배수)
+    단위를 쓰면 단위에 맞게 줄간격 조정됨
+    -> 줄간격의 응용은 버튼 등의 글자를 
+    세로 중앙에 오게 할 때 박스 높이 값만큼 준다!
+    */
 }
 
 
@@ -122,6 +157,20 @@ h2.stit {
     font-weight: bold;
     /* 글자 그림자 */
     text-shadow: 2px 2px 2px gold;
+}
+/* mark 요소 디자인 변경하기 */
+.acont p mark {
+    display: block;
+    width: 65%;
+    background-color: #ebebeb;
+    text-align: center;
+    margin: 15px auto;
+    padding: 20px 50px;
+    font-size: 25px;
+    border-top: 2px solid firebrick;
+    border-bottom: 2px solid aquamarine;
+    color: honeydew;
+    font-family: "Black And White Picture", "궁서";
 }
 
 /* 유튜브 동영상 박스 */
@@ -139,6 +188,54 @@ width:auto로 자동설정됨.
     border: none;
     width: 100%;
     height: 100%;
+}
+/* 인용블록 영역 */
+.bqbx {
+    padding: 20px 0;
+    margin: 20px 0;
+    border-top: 2px dashed chartreuse;
+    border-bottom: 2px dashed chocolate;
+    font-size: 15px;
+}
+
+.bqbx blockquote {
+    padding: 15px 0;
+    line-height: 2;
+}
+
+/* 인용블록 이미지 */
+.bqbx img {
+    float: right;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+/* article 제목 공통 - .atbx */
+.atbx h5 {
+    /* 배경색 */
+    background-color: #ebebeb;
+    /* 패딩 */
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 20px;
+    box-shadow: inset 0 0 5px tan;
+    font-size: 20px;
+    color: tomato;
+    margin: 0;
+    
+}
+
+/* 주해박스 */
+.desc {
+    border-top: 2px dashed #949494;
+    border-bottom: 2px dashed #565656;
+    padding: 20px 0;
+    font-size: 15px;
+    line-height: 2;
+}
+
+.desc div {
+    padding: 15px 0;
 }
 
 /* 기사 원문 */
