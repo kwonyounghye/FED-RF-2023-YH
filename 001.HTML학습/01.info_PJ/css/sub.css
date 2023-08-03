@@ -359,18 +359,78 @@ width:auto로 자동설정됨.
     padding: 10px;
 }
 
-/* 주요 뉴스 ul */
+    /* 주요 뉴스 ul */
 .cnews ul li::before {
     content: '.📢';
 }
 
-/* [ CSS 가상요소 : before, after ]
-    - 모든 요소는 맨앞과 맨뒤에 가상요소를
-    사용 할 수 있다.
-    - 맨 앞은 before, 맨 뒤는 after
-*/
+    /* [ CSS 가상요소 : before, after ]
+        - 모든 요소는 맨앞과 맨뒤에 가상요소를
+        사용 할 수 있다.
+        - 맨 앞은 before, 맨 뒤는 after
+        - 필수속성 : content
+        - 이미지는 url() 사용!
+    */
+
+    /* 주요뉴스 li별 글자색 바꾸기 */
+.cnews li:first-child a {
+    color: saddlebrown;
+}
+
+.cnews li::after {
+
+}
+
+    /* 뉴스 타이틀 공통 */
+.nbx
+    /* 한줄 말줄임 표시하기 공통 처리 */
+.cbx li, .cbx dd, .cbx td {
+    /* 1. 줄바꿈방지 wh */
+    white-space: nowrap;
+    /* 2. 넘치는 컨텐츠 숨기기 oh */
+    overflow: hidden;
+    /* 3. 넘치는 글자 말줄임 표시 tv */
+    text-overflow: ellipsis;
+
+    /* 추가) 여러줄 일 때 말줄임은 아래 3가지 추가
+    display: -webkit-box;
+    -webkit-line-clamp: 라인수;
+    -webkit-box-orient:vertical;
+    단, 박스 높이값을 글자가 보일만큼 조절함
+    ->>> white-spacing: nowrap; 없음!!
+    */
+}
 
 /* dd 앞에 가상요소로 블릿 넣기 */
 .snews dd::before {
     content: '🚩';
 }
+    
+/* 분야별뉴스 dt별 글자색, 배경색 변경하기 */
+.snews dt:first-of-type {
+    color: silver;
+    background-color: lightgoldenrodyellow;
+}
+
+.snews dt:nth-of-type(2) {
+    color: orangered;
+    background-color: peachpuff;
+}
+
+.snews dt:last-of-type {
+    color: indianred;
+    background-color: indigo;
+}
+
+/* 
+[ 자식요소 선택 가상클래스 : 자식요소 종류가 같아야함! ]
+    요소:first-child -> 첫번째 자식요소
+    요소:nth-child(n) -> n번째 자식요소
+    요소:last-child -> 마지막째 자식요소
+[ 여러종류가 섞여 있을 경우 형제 선택하기 ]
+    요소:first-of-type -> 같은 요소 중 첫번째
+    요소:nth-of-type(n) -> 같은 요소 중 n번째
+    요소:last-of-type -> 같은 요소 중 마지막째
+    
+    (단, n은 1부터)
+    */
