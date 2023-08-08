@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8" />
         <title>한국 최신 드라마 리스트</title>
-        <link rel="stylesheet" href="./css/drama.css">
+        <link rel="stylesheet" href="./css/drama.css" />
     </head>
     <body>
-    <caption>한국 최신 드라마 리스트</caption>
-        <table>
+        <!-- 한국 최신 드라마 리스트 -->
+        <table class="tbl" id="drama">
+            <!-- 1. 테이블 제목 -->
+            <caption>
+                한국 최신 드라마 리스트
+            </caption>
+            <!-- 2. 테이블 상단부분 -->
             <thead>
                 <tr>
                     <th>번호</th>
@@ -19,14 +24,13 @@
                     <th>방영횟수</th>
                 </tr>
             </thead>
+            <!-- 3. 테이블 메인부분 -->
             <tbody>
                 <tr>
                     <td>1</td>
                     <td>
-                            <a href="#">
-                            경찰수업
-                        </a>
-                        </td>
+                        <a href="#"> 경찰수업 </a>
+                    </td>
                     <td>진영,차태현</td>
                     <td>KBS2</td>
                     <td>월화</td>
@@ -36,9 +40,7 @@
                 <tr>
                     <td>2</td>
                     <td>
-                            <a href="#">
-                            홍천기
-                        </a>
+                        <a href="#"> 홍천기 </a>
                     </td>
                     <td>안효섭,김유정</td>
                     <td>SBS</td>
@@ -122,7 +124,11 @@
             <!-- 4. 테이블 하단 부분 -->
             <tfoot>
                 <tr>
-                    <td colspan="7">◀ <a href="#">1</a> | <a href="#">2</a> | <a href="#">3</a> | <a href="#">4</a> | <a href="#">5</a> | <a href="#">6</a> | <a href="#">7</a> | <a href="#">8</a> | <a href="#">9</a> | <a href="#">10</a> ▶</td>
+                    <td colspan="7">
+                        ◀ <a href="#">1</a> | <a href="#">2</a> | <a href="#">3</a> | <a href="#">4</a> |
+                        <a href="#">5</a> | <a href="#">6</a> | <a href="#">7</a> | <a href="#">8</a> |
+                        <a href="#">9</a> | <a href="#">10</a> ▶
+                    </td>
                     <!-- 
                         [ 테이블 colspan 속성 ]
                         - 같은 tr의 td셀을 가로방향으로 합칠 때 사용함!
@@ -133,6 +139,34 @@
                 </tr>
             </tfoot>
         </table>
+
+        <!-- 구분테이블 박스 -->
+        <div class="gubun">
+            <table class="tbl" id="gubun">
+                <tr>
+                    <td>구분</td>
+                    <td>월화:월화드라마</td>
+                    <!-- 
+                        [ 테이블 rowspan 속성 ]
+                        - 같은 tr의 td 셀을 세로 방향으로 합칠 때 사용
+                        -row(가로줄) + span(범위)
+                        -
+                     -->
+                </tr>
+                <tr>
+                    <td>구분</td>
+                    <td>수목:수목드라마</td>
+                </tr>
+                <tr>
+                    <td>구분</td>
+                    <td>금토:금토드라마</td>
+                </tr>
+                <tr>
+                    <td>구분</td>
+                    <td>토일:토일드라마</td>
+                </tr>
+            </table>
+        </div>
         <!-- 
             [ 가장 복잡한 그룹 요소인 테이블 !!! ]
             1. table : 테이블 전체 부모 요소
@@ -175,6 +209,6 @@
             </table>
             -> 원본 W3Schools
             https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_colgroup_test
-         --> 
+         -->
     </body>
 </html>
