@@ -11,7 +11,6 @@
     font-family: 'Chakra Petch', sans-serif;
     font-family: 'Orbitron', sans-serif;
 */
-
 /* 초기화 */
 html,
 body,
@@ -47,7 +46,7 @@ body * {
 /* 1-1. 로고 */
 .logo {
     /* 픽스드 포지션 */
-    /* position: fixed; */
+    position: fixed;
     /* 화면 정중앙 이동! calc()로! */
     top: calc(50% - 200px/2);
     left: calc(50% - 200px/2);
@@ -82,6 +81,7 @@ body * {
     z-index: 99;
     /* 가장 위! */
 }
+
 /* 1-2. 링크타이틀 */
 /* 1-3. 탑이동버튼 */
 /************************ 2. 메인영역 ************************/
@@ -99,6 +99,9 @@ body * {
     padding: 200px 0 520px;
     /* 마진탑 */
     /* margin-top: 30px; */
+
+    /* 처음에 트랜스폼 변경 설정 */
+    transform: translate(20%, 10%) scale(0.05);
 }
 /* 2-1-1. 머리 */
 .head {
@@ -122,15 +125,16 @@ body * {
     /* 마치 div를 넣은 것 같다~! */
     position: absolute;
     /* 앱솔루트 요소 */
-    top: -120px;
-    left: -450px;
+    top: -20px;
+    left: -530px;
     /* 부모는? .head */
-    width: 900px;
-    height: 300px;
+    width: 980px;
+    height: 315px;
 
     /* 배경 */
     background: url(../images/hair5.png) no-repeat 0/100% 100%;
-
+    transform: rotate(-45deg);
+    
 }
 .head:hover::after {
     /* 앱솔루트 요소 */
@@ -180,12 +184,12 @@ body * {
 /* 코 */
 .nose {
     /* 위치 */
-    top: 100px;
-    left: 70px;
+    top: 110px;
+    left:65px;
     /* 크기 */
     width: 60px;
     height: 70px;
-    border-radius: 20px;
+    border-radius: 25px;
     background: url(../images/nose.jpg) no-repeat -4px -4px/auto 105%;
 }
 /* 입 */
@@ -281,6 +285,8 @@ body * {
     width: 50px;
     height: 200px;
     border-radius: 20%;
+    /* 팔 트랜스폼 회전축 변경 */
+    transform-origin: left top;
 }
 
 /* 가상요소로 팔 관절 만들기 */
@@ -365,6 +371,8 @@ body * {
     width: 80px;
     height: 250px;
     border-radius: 20%;
+    /* 애니를 위한 트랜스폼 기준축 변경 */
+    transform-origin: top;
 }
 /* 가상요소로 다리 관절 만들기 */
 .leg::after {
@@ -472,7 +480,7 @@ body * {
     top: 10%;
     left: 50%;
     /* left 방향 중앙 이동 */
-    transform: translateX(-50%);
+    transform: translateX(-50%) scale(3);
 
     width: 180px;
     height: 125px;
@@ -482,13 +490,22 @@ body * {
     box-shadow: inset 0 0 10px #000;
     /* 배경 이미지 */
     background: url(../images/tv.jpg) no-repeat 0/100%;
+      /* 트랜지션: 속시이지 */
+      transition: 1.2s ease-in-out;
     
 }
+
+/* TV가 커지는 클래스 */
+.tv.on{
+    transform: translateX(-50%) scale(5);
+}
+
 /* 스크린 */
 .screen {
     position: absolute;
     top: 5px;
     left: 10px;
+    /* 부모는? .tv */
     width: 130px;
     height: 115px;
     border-radius: 15px;
@@ -505,10 +522,27 @@ body * {
     left: 0px;
     width: 130px;
     height: 160px;
-    border-radius: 15px;
-    background-color: #222;
+    /* 부모는? .screen */
+
+    /* 아이프레임 기본 보더 없앰 */
+    border:none;
+  
     
 }
+
+/* 동영상 선택 버튼 박스 */
+.box-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 90px;
+}
+.box-btn button {
+    width: 100%;
+}
+
+
 /* 2-2. 로봇설명박스 */
 /************************ 3. 하단영역 ************************/
 /* 3-1. 회사정보 */
