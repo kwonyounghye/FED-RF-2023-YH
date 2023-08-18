@@ -15,6 +15,9 @@
 html {
     font-size: 10px;
     /* 상대단위 rem 계산 편의를 위해 변경! */
+
+    /* 최상위 요소인 html에 부드러운 스크롤 적용 */
+    scroll-behavior: smooth;
 }
 
 /* 초기화 */
@@ -54,8 +57,8 @@ body *{
     /* 화면정중앙이동! calc()로! */
     top: calc(50% - 20vw/2);
     left: calc(50% - 20vw/2);
-    width: 200px;
-    height: 200px;
+    width: 20vw;
+    height: 20vw;
 
     /* 배경이미지 */
     background: pink url(../images/robot_03.png) no-repeat center/70%;
@@ -89,6 +92,44 @@ body *{
 
 
 /* 1-2.링크타이틀 */
+.btn-top {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 5px outset #fff;
+    background-color: #ccc;
+
+    z-index: 10;
+}
+
+/* 버튼 a요소 */
+.btn-top a {
+    display: block;
+    /* 디자인 확장! */
+    width: 100%;
+    height: 100%;
+
+    /* 글자셋팅 */
+    color: blue;
+    font: 30px/90px 'Black Ops One';
+    /* 줄간격은 높이값 100px - 보더 10px = 90px */
+    text-decoration: none;
+
+}
+/* 버튼 마우스 오버 시 */
+.btn-top:hover {
+    background-color: #ff0;
+    border-style: inset;
+}
+/* 마우스 오버 시 글자색 */
+.btn-top:hover a {
+    color: #f00;
+
+}
+
 /* 1-3.탑이동버튼 */
 /******************* 2. 메인영역 *******************/
 .main-aria{
@@ -177,8 +218,8 @@ body *{
 .eye{
     /* 앱솔루트 top값은 공통임 */
     top: 60px;
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 60px;
     /* 원형 */
     border-radius: 50%;
     /* 이중선 보더 */
@@ -191,20 +232,20 @@ body *{
 }
 /* 왼눈 */
 .eye1{
-    left: 30px;/* l50 */
+    left: 20px;/* l50 */
     background-image: 
     url(../images/e1.jpg);
 }
 /* 오른눈 */
 .eye2{
-    right: 30px;/* r50 */
+    right: 20px;/* r50 */
     background-image: 
     url(../images/e2.jpg);
 }
 /* 코 */
 .nose{
     /* 위치 */
-    top: 109px;
+    top: 125px;
     left: 74px;
     /* 크기 */
     width: 52px;
@@ -215,11 +256,11 @@ body *{
 /* 입 */
 .mouth{
     /* 위치 */
-    left: 57px;
-    bottom: 32px;
+    left: 50px;
+    bottom: 15px;
     /* 크기 */
-    width: 88px;
-    height: 35px;
+    width: 100px;
+    height: 40px;
     /* 배경 */
     background: 
     url(../images/mouth.png) no-repeat 0/100% 100%;
@@ -569,7 +610,45 @@ body *{
 }
 
 
+/* 2-1-3.링크 타이틀 : 말풍선 모양 */
+.link-title {
+    position: absolute;
+    top: 0;
+    right: -100px;
 
+    color: orangered;
+    font-size: 5vw;
+    padding: 5vw 3vw;
+    border-radius: 50%;
+    border: 1vw dashed orangered;
+    text-decoration: none;
+
+    /* 처음에 안보임 */
+    transform: scale(0);
+    /* 트랜스폼 축 변경 : 가로 세로 */
+    transform-origin: left bottom;    
+}
+/* 가상 요소로 삼각형 만들기 */
+.link-title::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: -14px;
+
+    /* 삼각형 만들기 필수 
+    - 양쪽 방향 보더를 투명으로 한쪽 방향*/
+    width: 0;
+    height: 0;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-top: 113px solid red;
+
+
+}
+/* 마우스 오비 시 배경색 변경 */
+.link-title:hover {
+    background-image: radial-gradient(red, blue);
+}
 
 /* 2-2. 로봇설명박스 */
 .box-text {
@@ -680,3 +759,35 @@ body *{
 }
 /******************* 3. 하단영역 *******************/
 /* 3-1. 회사정보 */
+#bottom-aria {
+    /* 순서가 위에 오도록! */
+    position: relative;
+    /* 글자색 흰색 */
+    color: #fff;
+    /* 글자 크기 30px, 글자체 'Black Ops One' */
+    font: 3rem 'Black Ops One';
+    /* 글자 그림자 2px 2px 2px #000 */
+    text-shadow: 2px 2px 2px #000;
+    /* 배경색 검정색 반투명 0.5 */
+    background: rgba(0, 0, 0, 0.5);
+    /* 글자중앙정렬 */
+    text-align: center;
+    /* 패딩 50px */
+    padding: 7vmin;
+}
+
+/* 속박스 가상요소로 아이콘 모양 넣기 */
+.bottom-aria::before {
+    content: '';
+    /* 디자인도 적용, 한줄에 오도록! */
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    background: pink url(../images/robot_03.png) no-repeat;
+    background-position: -7px 2px;
+    background-size: 50px;
+    /* 인라인 요소간 세로정렬 */
+    vertical-align: top;
+}

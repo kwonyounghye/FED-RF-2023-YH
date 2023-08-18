@@ -248,3 +248,16 @@ ______________________________________________________________________________
 .mouth {
     animation: mouth-ani .03s linear 10.8s 30 alternate;
 }
+
+/* 말풍선 애니 */
+@keyframes ballon-ani {
+   to {
+       transform: scale(1);
+   }
+}
+
+/* 말풍선 애니 호출 */
+.link-title {
+    animation: ballon-ani .5s ease-in 10.8s forwards;
+
+}
