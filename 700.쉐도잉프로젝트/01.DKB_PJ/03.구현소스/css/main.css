@@ -23,12 +23,40 @@ body>div>* {
 
 /**************************** 2. 캐릭터 소개 영역 ****************************/
 #banner {
-    background-color: lightblue;
+    background: url(../images/bg_mainvisual2.jpg no-repeat center/auto 100%);
 }
 .banner .partbox {
 height: 530px;
 }
-/**************************** 3. 메인영역: .group-part ****************************/
+/**************************** 3. 도깨비 메뉴 박스 ****************************/
+dokebi-menu ul{
+    /* 플렉스박스 */
+    display: flex;
+    
+}
+/* 도깨비메뉴 상위메뉴a */
+.dokebi-menu ul>li>a{
+    font-size: 1.6rem;
+    font-weight: bold;
+    display: block;
+    padding: 28px 16px;
+    /* 줄바꿈방지 */
+    white-space: nowrap;
+}
+/* 도깨비메뉴 상위li 오버시 a */
+.dokebi-menu ul>li:hover>a{
+    color: red;
+}
+/* 4번째 li ~ 6번째 li 하위메뉴 표시하기 */
+.dokebi-menu ul>li .be-sub>a::after {
+    content: '∨';
+    display: inline-block;
+    transform: scale(.5,.3);
+    margin-left: 3px;
+}
+
+.dokebi-menu ul>li.on
+/**************************** 4. 메인영역: .group-part ****************************/
 #main {
     background-color: lightgoldenrodyellow;
 }

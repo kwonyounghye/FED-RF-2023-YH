@@ -24,13 +24,14 @@ html {
 }
 /* 전체 공통 글자체 적용 */
 body {
-    font-family: 'Nanum Gothic';
+    font-family: "Noto Sans KR", Malgun Gothic, dotum, "돋움", Arial, AppleGothic, Sans-serif;
 }
 
 /* 공통 레이아웃 클래스 */
 /* 속박스 */
 .inbox {
-    max-width: 1200px;
+    max-width: 1360px;
+    padding: 0 20px;
     margin: 0 auto;
 }
 /* 클리어 설정 가상요소
@@ -48,7 +49,7 @@ float에 의한 망가짐 방지! */
     /* 보더/패딩 포함박스 */
     box-sizing: border-box;
     /* 내부패딩 */
-    padding: 15px;
+    /* padding: 15px; - 제외 */
     /* 임시 보이게 보더 */
     border: 2px dotted burlywood;
     /* 높이값이 속박스에 있을 경우 채우기 셋팅
