@@ -42,7 +42,7 @@ float에 의한 망가짐 방지! */
     display: block;
     clear: both;
 }
-/* 파티션박스 */
+/* 파트박스 */
 .partbox {
     /* 옆으로 흐르게 */
     float: left;
@@ -86,4 +86,8 @@ float에 의한 망가짐 방지! */
     width: 0;
     height: 0;
     overflow: hidden;
+}
+/* 화면출력 숨기기 클래스 */
+.blind{
+    display: none;
 }

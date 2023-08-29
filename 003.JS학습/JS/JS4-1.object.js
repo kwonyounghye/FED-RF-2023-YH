@@ -1,5 +1,23 @@
 // 영화 초이스 객체 ///// object.js
 
+let yh_choice = {};
+// 오브젝트 형만 만들고 할당은 아래에서
+// 1. 영화제목
+yh_choice.title = "오펜하이머";
+// 2. 감독
+yh_choice.director = "크리스토퍼 놀란";
+// 3. 배우
+yh_choice.actor = "킬리언 머피";
+// 4. 장르
+yh_choice.genre = "스릴러";
+// 5. 관람가
+yh_choice.ratings = "15세";
+// 6. 예고편
+yh_choice.trailer = function () {
+console.log("예고편: ", "oSqK_v6zPoM");
+// 플레이어함수 호출!
+playMovie("oSqK_v6zPoM");
+}; /////////// trailer 함수 ////////////////////
 
 // 탐쌤 초이스! //////////////////////
 const tom_sam = {};
@@ -25,6 +43,7 @@ tom_sam.trailer = function () {
     // 플레이어함수 호출!
     playMovie("G2zyFe4Z5w0");
 }; ///////// trailer 함수 ///////
+
 // 이조은 초이스! //////////////////////
 const zoe_obj = {};
 // 오브젝트 형만 만들고 객체내용은 아래에서!
@@ -338,34 +357,33 @@ tonyFilm.ratings = "15세";
 //6.teaser
 tonyFilm.trailer = function () {
     console.log("trailer", "XvH4t7pvDc0");
+    playMovie("XvH4t7pvDc0");
 };
-
 
 // 유승환 초이스 ///////////////////
 const yu_obj = {};
 // 오브젝트 형만 만들고 할당은 아래에서!
 // 1. 영화제목
-yu_obj.title = '오만과 편견';
+yu_obj.title = "오만과 편견";
 
 // 2. 감독
-yu_obj.director = '조 라이트';
+yu_obj.director = "조 라이트";
 
 // 3. 배우
-yu_obj.actor = '키이라 나이틀리, 매슈 맥패디언, 켈리 멀리건';
+yu_obj.actor = "키이라 나이틀리, 매슈 맥패디언, 켈리 멀리건";
 
 // 4. 장르
-yu_obj.genre= '로맨스/드라마';
+yu_obj.genre = "로맨스/드라마";
 
 // 5. 관람가
-yu_obj.ratings = '12세';
+yu_obj.ratings = "12세";
 
 // 6. 예고편
-yu_obj.trailer = function(){
-    console.log('예고편:', 'r7wJ6HG7aCw');
+yu_obj.trailer = function () {
+    console.log("예고편:", "r7wJ6HG7aCw");
     // 플레이어 함수 호출!
-    playMovie('r7wJ6HG7aCw');
-}
-
+    playMovie("r7wJ6HG7aCw");
+};
 
 // 김내우 초이스 ///////////////////
 const naewoo_Obj = {};
@@ -384,5 +402,5 @@ naewoo_Obj.ratings = "12세";
 naewoo_Obj.trailer = function () {
     console.log("예고편:", "Jb1eMxccojs");
     // 플레이어함수 호출!
-    playMovie('Jb1eMxccojs');
+    playMovie("Jb1eMxccojs");
 }; // trailer 함수 /////////////////
