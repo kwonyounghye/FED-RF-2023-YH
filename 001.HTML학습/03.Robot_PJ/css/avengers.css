@@ -92,3 +92,65 @@ body * {
     */
     border-radius: 50%;
 }
+
+/* 어벤저스 설명박스 */
+.txt {
+    position: absolute;
+    top: 50%;
+    right: 110%;
+    transform: translateY(-50%);
+    /* translateY(-50%); */
+    width: 320px;
+    padding: 1.5rem;
+    line-height: 1.7;
+    background-color: #ffffff50;
+    border-radius: 15px;
+    text-shadow: 1px 1px 1px #000;
+
+    /* 숨기기 설정 */
+    height: 0;
+    overflow: hidden; 
+
+    /* 트랜지션 */
+    transition: .4s ease-in-out;
+}
+/* 상위박스 .hero 오버 시 설명 보이기 */
+.hero:hover .character {
+    display: block;
+}
+/* 패딩과 보더는 하위박스에 주고 완전히 숨기기 */
+.txt>div {
+    padding: 2rem;
+}
+/* 설명박스 위치 오른쪽 클래스 */
+.txt.right {
+    right: auto;
+    left: 110%;
+}
+/* 캐릭터 타이틀 */
+.txt h3 {
+    font-size: 2.5rem;
+    text-align: center;
+    color: cyan;
+}
+/* .hero 순서별 위치값 셋팅 */
+.hero:nth-child(1) {
+    /* 개별 위치 이동값 */
+    transform: translate(-170%, -130%);
+}
+.hero:nth-child(2) {
+    /* 개별 위치 이동값 */
+    transform: translate(-170%, 130%);
+}
+.hero:nth-child(3) {
+    /* 개별 위치 이동값 */
+    transform: translate(0%, 220%);
+}
+.hero:nth-child(4) {
+    /* 개별 위치 이동값 */
+    transform: translate(170%, 130%);
+}
+.hero:nth-child(5) {
+    /* 개별 위치 이동값 */
+    transform: translate(170%, -130%);
+}
