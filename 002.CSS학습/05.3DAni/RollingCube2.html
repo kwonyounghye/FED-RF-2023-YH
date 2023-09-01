@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Rolling Cube 3D Animation + 원근 적용</title>
+        <!-- 외부 CSS -->
+        <link rel="stylesheet" href="./css/cube2.css" />
+        <!-- 외부 JS -->
+        <script src="./js/cube2.js"></script>
+        <!-- 부드러운 스크롤 JS -->
+        <script src="./js/smoothScroll23.js"></script>
+    </head>
+    <body>
+        <!-- 
+            [ 전체 랩핑 박스 : .wrap ]
+            1. 전체 랩핑 박스 : 화면 고정 필수(fixed)
+            2. 화면과 같은 크기 설정
+            3. 스크롤 셋팅(랩핑박스에서 스크롤됨!)
+         -->
+        <div class="wrap">
+            <!-- 
+                [ 내부 컨텐츠 내용 박스 : .content ]
+                preserve-3d 적용 범위 박스 
+                + 높이값 설정 박스
+                (중요: 여기에 preserve-3d 셋팅 필수) -->
+            <section class="content">
+
+                <!-- 큐브 : 소개 포스터 -->
+                <div class="cube rotate-cube"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                <!-- 큐브 : 인물 소개 -->
+                <div class="cube rotate-cube cube2 "><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            </section>
+        </div>
+    </body>
+</html>

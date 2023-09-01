@@ -10,3 +10,45 @@
     버튼으로 변경되어 있음!
 
 *************************************/
+
+// window 로드 이벤트 호출 //
+window.addEventListener('DOMContentLoaded', loadFn);
+
+// DOM 선택함수
+const qs = x => document.querySelector(x);
+const qsa = x => document.querySelectorAll(x);
+
+// 로딩함수 //////////////////////
+function loadFn() {
+    // 함수 호출 확인
+    console.log('로딩 완료');
+
+    // 1. 대상 선정
+    // 1-1. 이벤트 대상: .btngo
+    const btngo = qs('.btngo');
+    // 1-2. 변경 대상: .cube
+    const cube = qs('.cube');
+    console.log('대상: ', btngo, cube);
+
+    // 2. 이벤트 함수 설정하기
+    btngo.onclick = e=>{/* e - 이벤트 전달 변수 */
+        // 호출 확인
+        console.log('돌아.');
+        // 1. 대상: .cube -> cube 함수
+        // 2. 변경내용: 
+        // 클래스 on 없으면 넣고 있으면 빼기
+        // classList.toggle(클래스명)
+        cube.classList.toggle('on');
+
+        // 3. 텍스트 읽어오기(버튼 글자 변경 위해)
+        let btxt = e.target.innerText;
+        console.log("화살표 함수에서 this: ", this, "화살표함수에서 e.target", e.target, "현재 버튼 글자: ", btxt);
+
+        // 4. 버튼 글자 변경하기: "돌아~" <->"멈춰!"
+        e.target.innerText = btxt=='돌아!'?'멈춰!':'돌아!'
+        // 할당할 데이터를 삼항연산자로 결정!
+        // 비?집:놀이동산
+    }; //////// click 이벤트 함수
+
+} //////////////// loadFn 함수 //////////////////////////////
+///////////////////////////////////////////////////////////
