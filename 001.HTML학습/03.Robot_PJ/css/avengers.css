@@ -49,6 +49,9 @@ body {
 }
 /* 첫페이지 타이틀 */
 .t1 {
+    position: fixed;
+    width: 100%;
+    z-index: 999;
     font-family: "Monoton", cursive;
     font-weight: normal;
     font-size: 70px;
@@ -63,6 +66,44 @@ body {
 /* 타이틀에 .on일 경우 등장 속성 변경 */
 .t1.on span {
     transform: translateY(0) scale(1);
+}
+.t2 {
+    position: sticky;
+    top: 15vh;
+    font-family: 'Single Day', cursive;
+}
+/* 최외곽박스 공통 */
+.wrap-box {
+    position: relative;
+    /* 부모 자격 */
+    height: 100vh;
+}
+/* 이동 버튼 디자인 */
+.gobtn {
+    position: absolute;
+    right: 3%;
+    /* 부모는? .page */
+    font-size: 30px;
+    z-index: 9999;
+}
+#pg1 .gobtn:after {
+    content: '👇';
+}
+#pg2 .gobtn:after {
+    content: '👆';
+}
+/* 개별 위치 */
+#pg1 .gobtn {
+    bottom: 2%;
+}
+#pg2 .gobtn {
+    top: 2%;
+}
+/* 오버 시 a 변경 */
+.gobtn:hover {
+    color: hotpink;
+    text-decoration: overline;
+    text-decoration-style: wavy;
 }
 
 
@@ -84,6 +125,7 @@ body {
     background: url(../ab_img/ab0.jpg) no-repeat center/cover;
     /* 트랜스폼 처음에 안보임 */
     transform: scale(0);
+    /* 트랜지션 */
     transition: 2s ease-in-out;
 }
 /* 클래스on을 주면 등장! */
@@ -201,15 +243,14 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60%;
-    aspect-ratio: 4/3;
+    /* 동영상박스 크기 제한줌(글자 가려짐 방지) */
+    width: min(900px,  70%);
+    /* 비율 설정 - 16:9 */
+    aspect-ratio: 16/9;
+    /* 비율 설정 시 유의사항 - height를 설정하지 말 것! */
 }
-.t1 {
-    position: fixed;
-
-}
-.t2 {
-    position: sticky;
-    top: 15vh;
-    font-family: 'Single Day';
+.trailer-box iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
 }

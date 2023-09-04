@@ -66,7 +66,7 @@ for(let x in character) {
                         <!-- 이미지 -->
                         <img src="./ab_img/${character[x]['이미지명']}.png" alt="${x}">
                         <!-- 소개글박스 -->
-                        <article class="txt${num>=3?'right':''}">
+                        <article class="txt${num>=3?' right':''}">
                             <div>
                                 <h3>${x}</h3>
                                 <p>${character[x]['설명']}</p>
