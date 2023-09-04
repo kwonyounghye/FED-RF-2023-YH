@@ -26,15 +26,15 @@ body::before {
 }
 html {
     /* rem 단위를 위한 root 글자 설정! */
-    font: 100px;
+    font-size: 10px;
 }
 body {
     color: #fff;
 }
 /* 공사중 */
-body * {
+/* body * {
     outline: 2px dashed yellow;
-}
+} */
 
 /************************ 공통 클래스 ************************/
 /* 페이지 클래스 */
@@ -47,6 +47,24 @@ body * {
     text-align: center;
     font-size: 4rem;
 }
+/* 첫페이지 타이틀 */
+.t1 {
+    font-family: "Monoton", cursive;
+    font-weight: normal;
+    font-size: 70px;
+    transform: translateY(5vh);
+}
+/* 하위 span */
+.t1 span {
+    transform: translateY(200%) scale(0);
+    display: inline-block;
+    transition: .4s ease-in;
+}
+/* 타이틀에 .on일 경우 등장 속성 변경 */
+.t1.on span {
+    transform: translateY(0) scale(1);
+}
+
 
 /************************ 개별요소 디자인 ************************/
 .avengers-box {
@@ -64,6 +82,13 @@ body * {
     /* 내부 글로우 */
     inset 0 0 30px lightblue;/*  inset: 내부 안 쪽에 넣는다는 의미. */
     background: url(../ab_img/ab0.jpg) no-repeat center/cover;
+    /* 트랜스폼 처음에 안보임 */
+    transform: scale(0);
+    transition: 2s ease-in-out;
+}
+/* 클래스on을 주면 등장! */
+.avengers-box.on {
+    transform: scale(1);
 }
 
 /* 캐릭터 공통 */
@@ -74,6 +99,15 @@ body * {
     /* 부모는? .avengers-box 정중앙 */
     width: 150px;
     height: 150px;
+
+    /* 처음엔 모두 안보임 */
+    opacity: 0;
+    /* 트랜지션 */
+    transition: 1s ease-in-out 2s;
+}
+/* 부모박스 .on 적용 시 동시에 보이게 함! */
+.avengers-box.on .hero {
+    opacity: 1;
 }
 /* 어벤저스 이미지 */
 .hero img {
@@ -91,6 +125,8 @@ body * {
             유사한 효과를 준다! 
     */
     border-radius: 50%;
+     /* 박스 글로우 */
+     box-shadow: 0 0 20px 10px lightgreen;
 }
 
 /* 어벤저스 설명박스 */
@@ -98,7 +134,7 @@ body * {
     position: absolute;
     top: 50%;
     right: 110%;
-    transform: translateY(-50%);
+    transform: translateY(25%);
     /* translateY(-50%); */
     width: 320px;
     padding: 1.5rem;
@@ -114,9 +150,11 @@ body * {
     /* 트랜지션 */
     transition: .4s ease-in-out;
 }
-/* 상위박스 .hero 오버 시 설명 보이기 */
-.hero:hover .character {
-    display: block;
+/* 상위박스 .hero 오버 시 설명 보이기
+어벤저스 박스에 .active가 부여된 후 오버작동함 */
+.avengers-box.active .hero:hover .txt {
+    height: 220px;
+    transform: translateY(-50%);
 }
 /* 패딩과 보더는 하위박스에 주고 완전히 숨기기 */
 .txt>div {
@@ -134,23 +172,44 @@ body * {
     color: cyan;
 }
 /* .hero 순서별 위치값 셋팅 */
-.hero:nth-child(1) {
+.avengers-box.on .hero:nth-child(1) {
     /* 개별 위치 이동값 */
-    transform: translate(-170%, -130%);
+    transform: translate(-170%, -130%) rotateY(720deg);
 }
-.hero:nth-child(2) {
+.avengers-box.on .hero:nth-child(2) {
     /* 개별 위치 이동값 */
-    transform: translate(-170%, 130%);
+    transform: translate(-170%, 130%) rotateY(720deg);
 }
-.hero:nth-child(3) {
+.avengers-box.on .hero:nth-child(3) {
     /* 개별 위치 이동값 */
-    transform: translate(0%, 220%);
+    transform: translate(0%, 220%) rotateY(720deg);
 }
-.hero:nth-child(4) {
+.avengers-box.on .hero:nth-child(4) {
     /* 개별 위치 이동값 */
-    transform: translate(170%, 130%);
+    transform: translate(170%, 130%) rotateY(720deg);
 }
-.hero:nth-child(5) {
+.avengers-box.on .hero:nth-child(5) {
     /* 개별 위치 이동값 */
-    transform: translate(170%, -130%);
+    transform: translate(170%, -130%) rotateY(720deg);
+}
+/* 두번째 페이지 영역 */
+.trailer {
+    position: relative;
+}
+.trailer-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    aspect-ratio: 4/3;
+}
+.t1 {
+    position: fixed;
+
+}
+.t2 {
+    position: sticky;
+    top: 15vh;
+    font-family: 'Single Day';
 }
