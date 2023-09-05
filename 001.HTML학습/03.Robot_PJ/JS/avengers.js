@@ -1,7 +1,4 @@
 // 어벤저스 JS - avengers.js
-window.addEventListener
-
-
 
 // 공통 DOM 선택 함수
 const qs = x => document.querySelector(x);
@@ -111,7 +108,7 @@ let tit_one = '';
 for(let x of my_text) {
     console.log(x);
     tit_one += `<span>${x}</span>`;
-};
+}
 
 console.log(tit_one);
 
@@ -120,7 +117,7 @@ mytit.innerHTML = tit_one;
 
 // 셋팅된 span 요소를 돌면서 하나씩 transition-delay 시간
 // 일정시간 간격으로 주기!
-let new_span = qsa('.t1 span')
+let new_span = qsa('.t1 span');
 new_span.forEach((ele, idx)=>{
     ele.style.transitionDelay = (.2*idx)+'s';
 });
