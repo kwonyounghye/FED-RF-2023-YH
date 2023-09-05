@@ -7,6 +7,9 @@ window.addEventListener
 const qs = x => document.querySelector(x);
 const qsa = x => document.querySelectorAll(x);
 
+// 새로고침 시 맨 위로 이동
+setTimeout(()=>{window.scrollTo(0,0)},500);
+
 window.addEventListener('wheel', (e)=>{
     // 기본 기능 막기 : preventDefault()
     e.preventDefault();
@@ -18,6 +21,14 @@ window.addEventListener('wheel', (e)=>{
     window.scrollTo(0,window.innerHeight*(e.wheelDelta<0?1:0));
     // 윈도우 높이값*음수면 1곱하고 양수면 0곱함
     // 아랫방향은 윈도우 높이값만큼 가고 윗방향은 위치값이 0임!
+
+    // 두번째 페이지일 때 동영상 플레이하기
+    if(e.wheelDelta<0) { // 아래로 내려갈 때 - 자동 플레이
+        qs('.trailer-box iframe').src='https://www.youtube.com/embed/Ko2NWhXI9e8?autoplay=1'
+    } /////////////////// if ///////////////////////
+    else { // 위로 올라올 때 - 멈춤
+        qs('.trailer-box iframe').src='https://www.youtube.com/embed/Ko2NWhXI9e8'
+    } //////////////////////// else ////////////////////////////
 }, {passive:false});
 
 // passive:false 설정값 변경을 해야

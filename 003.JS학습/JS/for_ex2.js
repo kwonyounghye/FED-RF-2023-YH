@@ -16,7 +16,7 @@ hcode += '<ul>';
 for(var i=0;i<50;i++) {
     hcode += `
             <li>
-                <img src="./images/dress/${i+1}.jpg" alt="dress" srcset="">
+                <img src="./images/dress/${i+1}.jpg" alt="dress">
                 <div class="item-info>    
                     <h3>상품명${i+1}</h3>
                     <h4>가격${i+1}</h4>
