@@ -1,6 +1,6 @@
 @charset "utf-8";
 /* 도깨비 PJ : 메인페이지 CSS - main.css */
-   
+
 /* 리셋, 공통 외부 CSS 합치기(merge */
 @import url(./common.css);
 @import url(./core.css);
@@ -10,11 +10,9 @@
 body * {
     outline: 2px dashed #ccc;
 }
-body>div>* {
+body > div > * {
     outline-color: red;
 }
-
-
 
 /* 개별 영역 박스 -> 확장형 박스
 -> 개별 영역 중앙 속 박스에 높이값을 주면
@@ -48,7 +46,7 @@ body>div>* {
 /* 개별 캐릭터 박스 */
 .cat-box article {
     position: relative;
-    width: calc(95%/4);
+    width: calc(95% / 4);
     /* 개별 박스 비율 설정 : height 설정 안함! */
     aspect-ratio: 2/1.2;
     outline: 2px dashed blue;
@@ -62,7 +60,7 @@ body>div>* {
     flex-direction: column;
     height: 200%;
     /* 트랜지션 */
-    transition: height .4s ease-in-out;
+    transition: height 0.4s ease-in-out;
 }
 /* 개별 상위 박스 오버 시 컨텐트 박스 설명 보이기 */
 .cat-box article:hover .cat-content {
@@ -73,7 +71,7 @@ body>div>* {
     /* 등분할 */
 }
 /* 이미지 박스 - 캐릭터 이미지 */
-.img-box>img {
+.img-box > img {
     width: 100%;
 }
 /* 이미지 설명 박스 */
@@ -92,13 +90,11 @@ body>div>* {
     display: none;
 }
 /* 개별 박스에 오버 시 진한 글자 보이기 */
-.cat-box article:hover
-.img-box figcaption img:last-child {
+.cat-box article:hover .img-box figcaption img:last-child {
     display: inline;
 }
 /* 개별 박스에 오버 시 흐린 글자 숨기기 */
-.cat-box article:hover
-.img-box figcaption img:first-child {
+.cat-box article:hover .img-box figcaption img:first-child {
     display: none;
 }
 /* 캐릭터 설명 박스 */
@@ -110,7 +106,7 @@ body>div>* {
 }
 /* 캐릭터 타이틀 */
 .desc-box h3 {
-    font-family: 'Gugi';
+    font-family: "Gugi";
     font-size: min(2.4rem, 1.7vw);
     font-weight: normal;
     word-spacing: nowrap;
@@ -119,44 +115,44 @@ body>div>* {
 }
 /* 캐릭터 설명 박스 */
 .desc-box p {
-    font-family: 'Single Day', 'ZCOOL KuaiLe';
+    font-family: "Single Day", "ZCOOL KuaiLe";
     font-size: min(1.8rem, 1.3vw);
     line-height: 1.6;
     padding: min(1vw, 1.5rem);
-    text-align: justify;/* 양쪽 정렬 */
+    text-align: justify; /* 양쪽 정렬 */
 }
 /* 스크롤바 디자인 클래스 */
 /* -webkit- 밴더사명(크롬,사파리) 접두어 */
 /* (참고: -ms-(ie), -o- (오페라), -moz-(파이어폭스) */
 /* 클래스명 scbar */
-.scbar::-webkit-scrollbar{
+.scbar::-webkit-scrollbar {
     /* 전체 스크롤바 크기변경 */
     width: 7px;
 }
-.scbar::-webkit-scrollbar-thumb{
+.scbar::-webkit-scrollbar-thumb {
     /* 스크롤바 */
     background-color: #555;
     border-radius: 5px;
 }
-.scbar::-webkit-scrollbar-track{
+.scbar::-webkit-scrollbar-track {
     /* 스크롤바 트랙 */
     background-color: #ddd;
     border-radius: 5px;
 }
 /**************************** 3. 도깨비 메뉴 박스 ****************************/
-#dokebi-menu{
+#dokebi-menu {
     /* 스티키 포지션 - 상단스크롤 걸림! */
     position: sticky;
     top: 0;
     background-color: #fff;
 }
-#dokebi-menu ul{
+#dokebi-menu ul {
     /* 플렉스박스 */
     display: flex;
-    padding: 12px 0; 
+    padding: 12px 0;
 }
 /* 도깨비메뉴 상위메뉴a */
-.dokebi-menu ul>li>a{
+.dokebi-menu ul > li > a {
     color: #999;
     font-size: 1.8rem;
     font-weight: bold;
@@ -166,24 +162,24 @@ body>div>* {
     white-space: nowrap;
 }
 /* 도깨비메뉴 상위li 오버시 a */
-.dokebi-menu ul>li:hover>a{
+.dokebi-menu ul > li:hover > a {
     color: red;
 }
 /* 4번째 li ~ 6번째 li 하위메뉴 표시하기 */
-.dokebi-menu ul>li .be-sub>a::after {
-    content: '∨';
+.dokebi-menu ul > li .be-sub > a::after {
+    content: "∨";
     display: inline-block;
-    transform: scale(.5,.3);
+    transform: scale(0.5, 0.3);
     margin-left: 3px;
 }
 /* 현재 선택된 메뉴 li.on 클래스 */
-.dokebi-menu ul>li.on>a{    
+.dokebi-menu ul > li.on > a {
     background-color: red;
     color: #fff;
     border-radius: 30px;
 }
 /* 도깨비 서브메뉴 */
-.dokebi-sub-menu{
+.dokebi-sub-menu {
     position: absolute;
     border: 1px solid red;
     border-radius: 20px;
@@ -194,40 +190,50 @@ body>div>* {
     display: none;
 }
 /* 상위li에 마우스 오버시 서브 보이기 */
-.dokebi-menu ul>li:hover .dokebi-sub-menu{
+.dokebi-menu ul > li:hover .dokebi-sub-menu {
     display: block;
 }
 /* 도깨비 서브메뉴 a */
-.dokebi-sub-menu a{
+.dokebi-sub-menu a {
     display: block;
     padding: 10px 15px;
     font-size: 1.8rem;
 }
 
-
 /**************************** 4. 메인영역: .group-part ****************************/
 #main {
-    background-color: lightgoldenrodyellow;
+    /* background-color: lightgoldenrodyellow; */
 }
-/* 방송 소개 편성 파트 */
+/*************************** 방송 소개 편성 파트 ***************************/
 .main .group-part-01 .partbox {
-height: 455px;
+    height: 455px;
 }
-/* 미리보기 파트 */
+/*************************** 미리보기 파트 ***************************/
 .main .group-part-02 .partbox {
-height: 298px;
+    height: 298px;
 }
-/* 현장 포토 파트 */
-.main .group-part-03 .partbox {
-height: 300px;
+/*************************** 현장 포토 파트 ***************************/
+.live-box ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 24px;
+    grid-row-gap: 48px;
 }
-/* 대표이미지 파트 */
+.live-box img {
+    width: 100%;
+    border-radius: 10px;
+}
+/* 현장포토 이미지 설명 타이틀 */
+.live-box figcaption {
+    padding-top: 14px;
+    font-size: 2rem;
+    font-weight: 500;
+}
+/*************************** 대표이미지 파트 ***************************/
 .main .group-part-04 .partbox {
-height: 542px;
+    height: 542px;
 }
-/* 최신 동영상 파트 */
+/*************************** 최신 동영상 파트 ***************************/
 .main .group-part-05 .partbox {
-height: 376px;
+    height: 376px;
 }
-
-
