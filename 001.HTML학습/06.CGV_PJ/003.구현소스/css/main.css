@@ -54,6 +54,10 @@ body{
     /* 사이 간격 */
     gap: 0 20px;
     font-family: 'Jua';
+
+    /* 영사기박스 보다 위 */
+    position: relative;
+    z-index: 1;
 }
 /* 상위메뉴 li */
 .gnb ul>li {
@@ -183,21 +187,17 @@ body{
     right: 9px;
     width: 0;
     height: 70px;
-    background: url(../images/bim.png) no-repeat center/auto 100%;
-}
-/* .gnb 오버 시 빔박스 빔쏘기 */
-.gnb:hover .beam {
-    width: 200px;
-    /* 트랜지션 */
+    background: url(../images/bim.png) no-repeat right/auto 100%;
+    /* 트랜지션 : 먼저 빔회수하기 */
     transition: width .2s linear;
 }
-/* gnb 오버 시 빔박스 빔쏘기 */
+/* .gnb 오버 시 빔박스 빔쏘기 */
 .gnb:hover .beam {
     width: 200px;
     /* 트랜지션 : 영사기 도는 .3초 기다림 */
     transition-delay: .3s;
     /* 빔 떨림 애니 호출 */
-    animation: beam-ani .05s linear infinite alternate;
+    animation: beam-ani .01s linear infinite alternate;
 }
 /* 빔 떨림 애니 키프레임 */
 @keyframes beam-ani {
@@ -213,7 +213,6 @@ body{
     /* 비율박스는 높이값을 주지 않는다! */
     aspect-ratio: 1200/788;
     background: url(../images/bg.jpg) no-repeat 0/100%;
-    
 }
 /* 2-1. 스크린 */
 .screen {
@@ -223,6 +222,7 @@ body{
     left: 21.4%;
     width: 58.5%;
     height: 50.5%;
+    /* 비율박스 부모 기준 크기값, 위치값 % 설정 */
     background-color: red;
 }
 /* 아이프레임 */
@@ -235,6 +235,7 @@ body{
 .poster-menu {
     position: absolute;
     width: 60%;
+    /* 비율박스 부모 기준 가로 크기 % 설정 */
     left: 50%;
     bottom: 5%;
     transform: translateX(-50%);
@@ -264,7 +265,7 @@ body{
      /* 트랜지션 */
      transition: .3s;
 }
-/* 포스터 메뉴 각 li에 오버 시 + 클래스 on */
+/* 포스터 메뉴 각 li에 오버 시 + 클래스 on 적용 시 */
 .poster-menu>ul>li:hover,
 .poster-menu>ul>li.on {/* on 임시 넣기 */
     transform: rotateX(0);
@@ -293,6 +294,7 @@ body{
     /* 트랜지션 */
     transition: top .3s ease-out;
 }
+/* 영화정보 박스 제목만 변경 */
 .mv-info li:first-child {
     font-size: min(1.5vw,17px);
     color: aqua;
