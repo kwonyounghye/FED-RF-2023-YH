@@ -1,0 +1,94 @@
+@charset "utf-8";
+/* 네비 유형6 시코르 상단 공통 CSS - common.css */
+
+/* 속박스 */
+.ibx {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+/* 1. 상단영역 */
+#top-area {
+    background-color: #000;
+}
+/* 상단 속박스 */
+.top-area {
+    position: relative;
+    /* 부모자격 - .smenu */
+}
+/* 탑메뉴 박스 */
+.top-menu {
+    padding-top: 28px;
+}
+/* 로고 박스 */
+.logo-box {
+    text-align: center;
+}
+/*************************** GNB박스 ***************************/
+.gnb {
+    color: #fff;
+    display: flex;
+    gap: 0 20px;
+    line-height: 100;
+}
+
+/* gnb 공통 a */
+.gnb>ul>li:first-child>a {
+    color: #fff;
+}
+/* 서브메뉴 박스 : 100% 차지 서브영역 */
+.smenu {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    /* 숨김 박스 */
+    height: 0;
+    overflow: hidden;
+    display: none;
+    background-color: #fff;
+    /* 트랜지션 */
+    transition: .4s ease-in-out;
+}
+/* -> 동적 높이값은 JS로 함!(+이벤트) */
+.gnb>ul>li:hover .smenu {
+    display: block;
+    height: 400px;
+}
+/* 임시 첫번째 */
+.gnb>ul:first-child .smenu {
+    display: block;
+}
+/* 서브 첫타이틀 */
+.stit {
+    font-size: 30px;
+}
+/* 서브 내부 랩핑 박스 : 최대 1200px 중앙 */
+.smbx {
+    display: flex;
+    margin: 0 auto;
+    max-width: 1200px;
+    gap: 0 70px;
+}
+/* 서브 2차 타이틀 박스 */
+.smbx h2 {
+    width: 200px;
+    padding-right: 20px;
+    border-right: 1px solid #ccc;
+
+}
+/* 서브 메뉴 dl 랩핑 박스 */
+.swrap {
+    display: flex;
+}
+/* 서브 dl */
+.swrap dl {
+    width: 180px;
+}
+/* 2차 메뉴 : dt */
+.swrap dt {
+    font-size: 20px;
+}
+/* 3차 메뉴 : dd */
+.wrap dd {
+    font-size: 14px;
+    line-height: 2;
+}
