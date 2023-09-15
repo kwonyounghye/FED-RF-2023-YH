@@ -1,10 +1,21 @@
 @charset "utf-8";
 
 /* 도깨비 PJ :  공통 모듈 CSS - common.css */
+
+/* 웹폰트 CDN */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Noto+Sans+KR&display=swap');
+/* font-family: 'Noto Sans KR', sans-serif; */
+
 /* 공유 기능 요소 셋팅 */
 
 /**************************** 1. 상단영역 ****************************/
+body {
+    
+    font-family: 'Noto Sans KR', sans-serif;
+}
 #header {
+    position: relative;
+    z-index: 999;
     /* background-color: lightcoral; */
 }
 .header .partbox {
@@ -21,7 +32,7 @@ height: 120px;
     display: flex;
     /* 진행방향 정렬 */
     justify-content: flex-end;
-    padding: 14px 0 7px;
+    padding: 14px 16px 7px 0;
 }
 /* 첫번째 빼고 li선택 */
 .top-menu li+li{
@@ -56,6 +67,48 @@ height: 120px;
     display: inline-block;
     transform: scale(.5, .3);
     margin-left: 3px;
+}
+/* 서브메뉴 박스 */
+.smenu {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    background-color: #fff;
+
+    /* 메뉴 숨기기 */
+    overflow: hidden;
+    height: 0;
+
+    /* 트랜지션 */
+    transition: .4s ease-in-out;
+}
+/* 서브메뉴 속박스 */
+aside.smbx {
+    max-width: 1000px;
+    margin: 0 auto;
+    outline: 4px dashed green;
+}
+
+.smbx h2 {
+    font-size: 3.2rem;
+}
+
+.smbx ol {
+    /* 플랙스박스 */
+    display: flex;
+    /* 랩핑박스 */
+    flex-wrap: wrap;
+    font-size: 1.6rem;
+    gap: 0 76px;
+    line-height: 3;
+    white-space: nowrap;
+}
+.smenu ol li {
+    /* 가로크기 제한 - 한줄에 4개 */
+    flex-basis: 25%;
+    /* 글자말줄임 셋팅 */
+    white-space: nowrap;
+    
 }
 /**************************** 2. 메인영역: .group-part ****************************/
 #main {

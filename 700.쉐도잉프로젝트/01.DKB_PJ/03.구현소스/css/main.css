@@ -39,6 +39,8 @@ body > div > * {
     flex-wrap: wrap;
     /* 진행방향정렬 */
     justify-content: center;
+    /* 사이간격 */
+    gap: 0 min(1.1vw,5px);
 
     width: 100%;
     margin: 0 auto;
@@ -58,7 +60,7 @@ body > div > * {
     width: 100%;
     display: flex;
     flex-direction: column;
-    height: 200%;
+    height: 93%;
     /* 트랜지션 */
     transition: height 0.4s ease-in-out;
 }
@@ -103,6 +105,7 @@ body > div > * {
     /* 스크롤바 생성 */
     overflow: auto;
     background: url(../images/eachBG.jpg) no-repeat bottom/cover;
+    border-radius: 10px 5px 5px 10px;
 }
 /* 캐릭터 타이틀 */
 .desc-box h3 {
@@ -121,24 +124,7 @@ body > div > * {
     padding: min(1vw, 1.5rem);
     text-align: justify; /* 양쪽 정렬 */
 }
-/* 스크롤바 디자인 클래스 */
-/* -webkit- 밴더사명(크롬,사파리) 접두어 */
-/* (참고: -ms-(ie), -o- (오페라), -moz-(파이어폭스) */
-/* 클래스명 scbar */
-.scbar::-webkit-scrollbar {
-    /* 전체 스크롤바 크기변경 */
-    width: 7px;
-}
-.scbar::-webkit-scrollbar-thumb {
-    /* 스크롤바 */
-    background-color: #555;
-    border-radius: 5px;
-}
-.scbar::-webkit-scrollbar-track {
-    /* 스크롤바 트랙 */
-    background-color: #ddd;
-    border-radius: 5px;
-}
+
 /**************************** 3. 도깨비 메뉴 박스 ****************************/
 #dokebi-menu {
     /* 스티키 포지션 - 상단스크롤 걸림! */
@@ -146,7 +132,7 @@ body > div > * {
     top: 0;
     background-color: #fff;
 }
-#dokebi-menu ul {
+.dokebi-menu ul {
     /* 플렉스박스 */
     display: flex;
     padding: 12px 0;
@@ -155,7 +141,6 @@ body > div > * {
 .dokebi-menu ul > li > a {
     color: #999;
     font-size: 1.8rem;
-    font-weight: bold;
     display: block;
     padding: 9px 24px;
     /* 줄바꿈방지 */
@@ -213,12 +198,14 @@ body > div > * {
     height: 298px;
 }
 /*************************** 현장 포토 파트 ***************************/
+/* 현장포토 그리드 구성박스 */
 .live-box ul {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-column-gap: 24px;
     grid-row-gap: 48px;
 }
+/* 현장포토 이미지 공통 */
 .live-box img {
     width: 100%;
     border-radius: 10px;
