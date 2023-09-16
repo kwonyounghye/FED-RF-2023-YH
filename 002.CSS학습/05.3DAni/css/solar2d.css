@@ -78,6 +78,8 @@ body{
 /* 타이틀 */
 .tit {
     position: relative;
+    top: 100%;
+    /* -> 아랫쪽 내려가서 안보이는 상태 */
     z-index: 1;
     /* 행성들보다 위 */
 
@@ -89,8 +91,31 @@ body{
     font-size: 80px;
     text-align: center;
     padding-top: 20px;
-}
 
+    /* 자식 span을 위한 원근 설정 */
+    perspective: 40vh;
+
+    /* 애니메이션 호출 */
+    animation: fly-up-tit-ani 5s ease-out 2s forwards ;
+}
+/* 내부 글자 span */
+.tit span {
+    display: block;
+    /* 회전애니 적용 위해 block화 */
+    animation: rotate-tit-ani 7s cubic-bezier(.18, .89, .32, 1.28) 2s forwards;
+}
+/* 타이틀 원근 적용 회전 애니 키프레임 */
+@keyframes rotate-tit-ani {
+    to {
+        transform: rotateX(calc(360deg*10));
+    }
+}
+/* 타이틀 위로 이동 등장 애니 키프레임 */
+@keyframes fly-up-tit-ani {
+        to {
+            top: 0;
+        }
+}
 /* 태양계박스 */
 #solar{
     position: absolute;
@@ -152,18 +177,18 @@ body{
 /* 지구회전 키프레임 */
 @keyframes rotate-earth-ani {
     from{
-        transform: rotate(0deg) translateX(-250px) rotate(0deg);
-    }
-    /* 
-    [ 원형 주변 회전 만들기 ]
-    1. 첫번째 rotate : 0deg -> 360deg
+        transform: rotate(0deg) translateX(var(--earth-trans-size)) rotate(0deg);
+        /* 
+        [ 원형 주변 회전 만들기 ]
+        1. 첫번째 rotate : 0deg -> 360deg
         -> 중앙회전담당!
-    2. 위치이동 translateX
+        2. 위치이동 translateX
         -> 주변을 도는 효과 생김
-    3. 두 번째 rotate : 0deg -> -360deg
+        3. 두 번째 rotate : 0deg -> -360deg
         -> 반대회전은 옆으로 이동한 박스에 
         적용되어 세워져서 주변을 도는 효과가 생김!
-    */
+        */
+    }
     to{
         transform: rotate(360deg) translateX(-250px) rotate(-360deg);
     }

@@ -14,6 +14,7 @@ const domFn = {
 
     // 바운딩 위치값 함수
     getBCR: ele => ele.getBoundingClientRect().top,
+    
     // 옵셋탑값 반환 함수
     getOT: ele => ele.offsetTop,
 }; ////////////// domFn 객체 ///////////////////////////
@@ -102,17 +103,18 @@ function showIt() {
     
 } //////////// showIt 함수 //////////////////
 
-// 기준값을 검사 후 클래스 넣는 함수 //////
-function addOn(ele) { // ele - 대상 요소
+// 기준값을 검사후 클래스 넣는 함수 ///
+function addOn(ele) {
+    // ele-대상요소
     let bTop = domFn.getBCR(ele);
-    // console.log('바운딩값: ',bTop);
-    
-    // 기준값보다 작을 때 등장
-    if(bTop<CRITERIA) ele.classList.add('on');
-    // 기준값보다 크면 원상 복귀(숨김)
-    else ele.classList.remove('on');
-} /////////// addOn 함수 /////////////////////
-
+    // console.log('바운딩값:',bTop);
+  
+    // 기준값 보다 작을때 등장
+    if (bTop < CRITERIA) ele.classList.add("on");
+    // 기준값보다 크면 원상복귀(숨김)
+    else ele.classList.remove("on");
+  } /////////// addOn 함수 ////////////
+  
 // 구현내용: 글자를 박스에 넣고 하나씩 날아오면서 등장
 // 1.대상선정: .stage
 const stage = domFn.qs(".stage");
@@ -156,9 +158,9 @@ setTimeout(() => {
 // 윈도우 높이값
 let winH = window.innerHeight;
 // 문서 전체 높이값
-let doCH = document.body.clientHeight;
-// 스크롤 한계값 : 전체 document 높이 - 화면 높이
+let docH = document.body.clientHeight;
 
+// 스크롤 한계값 : 전체 document 높이 - 화면 높이
 let scLimit = docH - winH;
 console.log('스크롤한계값: ',scLimit);
 // 비례식 => 스크롤한계값 : 윈도우 높이 = 스크롤 이동값 : 이미지 이동값
