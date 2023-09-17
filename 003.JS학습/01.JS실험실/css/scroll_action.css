@@ -45,6 +45,16 @@ body {
 /* 스크롤등장박스1 */
 .sa1 {
   background-image: url(https://file.mk.co.kr/meet/neds/2016/12/image_readtop_2016_867027_14817626712716670.jpg);
+  position: absolute;
+  top: 80vh;
+  right: 5vw;
+  width: 30vw;
+  height: 49vw;
+  border: 1px solid #000;
+  background-color: lightblue;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 /* 스크롤등장박스2 */
