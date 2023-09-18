@@ -47,7 +47,7 @@ pmenu.forEach((ele) => {
         // 1, 클릭된 a요소 하위 영화제목 정보 읽어오기
         let mtit = domFn.qsEl(ele, "li").innerText;
         // 호출 확인!
-        console.log("나야나야", mtit, mvCode[mtit]);
+        console.log("나야나야", me, mtit, mvCode[mtit]);
         // 2. 스크린 박스에 아이프레임 src 재구성하여 넣기
         screen.innerHTML = `
         <iframe src="https://www.youtube.com/embed/${mvCode[mtit]}?autoplay=1&mute=1&loop=1&playlist=vteD1f-SV5I" allow="autoplay"></iframe>    
@@ -65,3 +65,31 @@ pmenu.forEach((ele) => {
         ele.parentElement.classList.add("on");
     });
 }); //////////// forEach /////////////////
+
+
+//////////////// 맵버튼 클릭 시 맵박스 보이기 /////////////////////////
+// 대상: 이벤트 - .btn-map, 변경 - .gmap
+// 변경 내용: 맵버튼 클릭 시 .gmap에 클래스 on넣기
+            // 닫기 버튼 클릭 시 .gmap에 클래스 on빼기
+
+// 1. 대상 선정
+const btnMap = domFn.qs('.btn-map');
+const gmap = domFn.qs('.gmap');
+const cbtn = domFn.qs('.cbtn');
+console.log('대상: ', btnMap, gmap, cbtn);
+
+// 2. 이벤트 설정 및 함수 구현
+// 2-1. 맵버튼 클릭 시
+domFn.addEvt(btnMap, 'click', ()=>{
+    // 구글맵 보이기
+    gmap.classList.add('on');
+    // 가림막 보이기
+    document.body.classList.add('on');
+}); ///////////////// click 이벤트 함수 /////////////////////////////
+// 2-2. 닫기 버튼 클릭 시
+domFn.addEvt(cbtn, 'click', ()=>{
+    // 구글맵 숨기기
+    gmap.classList.remove('on');
+    // 가림막 숨기기
+    document.body.classList.remove('on');
+}); ///////////////// click 이벤트 함수 /////////////////////////////
