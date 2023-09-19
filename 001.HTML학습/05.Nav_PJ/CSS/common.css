@@ -1,10 +1,21 @@
 @charset "utf-8";
 /* 네비 유형6 시코르 상단 공통 CSS - common.css */
 
+/* 웹폰트 CDN */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Noto+Sans+KR&display=swap');
+/* font-family: 'Noto Sans KR', sans-serif; */
+
+body{
+    background-image: linear-gradient(to bottom,lightcoral,lightgreen);
+    height: 100vh;
+    font-family: 'Noto Sans KR', sans-serif;
+}
 /* 속박스 */
 .ibx {
-    max-width: 1600px;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 0 15px;
+    outline: 2px dashed yellow;
 }
 /* 1. 상단영역 */
 #top-area {
@@ -12,7 +23,7 @@
 }
 /* 상단 속박스 */
 .top-area {
-    position: relative;
+    /* position: relative; */
     /* 부모자격 - .smenu */
 }
 /* 탑메뉴 박스 */
@@ -28,7 +39,7 @@
     color: #fff;
     display: flex;
     gap: 0 20px;
-    line-height: 100;
+    line-height: 60px;
 }
 
 /* gnb 공통 a */
@@ -43,15 +54,13 @@
     /* 숨김 박스 */
     height: 0;
     overflow: hidden;
-    display: none;
     background-color: #fff;
     /* 트랜지션 */
     transition: .4s ease-in-out;
 }
 /* -> 동적 높이값은 JS로 함!(+이벤트) */
 .gnb>ul>li:hover .smenu {
-    display: block;
-    height: 400px;
+    height: 300px;
 }
 /* 임시 첫번째 */
 .gnb>ul:first-child .smenu {
@@ -64,8 +73,8 @@
 /* 서브 내부 랩핑 박스 : 최대 1200px 중앙 */
 .smbx {
     display: flex;
-    margin: 0 auto;
     max-width: 1200px;
+    margin: 0 auto;
     gap: 0 70px;
 }
 /* 서브 2차 타이틀 박스 */
@@ -78,6 +87,8 @@
 /* 서브 메뉴 dl 랩핑 박스 */
 .swrap {
     display: flex;
+    flex-wrap: wrap;
+    /* 랩핑 플렉스 박스 */
 }
 /* 서브 dl */
 .swrap dl {
