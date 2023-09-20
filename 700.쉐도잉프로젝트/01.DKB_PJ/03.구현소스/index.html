@@ -8,10 +8,9 @@
         <link rel="shortcut icon" href="https://poc-cf-image.cjenm.com/public/share/systemmng/site/sitemng/pavicon_tvN.png"/>
         <!-- 메인 CSS -->
         <link rel="stylesheet" href="./css/main.css" />
-        <!-- 부드러운 스크롤 -->
-        <script src="./js/smoothScroll23.js"></script>
         <!-- 메인 JS -->
-        <script src="./js/main.js" defer></script>
+        <!-- 모듈을 넣어서 부드러운 스크롤에서 필요한 것만 가져옴 -->
+        <script src="./js/main.js" type="module"></script>
     </head>
     <body class="scbar">
         <!-- 확장형 레이아웃 -->
@@ -261,21 +260,19 @@
                     <div class="partbox col-3"></div>
                     <div class="partbox col-3"></div>
                 </div>
+                <!-- 현장포토 박스 영역 -->
                 <div class="group-part group-part-03 live-photo-area">
                     <h2 class="stit">현장포토</h2>
-                    <div class="partbox col-12 live-box">
+                    <div class="grid-box partbox col-12 live-box">
                         
                     </div>
                 </div>
+                <!-- 대표이미지 박스 영역 -->
                 <div class="group-part group-part-04">
                     <h2 class="stit">대표 이미지</h2>
-                    <!-- 파트박스 4개 -->
-                    <div class="partbox col-3"></div>
-                    <div class="partbox col-3"></div>
-                    <div class="partbox col-3"></div>
-                    <div class="partbox col-3"></div>
+          <div class="poster-box part-box col-12"></div>
                 </div>
-                <div class="group-part group-part-05">
+                <div class="grid-box group-part group-part-05">
                     <h2 class="stit">마케팅 통계보기</h2>
                     <!-- 파트박스 4개 -->
                     <div class="partbox col-3"></div>
