@@ -27,12 +27,12 @@
                 // 2-3. 칭찬스티커 : .jshow
                 var jshow = document.querySelector(".jshow");
 
-                console.log("요소확인:", jumsu, jexp, jshow);
+                console.log("요소확인: ", jumsu, jexp, jshow);
 
                 // 3. 입력값 읽어오기 ////////////
                 var score = jumsu.value;
                 // value속성 - 입력된 값을 읽기/쓰기
-                console.log("입력된값:", score);
+                console.log("입력된값: ", score);
 
                 /********************************* 
                 [ 입력값 유효성검사하기! ]
@@ -152,7 +152,7 @@
                 // 조건 : 0미만 이거나 100초과
                 if (score < 0 || score > 100) {
                     // 1. 메시지처리하기
-                    validateFn("0부터 100사이의 숫자만 입력하세요!");
+                    validateFn("0부터 100 사이의 숫자만 입력하세요!");
                     // 2. 함수나가기!
                     return;
                 } ////////// if ////////////
