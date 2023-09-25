@@ -196,6 +196,27 @@
             // html코드 변수
             let hcode = '';
 
+            // 0. 배열에 할당된 객체를 순회하기
+            let addCode = '';
+
+          // mi는 생성자함수로 만들어진 객체가 배열에 담긴 것!
+          // for of로 배열을 순회함!
+            for(let y of mi) {
+              console.log(y);
+              addCode += makeCode(y);
+              console.log(addCode);
+            } ////////////// for of문 //////////////
+
+            // 1. 페이지 소스
+
+            // 2. 페이지 요소에 코드 넣기
+            qs('.wrap').innerHTML = hcode;
+
+            // 코드 생성 함수 : 단일 객체로 코드 구성함!
+            function makeCode(mvi) {
+            let hcode = '';
+              
+
             // 1. 객체를 for in문으로 순회하여 코드만들기 ///
             for(let x in mvi){ // x는 속성명
                 // console.log('속성',x);
@@ -237,6 +258,7 @@
                 
                 `
 
+              } ////////////// makeCode 함수 ///////////////
 
             } //////////// for in ////////////
 

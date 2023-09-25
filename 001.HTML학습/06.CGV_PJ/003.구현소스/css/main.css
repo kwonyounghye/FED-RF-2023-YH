@@ -295,7 +295,6 @@ body.on::after {
     overflow: hidden;
     /* 등분할 */
     flex: 1;
-
     /* x축 회전 */
     transform: rotateX(30deg);
     /* 회전축 하단으로 변경 */

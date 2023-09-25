@@ -69,7 +69,7 @@ function loadFn() {
     slide.querySelectorAll('li').forEach(ele, idx)=>
     // 2. 이벤트 설정하기 : 버튼 요소들 -> forEach(
 
-    )
+    
     abtn.forEach(ele => addEvt(abtn, 'click', goSlide));
 
     // 3. 함수 만들기
