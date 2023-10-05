@@ -331,3 +331,58 @@ function moveClip() {
   // 3. 이동반영하기 : - (단위수*이동수) %
   clipList.style.left = -(BLOCK_NUM * mvNum) + "%";
 } /////////// moveClip 함수 //////////
+
+////////////////////////////////////////////////////////
+// 하단링크 콤보 박스 바인딩하기 ////////////////////////
+///////////////////////////////////////////////////////
+// 1. 요구사항 - 콤보박스에 맞는 데이터를 바인딩한다
+// 2. 데이터 - linkData
+console.log('하단 콤보 박스 데이터 : ', linkData);
+
+// 3. 대상 선정 : 바인딩할 콤보 박스
+// #brand, #corp
+const brandBox = dFn.qs('#brand');
+const corpBox = dFn.qs('#corp');
+console.log('콤보박스: ', brandBox, corpBox);
+
+// 4. 데이터 바인딩하기
+// 4-1. 브랜드 바로가기 콤보 박스 : 단순 바인딩(option만)
+// 데이터 대상 : linkData.brand
+
+// 내부 초기화
+brandBox.innerHTML = '';
+
+linkData.brand.forEach(val=>{
+  brandBox.innerHTML += `<option value="${val}">${val}</option>`
+}); //////////////////// forEach ///////////////
+
+// 4-2. 계열사 바로가기 콤보 박스 : 
+// -> 복합 바인딩(optgroup>option)
+// 데이터는 객체형이므로 속성만 모아 배열로 변환하여
+// forEach를 사용한다!
+const corpData = Object.keys(linkData.corp);
+// console.log('계열사 데이터: ',corpData);
+corpData.forEach(val => {
+  corpBox.innerHTML += `
+  <optgroup label="${val} Cars">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+</optgroup>`;
+}); ///////// forEach ////////////////
+
+// 내부의 option요소는 배열데이터.map().join('')을 사용!
+// 맵조잉
+// map() 메서드 리마인딩!
+// map()은 배열을 재구성하여 다시 같은 자리에 리턴하여
+// 만들어진 새로운 배열을 변수에 담거나 그 자리에 리턴한다.
+// 이때 배열값을 문자열 값으로 변환하는 join()을 사용하여
+// 연결자를 빈값으로 처리하면 배열의 구분자 콤마가 없는
+// 태그로만 연결된 순수한 태그 결과 문자열이 만들어진다. 
+
+/********************************************* 
+[ 복합바인딩 요소 구성 형식 ]
+ <optgroup label="Swedish Cars">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+  </optgroup>
+*********************************************/
