@@ -40,9 +40,6 @@
     border-radius: 5px;
     background-color: var(--bg-color);
     font-family: var(--font);
-
-    /* 처음에 안보임! */
-    display: none;
 }
 
 
