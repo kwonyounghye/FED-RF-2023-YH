@@ -6,18 +6,14 @@ import dFn from './dom.js';
 // 상단, 하단 공통 데이터 불러오기
 import tData from './data/com_module.js';
 
-// 부드러운 스크롤 모듈
-import { startSS, setPos } from "./smoothScroll23.js";
 
-// 부드러운 스크롤 적용 //////////
-startSS();
 
 
 
 // [2] 대상 선정 : .common-area
 const comArea = dFn.qsa('.common-area');
 
-console.log(tData, comArea);
+// console.log(tData, comArea);
 
 // 상단 영역 html 넣기
 comArea[0].innerHTML = tData.topArea;

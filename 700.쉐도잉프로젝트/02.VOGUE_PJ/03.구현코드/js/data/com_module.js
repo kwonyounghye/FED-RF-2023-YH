@@ -1,4 +1,4 @@
-// 상단, 하단 공통 모듈 html 코드
+// 상단, 하단 공통 모듈 html코드
 export default {
     topArea:`
     <!-- 1-1.상단메뉴 -->
@@ -86,9 +86,9 @@ export default {
             </li>
         </ul>
     </nav>
-`,
+
+    `,
     footerArea:`
-    
     <!-- 3-1.하단로고 -->
     <div class="blogo">
         <img src="./images/footer_logo.png" alt="하단로고">
@@ -115,5 +115,5 @@ export default {
         </li>
     </ul>
 
-    `
+    `,
 }

@@ -6,7 +6,7 @@ import dFn from "./dom.js";
 // 부드러운 스크롤 모듈
 import { startSS, setPos } from "./smoothScroll23.js";
 // 데이터 모듈
-import { gridData, gnbData, previewData, clipData } from "./data_drama.js";
+import { gridData, gnbData, previewData, clipData, linkData } from "./data_drama.js";
 
 // 부드러운 스크롤 적용 //////////
 startSS();
@@ -235,7 +235,7 @@ preBox.forEach((ele, idx) => {
 ///////// 최신 동영상 영역 데이터 뿌리기 ////////
 // 대상: .clip-box
 const clipBox = dFn.qs(".clip-box");
-console.log(clipBox);
+//console.log(clipBox);
 
 // 생성할 데이터
 let clipCode = "";
@@ -254,7 +254,7 @@ clipData.forEach((val) => {
   `;
 }); ////////// forEach /////////
 
-console.log(clipCode);
+//console.log(clipCode);
 
 // 코드 넣기
 clipBox.innerHTML = `<ul>${clipCode}</ul>`;
@@ -293,7 +293,7 @@ btnClip.forEach((ele) => {
 function moveClip() {
   // 1. 오른쪽 버튼 여부
   let isR = this.classList.contains("fa-chevron-right");
-  console.log("나야나!", isR);
+  // console.log("나야나!", isR);
   // 2. 버튼별 이동분기
   if (isR) {
     // 오른쪽버튼
@@ -337,13 +337,13 @@ function moveClip() {
 ///////////////////////////////////////////////////////
 // 1. 요구사항 - 콤보박스에 맞는 데이터를 바인딩한다
 // 2. 데이터 - linkData
-console.log('하단 콤보 박스 데이터 : ', linkData);
+//console.log('하단 콤보 박스 데이터 : ', linkData);
 
 // 3. 대상 선정 : 바인딩할 콤보 박스
 // #brand, #corp
 const brandBox = dFn.qs('#brand');
 const corpBox = dFn.qs('#corp');
-console.log('콤보박스: ', brandBox, corpBox);
+//console.log('콤보박스: ', brandBox, corpBox);
 
 // 4. 데이터 바인딩하기
 // 4-1. 브랜드 바로가기 콤보 박스 : 단순 바인딩(option만)
@@ -364,9 +364,9 @@ const corpData = Object.keys(linkData.corp);
 // console.log('계열사 데이터: ',corpData);
 corpData.forEach(val => {
   corpBox.innerHTML += `
-  <optgroup label="${val} Cars">
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
+  <optgroup label="${val}">
+    ${linkData.corp[val].map(v=>
+      `<option value="${v}">${v}</option>`).join('')}
 </optgroup>`;
 }); ///////// forEach ////////////////
 
@@ -386,3 +386,36 @@ corpData.forEach(val => {
     <option value="saab">Saab</option>
   </optgroup>
 *********************************************/
+
+// 제이쿼리로 기능 구현하기 /////////////////
+
+// 1. 서브 컨텐츠 보이기 기능 구현 ///////////////
+// (1) 대상 선정 : .sub-view-box 하위 .part-box 또는 li
+const subViewBox = $('.sub-view-box .partbox, .sub-view-box li');
+const subContBox = $('.sub-cont');
+//console.log(subViewBox);
+
+// (2) 이벤트 함수 만들기 /////////
+subViewBox.click(function() {
+  console.log('나야나', this);
+
+  // 1. 제목 읽어오기
+  let subTit = $(this).parents('.sub-view-box').prev().text();
+  // 나자신.부모들(특정 클래스).이전 형제().글자 읽기();
+
+  // 2. 내용 읽어오기
+  let subItem = $(this).text();
+
+  // 1. 서브박스 내용 넣기
+  subContBox.html(`
+  <button class="cbtn">×</button>
+  <div class="sub-inbox">
+    <h1>${subTit}</h1>
+    <div class="sub-item">${subItem}</div>
+  </div>`);
+
+  // 2. 닫기버튼 이벤트 설정
+  $('.cbtn').click(()=>subContBox.hide())
+
+}); ///////// click ///////////////////
+

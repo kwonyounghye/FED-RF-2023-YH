@@ -426,3 +426,33 @@ body > div > * {
 .btn-box button:last-child{
     right: -35px;
 }
+
+/* 서브 컨텐츠 박스 */
+.sub-cont {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    z-index: 99999;
+    overflow: hidden;
+    display: none;
+}
+.sub-cont a {
+    color: #fff;
+}
+/* 닫기버튼 */
+.cbtn {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    background: none;
+    border: none;
+    font-size: 80px;
+    color: #fff;
+
+}
+/* 제목박스 */
+.t
+/* 내용박스 */
