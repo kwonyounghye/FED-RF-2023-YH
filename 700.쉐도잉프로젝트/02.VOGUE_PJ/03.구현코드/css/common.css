@@ -173,7 +173,11 @@ https://www.w3schools.com/cssref/tryit.php?filename=trycss_cursor */
 .gnb a:hover{
     color: red;
 }
-
+/* 돋보기는 i요소 */
+.gnb i {
+    font-weight: bold;
+    cursor: pointer;
+}
 /********************************************* 
     #top-area.on 인 경우 슬림디자인 상단영역적용!
 *********************************************/

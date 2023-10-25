@@ -1,6 +1,11 @@
 @charset "utf-8";
 /* 1.공유신발.CSS */
-
+body {
+    overflow-y: scroll;
+    /* 스크롤이 없어도 스크롤바 트랙이 나와 있어서
+    새로 스크롤바 트랙 생성시 화면이 약간 옆으로 움직이는
+    문제를 막아준다! */
+}
 
 /* 대상박스 */
 #root {
@@ -33,6 +38,15 @@
     flex-wrap: wrap;
     padding-top: 15px;
     gap: 10px 20px; /* 상하 좌우 사이간격 */
+}
+.gwrap a{
+    color: #222;
+    text-decoration: none;
+    background-color: #fff;
+    transition: .4s;
+}
+.gwrap a:hover{
+    transform: scale(1.2);
 }
 /* 개별리스트박스 */
 .glist {
