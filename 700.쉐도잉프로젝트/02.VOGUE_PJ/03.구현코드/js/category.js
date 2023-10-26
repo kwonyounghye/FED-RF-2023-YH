@@ -4,13 +4,6 @@
 import catData from './data/category_data.json'assert {type:'json'};
 
 
-// 부드러운 스크롤 모듈
-import { startSS, setPos } from "./smoothScroll23.js";
-
-
-// [1] 부드러운 스크롤 적용 //////////
-startSS();
-
 // 카테고리 페이지 기능 구현하기 ////////////////////////
 // 요구사항: url로 전달된 키값을 읽어서
 // 페이지에 데이터를 셋팅한다!
@@ -23,10 +16,6 @@ console.log(pm);
 // 값처리함수 호출하기
 setValue();
 
-// 2. url에서 키값 분리하기
-// ?(물음표)가 Get방식의 시그널이므로
-// 이것의 존재 여부로 문자 자르기를 실행한다!
-// =()
 
 // 값 셋팅하기 함수 /////////////////////
 function setValue() {
@@ -42,13 +31,11 @@ function setValue() {
         location.href='index.html';
     } //////////// catch /////////////////////
 
-    // 3. url 키값 추출하기
+    // 3. url키값 추출하기
     pm = pm.split('?')[1].split('=')[1];
     // 특수문자 변환하기 : time & gem 때문
     pm = decodeURIComponent(pm);
-    // ' & ' -> '-'로 변경하기 : time-gem로 변경
-    pm = pm.replace(' & ', '-');
-    console.log('최종 키값: ', pm);
+    console.log('최종키값:',pm);
 
     // 4. 카테고리 데이터 매칭하기
     // 제이슨 파일 객체 데이터에서 속성으로 선택함
@@ -85,9 +72,20 @@ function setValue() {
         );
     } /////// else /////////////
 
-    // 5-4. 서브섹션 타이틀 넣기
+     // 5-4. 서브 섹션 타이틀 넣기 
     // $(선택자).each((순번,요소)=>{구현부})
     // 대상: .cat-cont-area h2
-    $('.cat-cont-area h2').each
-    
+    $('.cat-cont-area h2').each((idx,ele)=>{
+        $(ele).html(selData.타이틀[idx]);
+    }); ////////////// each /////////////
+
+    // 5-5. 탭메뉴 타이틀로 변경하기
+    // 형식: 카테고리명 | 보그 코리아 (Vogue Korea) 2023
+    // 제이쿼리 prepend() 메서드 사용
+    // -> 자식요소 또는 내용의 맨앞에 넣기!
+    $('title').prepend(pm.toUpperCase() + '|');
+    // toUpperCase() - 대문자로 변경
+
+
+
 } //////////////////////// setValue함수 /////////////////////
