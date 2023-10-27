@@ -49,16 +49,21 @@ float에 의한 망가짐 방지! */
     /* 상하패딩 넣기 */
     padding-top: 60px 0;
 }
+/* 플렉스박스 클래스 */
+.fx-box {
+    display: flex;
+    flex-wrap: wrap;
+}
 /* 파트박스 */
 .partbox {
     /* 옆으로 흐르게 */
-    float: left;
+    /* float: left; */
     /* 보더/패딩 포함박스 */
     box-sizing: border-box;
     /* 내부패딩 */
     /* padding: 15px; - 제외 */
     /* 임시 보이게 보더 */
-    border: 2px dotted burlywood;
+    /* border: 2px dotted burlywood; */
     /* 높이값이 속박스에 있을 경우 채우기 셋팅
      - 높이 값이 파티션박스에 있을 경우 안씀! */
      height: 100%;
