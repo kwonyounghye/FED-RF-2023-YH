@@ -3,9 +3,9 @@ import { mtInfo } from "./02.sub_com/mountain";
 // 컨텍스트 불러오기
 import { 누구냐 } from "./02.sub_com/cont_provider";
 // 
-import {이야기} from "./02.sub_com/sub_com";
+import 이야기 from "./02.sub_com/sub_com";
 
-console.log(mtInfo);
+// console.log(mtInfo);
 
 /***********************************************
   1. props로 데이터를 전달하여 제목 출력하기
@@ -49,7 +49,7 @@ document.querySelector('#root1'));
 function 큰집(params) {
     // 데이터 전달 : 산정보를 할당!
     const myData = mtInfo;
-    console.log(myData);
+    // console.log(myData);
     // 상태정보 useState를 사용하여 후크 기능 사용
     // 데이터가 업데이트되면 그것을 사용하는 컴포넌트도 
     // 업데이트된다!
@@ -83,5 +83,5 @@ function 손녀(params) {
     return <이야기 />
 }
 // 산정보 내용 출력하기
-ReactDOM.render(큰집);
-document.querySelector('#root2');
+ReactDOM.render(<큰집 />,
+document.querySelector('#root2'));
