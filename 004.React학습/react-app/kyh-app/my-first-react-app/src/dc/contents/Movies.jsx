@@ -1,12 +1,13 @@
-// 비디오페이지 메인 컨텐츠
+// 무비페이지 메인 컨텐츠
 
-export { isrc } from "./data/imgSrc";
+import { Banner } from "./Banner";
 
-export function Movies() {
+
+export function Movies(props) {
     return(
         <>
         <h1 style={{textAlign:'center'}}>무비 페이지</h1>
-        <Banner category={props.cat} />        
+        <Banner category="MOVIES" />        
         </>
     )
 } /////////////// 

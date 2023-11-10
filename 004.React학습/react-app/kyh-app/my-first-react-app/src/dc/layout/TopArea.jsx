@@ -1,9 +1,20 @@
 // 상단영역 컴포넌트
 // GNB 데이터
-import { Logo } from "./Logo";
-import { menu } from "./data/gnb";
+import { Link } from "react-router-dom";
+import { Logo } from "../contents/Logo";
+import { menu } from "../data/gnb";
 
+/******************************************************* 
+    [ 리액트 라우터와 연결하여 사용되는 라우터 컴포넌트 ]
+    1. <Link to="/경로명"></Link>
+    -> to속성의 경로는 <Route path="/경로명"> 과 일치함!
 
+    2. <Outlet />
+    -> 라우터 연결 컴포넌트 출력자리 컴포넌트
+*******************************************************/
+
+export function TopArea() {
+    // chgFn 속성 - 메인함수 chgMenu() 호출
 return (
     <>
     {/* 1. 상단영역 */}
@@ -18,7 +29,7 @@ return (
                     // i를 유일키로 셋팅
                     menu.map((v,i)=>
                         <li key={i}>
-                            <a href="#" onClick={()=>props.chgFn(v.txt=="Home" ? "main" : "character")}>{v.txt}</a>
+                            <Link to={v.link}>{v.txt}</Link>
                         </li>
                         /* 
                         map()을 사용하여 태그를 생성할 때
@@ -34,4 +45,5 @@ return (
         </nav>
         </header>
         </>
-)
+);
+            }
