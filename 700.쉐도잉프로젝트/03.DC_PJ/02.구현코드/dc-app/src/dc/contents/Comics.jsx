@@ -2,7 +2,7 @@
 
 import { Banner } from "./Banner";
 
-export function Comics(props){
+export function Comics(){
     return(
         <>
             <h1 style={{textAlign:'center'}}>

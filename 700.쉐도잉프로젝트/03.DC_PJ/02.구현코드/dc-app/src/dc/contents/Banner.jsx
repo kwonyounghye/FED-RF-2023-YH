@@ -91,6 +91,7 @@ export function Banner(props) {
     // 선택데이터
     const selData = banData[props.category];
 
+    console.log(selData)
      // 페이지 랜더링후 실행구역
   useEffect(()=>{
     console.log('랜더링 후~!');

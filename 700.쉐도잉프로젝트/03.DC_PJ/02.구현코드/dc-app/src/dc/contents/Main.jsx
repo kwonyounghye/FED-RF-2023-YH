@@ -2,7 +2,7 @@
 
 import { Banner } from "./Banner";
 
-export function Main(props) {
+export function Main() {
     // cat 속성으로 메뉴 분류 전달
     return(
         <>

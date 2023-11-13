@@ -2,7 +2,7 @@
 
 import { Banner } from "./Banner";
 
-export function News(props){
+export function News(){
     return(
         <>
             <h1 style={{textAlign:'center'}}>
