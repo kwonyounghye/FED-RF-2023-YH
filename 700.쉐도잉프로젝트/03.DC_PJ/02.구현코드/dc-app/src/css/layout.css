@@ -28,16 +28,41 @@
     text-decoration-style: wavy;
     text-shadow: 2px 2px 2px #555;
 }
+
+.smenu{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.503));
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.503); 
+    -> 일반박스 그림자를 주면 가상요소에는 그림자 안생김
+    filter의 드롭쉐도우를 사용하면 전체구성요소를 통합한
+    그림자가 생성된다!!! */
+    white-space: nowrap;
+    line-height: 2.5;
+    /* 처음에 안보임 */
+    display: none;
+}
+/* 오버시보임 */
 .gnb>ul>li:hover .smenu{
     display: block;
 }
-.smenu{
+.smenu::after{
+    content: '';
     position: absolute;
-    padding: 5px;
-    background-color: #00000072;
-    border-radius:10px;
-    z-index: 99;
-    display: none;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-bottom: 15px solid #fff;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+
+
 }
 h1{
     font-family: 'Ubuntu';
