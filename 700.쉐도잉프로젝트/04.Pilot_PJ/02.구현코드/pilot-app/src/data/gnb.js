@@ -1,15 +1,22 @@
 // GNB 페이지별 메뉴 데이터 - gnb.js
 export const gnbData = {
-    "main":[
-
-    ],
+    "main":["MEN","WOMEN","STYLE"],
     "men":[
-
+        "NEW MEN'S ARRIVAL",
+        "WINDBREAKER",
+        "BEACH STYLE",
+        "SPORT STYLE",
     ],
-    "women":[
-
+    "women":[        
+        "NEW WOMEN'S ARRIVAL",
+        "SPORTY FASHION",
+        "FREE STYLE",
+        "COMFORTABLE STYLE",
     ],
-    "style":[
-        
-    ]
-}; ////////////// gnbData /////////////////////
+    "style":[        
+        "SPECIAL SUMMER STYLE",
+        "GOLF LIFE",
+        "CAMPING STYLE",
+        "SPORT STYLE",
+    ],
+}; /////////// gnbData ////////////////
