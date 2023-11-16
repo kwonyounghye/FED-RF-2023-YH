@@ -31,9 +31,6 @@ main.cont{
     position: relative;
     line-height: 58px;
 }
-.gnb li{
-    margin: 0 10px;
-}
 .gnb a{
     color: #111;
     font-weight: bold;
@@ -76,7 +73,6 @@ main.cont{
     border-bottom: 15px solid #fff;
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
-
 
 }
 h1{
@@ -130,7 +126,7 @@ input:focus{
     font-weight: bold;
 }
 .bmenu{
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Ubuntu Condensed', sans-serif;
     display: flex;
     justify-content: center;
     margin: 15px 0;
