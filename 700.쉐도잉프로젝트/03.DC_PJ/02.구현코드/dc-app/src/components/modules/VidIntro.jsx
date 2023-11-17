@@ -31,6 +31,7 @@ export function VidIntro(props) {
         // props.cls로 전달되는 값이 'on'/'off'임
         <section className={"vidbox" + " " + props.cls}>
             <div>
+                {/* 1. 비디오파트 */}
                 <div className="vb1">
                     <iframe src={selData.vsrc} title={selData.btit}></iframe>
                 </div>
@@ -53,8 +54,8 @@ export function VidIntro(props) {
                     <p>
                         {/* 특수문자(*) 여부에 따라 처리
                             indexOf(문자열) -> 없으면 -1 리턴 */}
-                        {selData.sum.indexOf("*") == -1 ? 
-                        selData.sum : linkCode(selData.sum)}
+                        {selData.desc.indexOf("*") == -1 ? 
+                        selData.desc : linkCode(selData.desc)}
                     </p>
                 </div>
             </div>

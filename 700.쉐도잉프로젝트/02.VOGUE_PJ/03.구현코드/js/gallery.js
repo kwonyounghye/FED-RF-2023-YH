@@ -22,20 +22,64 @@ var swiper = new Swiper(".mySwiper", {
         prevEl: ".swiper-button-prev",
       },
       breakpoints: {
-        // when window width is >= 320px
-        320: {
+         // when window width is >= 200px
+         200: {
+          slidesPerView: 1,
+          spaceBetween: 0
+        },
+        // when window width is >= 700px
+        700: {
           slidesPerView: 2,
-          spaceBetween: 20
+          spaceBetween: 10
         },
-        // when window width is >= 480px
-        480: {
+        // when window width is >= 1000px
+        1000: {
           slidesPerView: 3,
-          spaceBetween: 30
-        },
-        // when window width is >= 640px
-        640: {
-          slidesPerView: 4,
-          spaceBetween: 40
+          spaceBetween: 20
         }
       }
   });
+  
+  //  스와이퍼의 기능을 외부에서 사용하기 위해
+  //스와이퍼 생성 시 변수에 할당한 것임!
+  // https://swiperjs.com/swiper-api
+  // 본 사이트 API를 참조하여 여러가지 설명 및
+  // 메서드를 사용하여 기능을 외부에 부여할 수 있다
+
+  // 예) 상단 타이틀을 클릭하면 다음슬라이드로 이동
+  // swiper.slideNext();
+  // $('.stit).click(()=>swiper.slideNext())
+  // $('.stit).click(()=>swiper.slidePrev())
+  // $('.stit').click(()=>swiper.autoplay.pause())
+  // $('.blogo').click(()=>swiper.autoplay.start())
+
+  $('.stopPlay').css({
+    backgroundColor: 'transparent',
+    border: 'none',
+    fontSize: '40px',
+    display: 'block',
+    width: '40px',
+    margin: '0 auto',
+    cursor: 'pointer'
+  }).click((e)=>{
+    let icon = $(e.target).text();
+    console.log(icon);
+    if(icon == '⑪') { // 멈춤 기능
+      swiper.autoplay.pause();
+      $(e.target).text('⑦')
+      .attr('title', '자동넘기기');
+    }
+    else { // 자동넘김 시작
+      swiper.autoplay.start();
+      $(e.target).text('⑪')
+      .attr('title', '멈추기');
+    }
+  }); //////// click /////////
+
+  /*
+    [ swiper API 주요 메서드 ]
+    1. 다음 슬라이드 이동 - swiper.slideNext()
+    2. 이전 슬라이드 이동 - swiper.slidePrev()
+    3. 자동플레이 멈춤 - swiper.autoplay.pause()
+    4. 자동플레이 시작 - swiper.autoplay.start()
+  */

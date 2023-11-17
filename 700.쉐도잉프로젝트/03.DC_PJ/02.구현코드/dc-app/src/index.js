@@ -6,15 +6,15 @@ import "./css/index.css";
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import {BrowserRouter, Route, Routes} from "react-router-dom"
-import { Layout } from "./dc/layout/Layout";
-import { Main } from "./dc/pages/Main";
-import { Character } from "./dc/pages/Character";
-import { Comics } from "./dc/pages/Comics";
-import { Movies } from "./dc/pages/Movies";
-import { Games } from "./dc/pages/Games";
-import { News } from "./dc/pages/News";
-import { Video } from "./dc/pages/Video";
-import { SwiperApp } from "./dc/plugin/SwiperApp";
+import { Layout } from "./components/layout/Layout";
+import { Main } from "./components/pages/Main";
+import { Character } from "./components/pages/Character";
+import { Comics } from "./components/pages/Comics";
+import { Movies } from "./components/pages/Movies";
+import { Games } from "./components/pages/Games";
+import { News } from "./components/pages/News";
+import { Video } from "./components/pages/Video";
+import { SwiperApp } from "./components/plugin/SwiperApp";
 
 /********************************************* 
     [ 리액트 라우터 ]

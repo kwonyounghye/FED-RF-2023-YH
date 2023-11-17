@@ -5,6 +5,7 @@ import { Banner } from "../modules/banner";
 // 자동스크롤 JS 불러오기
 import { autoScroll } from "../func/jquery-autoScroll";
 import { dragBanner } from "../func/drag_banner";
+import { FashionIntro } from "../modules/FashionIntro";
 ///////////////////////// 위아래 순서 ////////
 
 export function MainCont() {
@@ -24,9 +25,16 @@ export function MainCont() {
             <section id="ban" className="page" style={{ background: "lightblue" }}>
                 <Banner />
             </section>
-            <section className="page" style={{ background: "lightcoral" }}></section>
-            <section className="page" style={{ background: "lightgreen" }}></section>
+            <section className="page" style={{ background: "lightcoral" }}>
+                <FashionIntro cat="men" />
+            </section>
+            {/* 3. 여성패션페이지 */}
+            <section className="page" style={{ background: "lightgreen" }}>
+                <FashionIntro cat="women" />
+            </section>
+            {/* 4. 스타일패션 페이지 */}
             <section className="page" style={{ background: "lightseagreen" }}></section>
+            {/* 5. 하단 공통영역 */}
             <section className="page" style={{ background: "lightpink" }}></section>
         </>
     );
