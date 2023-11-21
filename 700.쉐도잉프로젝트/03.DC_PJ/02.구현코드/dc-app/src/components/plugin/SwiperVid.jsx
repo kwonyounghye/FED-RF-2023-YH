@@ -23,10 +23,11 @@ import "./css/swiper_vid.css";
 // (여기서는 페이지네이션,네비게이션,자동넘김)
 import { Navigation} from "swiper/modules";
 
-export function SwiperVid() {
+export function SwiperVid(props) {
+    // props.cat - 카테고리명 -> 데이터 선택 객체 속성명
 
-    // 선택 데이터 : 여기서는 그대로 가져옴!
-    const selData = swVidData;
+    // 선택 데이터 : 카테고리에 해당하는 데이터를 가져옴!
+    const selData = swVidData[props.cat];
 
     // 비디오 보이기 함수 ///////////
     const showVid = (src,tit) => {
@@ -43,7 +44,7 @@ export function SwiperVid() {
     const cbtn = $('.cbtn')
     // 2. 변경하기
     // 2-1. 아이프레임 src 경로 넣기
-    itit.attr('src',src);
+    itit.attr('src',src+"?autoplay=1");
     // 2-2. 비디오 타이틀 넣기
     itit.text(tit);
     // 2-3. 전체박스 나타나기
@@ -61,7 +62,7 @@ export function SwiperVid() {
     return (
         <>
             <Swiper
-                slidesPerView={4}
+                // slidesPerView={4}
                 spaceBetween={20}
                 navigation={true}
                 /* 사용할 모듈을 여기에 적용시킨다 */
@@ -69,9 +70,9 @@ export function SwiperVid() {
                 // 스와이퍼 사이즈별 슬라이드수 변경!
                 breakpoints={{
                     200: {
-                        slidesPerView: 2,
+                        slidesPerView: 1,
                     },
-                    700: {
+                    500: {
                         slidesPerView: 2,
                     },
                     1000: {
@@ -94,7 +95,7 @@ export function SwiperVid() {
                                 <img src="{v.isrc}" alt="{v.tit}" />
                             {/* 폰트 어썸 아이콘 */}
                             <FontAwesomeIcon
-                            icon={faPlayCircle} 
+                            icon={faCirclePlay} 
                             style={{
                                 position:'absolute',
                                 bottom:'55%',

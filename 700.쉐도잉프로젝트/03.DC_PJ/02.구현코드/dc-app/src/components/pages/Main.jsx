@@ -1,6 +1,7 @@
 // 메인페이지 메인 컨텐츠
 
 import { Banner } from "../modules/Banner";
+import { CatList } from "../modules/CatList";
 import { SecIntro } from "../modules/SecIntro";
 import { VidIntro } from "../modules/VidIntro";
 import { VidSwipe } from "../modules/VidSwipe";
@@ -24,8 +25,13 @@ export function Main() {
         cat - 페이지 분류명 / cls - 클래스명('on' / 'off') */}
         <VidIntro cat="main" cls="off" />
 
-        {/* 4. 비디오스와이프 컴포넌트 */}
-        <VidSwipe tit="LATEST TRAILERS, CLIPS & MORE" />
+        {/* 4. 비디오 스와이프 컴포넌트 */}
+        <VidSwipe cat="main" />
+
+          {/* 5. 캐릭터 리스트 컴포넌트 */}
+          <CatList />
+          {/* 6. 캐릭터 배너 컴포넌트 */}
+          <Banner category="CHARACTERS" />
         </>
     )
 } /////////////// Main 컴포넌트 //////////////////

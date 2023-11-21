@@ -9,4 +9,4 @@ export function Video() {
         <VidIntro cat="VIDEO" cls="on" />
         </>
     )
-} /////////////// Video
+} /////////////// Video ////////////////

@@ -11,16 +11,23 @@ section.vidswbox >
             h2.ifrtit+iframe+button)
              */}
 // 비디오스와이프 CSS 불러오기
-export function VidSwipe() {
+export function VidSwipe(props) {
+    // props.cat - 카테고리명
+
+    const catTit = {
+        main:"LATEST TRAILERS, CLIPS & MORE",
+        movies:"TRAILERS, CLIPS AND MORE",
+    }
     return (
         <>
         {/* 모듈코드 */}
         <section className="vidswbox">
             {/* 1. 모듈 타이틀 */}
             <h2 className="tit">
-                비디오스와이프
+                {catTit[props.cat]}
             </h2>
-            {/* 2. 스와이퍼 컴포넌트 */}
+            {/* 2. 스와이퍼 컴포넌트 : SwiperVid
+            -> 전달속성 cat은  */}
             {/* <SwiperVid /> */}
             {/* 3. 비디오 재생창 */}
             <section className="vidbx">
