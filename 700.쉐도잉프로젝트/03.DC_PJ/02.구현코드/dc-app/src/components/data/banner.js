@@ -103,6 +103,29 @@ export const banData = {
             "btn":"Stream on Max",
         },
     ],
+    "SERIES":[
+        {
+            "src":"./images/banner/series/ban1.jpg",
+            "tit1":"",
+            "tit2":"",
+            "cont":"",
+            "btn":"",
+        },
+        {
+            "src":"./images/banner/series/ban2.jpg",
+            "tit1":"",
+            "tit2":"",
+            "cont":"",
+            "btn":"Own on Digital",
+        },
+        {
+            "src":"./images/banner/series/ban3.jpg",
+            "tit1":"",
+            "tit2":"",
+            "cont":"",
+            "btn":"Stream on Max",
+        },
+    ],
     "GAMES":[
         {
             "src":"./images/banner/games/ban1.jpg",

@@ -1,5 +1,5 @@
 // index.js는 public/index.html 페이지에 적용되는 컴포넌트다!->루트 컴포넌트
-
+// 총괄 라우터
 // 메인 페이지 css 불러오기!
 import "./css/index.css";
 
@@ -14,7 +14,8 @@ import { Movies } from "./components/pages/Movies";
 import { Games } from "./components/pages/Games";
 import { News } from "./components/pages/News";
 import { Video } from "./components/pages/Video";
-import { SwiperApp } from "./components/plugin/SwiperApp";
+import { Board } from "./components/plugin/SwiperApp";
+import { Detail } from "./components/pages/CatDetail";
 
 /********************************************* 
     [ 리액트 라우터 ]
@@ -54,7 +55,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         {/* 중요!!! 레이아웃 컴포넌트를 루트로 설정! */}
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Layout />}>{/* 루트가 됨 */}
           {/* 하위 라우트 셋팅 
           - path대신 index만 쓰면 첫페이지로 로딩함! 
           -> path는 Layout의 Link to="/" 에 해당하는 셋팅*/}
@@ -62,10 +63,12 @@ export default function App() {
           <Route path="character" element={<Character />} />
           <Route path="comics" element={<Comics />} />
           <Route path="movies" element={<Movies />} />
+          <Route path="series" element={<Series />} />
           <Route path="games" element={<Games />} />
           <Route path="news" element={<News />} />
           <Route path="video" element={<Video />} />
-          <Route path="swiperapp" element={<SwiperApp />} />
+          <Route path="board" element={<SwiperApp />} />
+          <Route path="detail" element={<CatDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>
