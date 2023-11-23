@@ -14,7 +14,7 @@ import "./css/swiper.css";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import { useRef, useState } from "react";
 
-export function SwiperApp() {
+export function SwiperApp(props) {
     // 상태관리변수 : 멈춤상태 / 플레이상태
     const [sts, setSts] = useState(1);
 
@@ -26,7 +26,9 @@ export function SwiperApp() {
     const stopPlay = () => {
         console.log("멈추거나 플레이!");
         // sts값이 1이면 멈춤!
-        sts ? myRef.current.Swiper.autoplay.stop() : myRef.current.Swiper.autoplay.start();
+        sts ? 
+        myRef.current.Swiper.autoplay.stop() : 
+        myRef.current.Swiper.autoplay.start();
 
         // 상태값 업데이트
         sts ? setSts(0) : setSts(1);
@@ -40,23 +42,22 @@ export function SwiperApp() {
     const myFn = () => {
         myFirst = "Swiper";
         mySecond.current = "Gallery";
-        console.log("함수호출:", myFirst, mySecond.current);
+        console.log("함수호출: ", myFirst, mySecond.current);
     }; ////////// myFn함수 ////////////
 
     //   리턴코드 //////////////
     return (
         <>
-            <h1 style={{ padding: "20px" }}>{myFirst + " : " + mySecond.current}</h1>
             <Swiper
                 // ref 속성에 useRef 할당변수를 넣어서 외부에 연결함!
                 ref={myRef}
-                slidesPerView={3}
-                spaceBetween={30}
+                slidesPerView={1}
+                spaceBetween={0}
                 pagination={{
                     clickable: true,
                 }}
                 autoplay={{
-                    delay: 2500,
+                    delay: 3000,
                     disableOnInteraction: false,
                 }}
                 loop={true}
@@ -66,17 +67,15 @@ export function SwiperApp() {
                 className="mySwiper"
             >
                 <SwiperSlide>
-                    <h2>나야나</h2>
+                    <img src={"./images/sub/"+props.cat+"/banner/ban1.png"} alt="/banner/ban1.png" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <h2>나야나</h2>
+                <img src={"./images/sub/"+props.cat+"/banner/ban2.png"} alt="/banner/ban2.png" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <h2>나야나</h2>
+                <img src={"./images/sub/"+props.cat+"/banner/ban3.png"} alt="/banner/ban3.png" />
                 </SwiperSlide>
-                <SwiperSlide>
-                    <h2>나야나</h2>
-                </SwiperSlide>
+
                 
             </Swiper>
             {/* 플레이/멈춤 버튼 */}

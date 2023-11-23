@@ -5,7 +5,10 @@ import { Banner } from "../modules/Banner";
 export function Character() {
     return(
         <>
+        {/* 배너 컴포넌트  */}
         <Banner category="CHARACTERS" />
+        {/*  */}
+        {/*  */}
         </>
     )
 } /////////////// 

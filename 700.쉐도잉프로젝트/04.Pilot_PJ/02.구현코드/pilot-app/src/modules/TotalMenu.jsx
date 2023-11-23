@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { pCon } from "./PoliotContext";
 
 export function TotalMenu() {
-    // 컨텍스트 사용
+    // pcon이라는 컨텍스트 api 사용 -> 객체로 만듦
     const myCon = useContext(pCon);
     // pCon에 Provider value 속성에 공개한 변수/함수를 사용함!
 

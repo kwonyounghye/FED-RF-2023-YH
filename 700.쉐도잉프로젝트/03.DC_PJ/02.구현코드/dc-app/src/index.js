@@ -11,11 +11,13 @@ import { Main } from "./components/pages/Main";
 import { Character } from "./components/pages/Character";
 import { Comics } from "./components/pages/Comics";
 import { Movies } from "./components/pages/Movies";
+import { Series } from "./components/pages/Series";
 import { Games } from "./components/pages/Games";
 import { News } from "./components/pages/News";
 import { Video } from "./components/pages/Video";
-import { Board } from "./components/plugin/SwiperApp";
-import { Detail } from "./components/pages/CatDetail";
+import { SwiperApp } from "./components/plugin/SwiperApp";
+import { CatDetail } from "./components/pages/CatDetail";
+import { SchPage } from "./components/pages/schPage";
 
 /********************************************* 
     [ 리액트 라우터 ]
@@ -69,6 +71,7 @@ export default function App() {
           <Route path="video" element={<Video />} />
           <Route path="board" element={<SwiperApp />} />
           <Route path="detail" element={<CatDetail />} />
+          <Route path="schpage" element={<SchPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
