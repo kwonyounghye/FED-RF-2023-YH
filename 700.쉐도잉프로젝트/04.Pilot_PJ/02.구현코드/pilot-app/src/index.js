@@ -51,20 +51,8 @@ function App() {
         // 렌더링구역 한번만 실행 : 옵션 []
     }, []); //////////// useEffect //////////
 
-    // 자동스크롤 적용 이벤트 설정하기
-    useEffect(() => {
-        // 메인 페이지인 경우
-        if (pgName == "main") {
-            // 휠이벤트 적용하기
-            // window.addEventListener("wheel", wheelFn);
-            // 메뉴 설정 이벤트
-        } else {
-            // 휠이벤트 해제하기
-            // window.removeEventListener("wheel", wheelFn);
-        }
+   
         
-        // 랜더링 구역 한번만 실행 : 옵션 []
-    },[]); /////////// useEffect ///////////////
 
     // 처음 로딩 시 스크롤 상단 이동 ///////
     useLayoutEffect(()=>{
@@ -75,7 +63,7 @@ function App() {
     // 리턴코드 /////////////////////
     return (
         // value 전역적인 변수 함수를 공유하는 방법
-        <pCon.Provider value={{ chgPgName }}>
+        <pCon.Provider value={{ pgName,chgPgName }}>
             <TopArea cat={pgName} />
             <MainArea page={pgName} />
             <FooterArea />

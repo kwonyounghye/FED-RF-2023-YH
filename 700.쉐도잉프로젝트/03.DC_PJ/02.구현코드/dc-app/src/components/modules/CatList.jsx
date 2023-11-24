@@ -2,6 +2,7 @@
 
 // 캐릭트 리스트 모듈 CSS 불러오기
 import "../../css/cat_list.css"
+import { SwiperCat } from "../plugin/SwiperCat"
 
 /* 
 Root >
@@ -17,7 +18,7 @@ Root >
                 div.cat-tit2 > h3
 */
 
-export function CatList(){
+export function CatList(props){
 
     return(
         <>
@@ -27,7 +28,7 @@ export function CatList(){
                 WHO'S WHO: THE JUSTICE LEAGUE
                 </h2>
                 {/* 2. 스와이퍼 컴포넌트 */}
-
+                <SwiperCat />
            </section>
         </>
     )

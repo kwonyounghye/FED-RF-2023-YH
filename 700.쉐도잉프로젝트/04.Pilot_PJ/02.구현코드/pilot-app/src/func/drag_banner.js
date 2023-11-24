@@ -50,7 +50,7 @@ export function dragBanner() {
         }
         // 오른쪽으로 이동하기 ////////////
         else if (diff < -gap) {
-            slide.animate({ left: "0%" }, 800, "easeOutQuint", () => {
+            slide.animate({ left: "0" }, 800, "easeOutQuint", () => {
                 // 맨뒤 li 맨앞로 이동
                 slide
                     .prepend(slide.find("li").last())
@@ -90,7 +90,7 @@ export function dragBanner() {
         // Number() 숫자형 변환 : 문자를 잘라서 문자형 숫자임
         // 그런데 요즘 브라우저는 이렇게 안해도 자동형변환하여 계산함!
         let indicSeq = Number(selCls.substr(3)) - 1;
-        console.log("블릿순번: ", indicSeq);
+        // console.log("블릿순번: ", indicSeq);
         // 해당순번 블릿 클래스 'on'넣기 / 나머지는 빼기
         indic.eq(indicSeq).addClass("on").siblings().removeClass("on");
 
@@ -114,7 +114,7 @@ export function dragBanner() {
 
         // 현재 배너 클래스 읽기
         const currCls = currBan.attr("class");
-        console.log("글자등장~~!", banTxt[currCls]);
+        // console.log("글자등장~~!", banTxt[currCls]);
 
         // 기존 h2 태그는 삭제
         $(".btit").remove();

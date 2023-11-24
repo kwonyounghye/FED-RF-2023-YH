@@ -16,7 +16,7 @@
 /* 페이지 공통 class */
 .page {
   /* 한페이지 보이는 화면 채우기 */
-  /* width: 100%; 블록요소, 끝까지 안잡아도 잡힘 */
+  /* width: 100%; */
   height: 100vh;
   overflow: hidden;
   /* 

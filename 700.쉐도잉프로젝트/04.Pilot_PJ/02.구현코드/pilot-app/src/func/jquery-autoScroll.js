@@ -15,28 +15,26 @@ require("jquery-ui-touch-punch/jquery.ui.touch-punch");
 let pno = 0;
 // 전체 페이지번호 초기화함수
 const zeroPno = () => {
-    pno=0
+    pno = 0;
 };
 // 페이지 요소
-let pg = $(".page");
+let pg;
 // 전체 페이지개수
-let pgcnt = pg.length;
+let pgcnt;
 // console.log("페이지개수:", pgcnt, pg);
 // 광실행금지변수
 let prot = [];
 // 광스크롤금지
 prot[0] = 0;
 
-
 // 요소를 할당한 경우 로딩구역에서 할당
-$(()=>{
+$(() => {
     // 밖에서 선언해서 쓰고 있으니 지역에 넣으면 안됨
     // 밖에서는 선언만하고 안에서 할당함
     // 페이지 요소
-pg = $(".page");
-// 전체 페이지개수
-pgcnt = pg.length;
-
+    pg = $(".page");
+    // 전체 페이지개수
+    pgcnt = pg.length;
 }); /////////////////// load //////////////////
 
 /****************************************** 
@@ -69,11 +67,11 @@ function wheelFn(e) {
     if (prot[0]) return;
     chkCrazy(0);
 
-    console.log("휠~~~~~~!");
+    // console.log("휠~~~~~~!");
 
     // 1.휠방향 알아내기
     let delta = e.wheelDelta;
-    console.log(delta);
+    // console.log(delta);
 
     // 2. 방향에 따른 페이지번호 증감
     if (delta < 0) {
@@ -87,7 +85,7 @@ function wheelFn(e) {
         // 첫페이지번호에 고정!
     } //// else ////
 
-    console.log(pno);
+    // console.log(pno);
 
     // 3. 스크롤 이동하기 + 메뉴에 클래스"on"넣기
     movePg();
@@ -116,8 +114,12 @@ function movePg() {
                 scrollTop: $(window).height() * pno + "px",
             },
             700,
-            "easeInOutQuint"
-        );
+            "easeInOutQuint",
+            actPage
+            // 애니메이션 후 actPage함수를 호출
+        ); ////////// animate ///////
+    // 해당 선택메뉴에 on 넣기
+    addOn();
 } ///////////////// movePg ////////////////
 
 /////////////////////////////////////////////////////
@@ -173,15 +175,12 @@ function initSet() {
     }); /////////// css //////////
 } /////////// initSet 함수 ///////////////
 
-// 최초호출!
-initSet();
-
 /***************************************** 
   함수명: actPage
   기능: 페이지 도착후 등장 애니메이션
  *****************************************/
 function actPage() {
-    console.log("액숀~!!!", pno);
+    // console.log("액숀~!!!", pno);
 
     // pno가 0 또는 4가 아니면 작동!
     if (pno != 0 || pno != 4) {
@@ -218,8 +217,12 @@ function evtFn() {
     // 2. Page Down(34) / Down Arrow (40)
     $(document).keydown((e) => {
         // document.addEventListener('keydown',(e)=>{
-        // 이전페이지이동
 
+        // 광휠금지
+        if (prot[0]) return;
+        chkCrazy(0);
+
+        // 이전페이지이동
         if (e.keyCode === 33 || e.keyCode === 38) {
             pno--;
             if (pno === -1) pno = 0;

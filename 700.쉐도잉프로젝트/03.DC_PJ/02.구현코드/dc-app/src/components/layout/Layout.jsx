@@ -19,8 +19,8 @@ export function Layout() {
 
   // 라우터 이동객체 설정 -> 컨텍스트 API 사용!
    const goNav = useNavigate();
-  // 라우터 이동함수
-   const chgPage = (txt) => goNav(txt);
+  // 라우터 이동함수 : pgName - 페이지이름 / param - 전달값
+   const chgPage = (pgName,param) => goNav(pgName,param);
 
    /****************************************
      [ 컨텍스트 API 공유값 설정 ]
@@ -29,7 +29,7 @@ export function Layout() {
   //  리턴 코드 //////////////////////////
     return (
       // 담은 것이 여러개일지라도 다 전달됨
-      <dcCon.Provider value={{chgPage}}> 
+      <dcCon.Provider value={{ chgPage }}> 
       <TopArea />
       <MainArea />
       <FooterArea />

@@ -84,7 +84,7 @@ export function SwiperVid(props) {
                 }}
                 className="mySwiper"
             >
-                {SelData.map((v, i) => 
+                {selData.map((v, i) => 
                     <SwiperSlide key={i}>
                         <section className="sw-inbox" 
                         /* 비디오보이기 함수 호출

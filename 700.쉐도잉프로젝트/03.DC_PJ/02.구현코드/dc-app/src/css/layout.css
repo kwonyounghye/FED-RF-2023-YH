@@ -1,5 +1,5 @@
-/* DC.com 전체 레이아웃 CSS */
 
+/* DC.com 전체 레이아웃 CSS */
 
 main.cont{
     /* 최소높이 상단,하단제외 채우기
@@ -24,7 +24,7 @@ main.cont{
     display: flex;
     align-items: center;
     list-style: none;
-    gap: 0 20px;
+    gap: 0 20px
 }
 .gnb>ul>li{
     /* 상위메뉴 부모자격 */
@@ -37,10 +37,13 @@ main.cont{
     text-decoration: none;
     transition: .3s;
 }
-.gnb a:hover{
+.gnb a:hover{    
     color: #007aff;
 }
 
+
+
+/* 서브메뉴 */
 .smenu{
     position: absolute;
     left: 50%;
@@ -62,6 +65,7 @@ main.cont{
 .gnb>ul>li:hover .smenu{
     display: block;
 }
+/* 삼각형모양 디자인 */
 .smenu::after{
     content: '';
     position: absolute;
@@ -73,11 +77,12 @@ main.cont{
     border-bottom: 15px solid #fff;
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
-
 }
+
 h1{
     text-align: center;
 }
+
 /* gnb 검색입력창 박스 */
 .searchingGnb{    
     position: absolute;
@@ -125,7 +130,8 @@ input:focus{
 .info>ul>li:last-child{
     font-weight: bold;
 }
-.bmenu{
+/* 하단 ol>li>a 링크박스 */
+ol.bmenu{
     font-family: 'Ubuntu Condensed', sans-serif;
     display: flex;
     justify-content: center;

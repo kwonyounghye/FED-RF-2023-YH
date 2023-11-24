@@ -1,5 +1,6 @@
 // DC PJ 비디오스와이프 컴포넌트
 import "../../css/vid_swipe.css";
+import { SwiperVid } from "../plugin/SwiperVid";
 
 {/* 
 [ 구조정의 ]
@@ -21,7 +22,7 @@ export function VidSwipe(props) {
     return (
         <>
         {/* 모듈코드 */}
-        <section className="vidswbox">
+        <section className="vid-swbox">
             {/* 1. 모듈 타이틀 */}
             <h2 className="tit">
                 {catTit[props.cat]}
@@ -30,15 +31,15 @@ export function VidSwipe(props) {
             -> 전달속성 cat은  */}
             {/* <SwiperVid /> */}
             {/* 3. 비디오 재생창 */}
-            <section className="vidbx">
+            <section className="vid-bx">
                 {/* 비디오 중앙 박스 */}
-                <div className="playvid">
+                <div className="play-vid">
                     {/* 비디오 타이틀 */}
-                    <h2 className="ifrtit"></h2>
+                    <h2 className="ifr-tit"></h2>
                     {/* 아이프레임 */}
                     <iframe src="" allow="autoplay" frameborder="0"></iframe>
                     {/* 닫기버튼 */}
-                    <button></button>
+                    <button className="cbtn">×</button>
                     </div>
             </section>
         </section>

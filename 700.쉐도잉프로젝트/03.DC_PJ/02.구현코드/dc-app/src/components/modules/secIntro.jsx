@@ -27,7 +27,8 @@ export function SecIntro() {
     return (
         <>
             <section className="sec-intro">
-                {selData.map((v, i) => {
+                {
+                selData.map((v, i) => {
                     <div key={i}>
                         {/* 1. 이미지박스 */}
                         <div className="imbx">
@@ -42,8 +43,9 @@ export function SecIntro() {
                         <div className="btnbx">
                             <button onClick={()=>
                             // 컨텍스트 API 함수 호출
-                                myCon.chgPage(v.link)}>
-                                {v.btn.toUpperCase()}</button>
+                                myCon.chgPage(v.link,{})}>
+                                {v.btn.toUpperCase()}
+                            </button>
                         </div>
                     </div>;
                 })}

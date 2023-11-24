@@ -15,7 +15,7 @@
     z-index: 9999;
     /* 맨위! */
     background-color: rgba(0, 0, 0, .1);
-    font-family: 'Ubuntu Condensed', sans-serif;
+    font-family: UB;/* Ubuntu체 */
 }
 
 /* 상단영역 속박스 */
@@ -168,7 +168,7 @@
     transform: translate(-50%, -50%);
 
     display: flex;/* 플렉스박스 */
-    font-family: 'Ubuntu Condensed', sans-serif;
+    font-family: UB;
     z-index: 1;/* 반투명배경보다 위 */
 }
 /* 메뉴별박스 */
@@ -224,7 +224,7 @@
     border: 4px double #fffefe;
     margin: 0 auto;
     color: #fff;
-    font: 14px/20px NG;
+    font: 14px/20px NG; 
     padding: 15px;
 }
 #info address a{

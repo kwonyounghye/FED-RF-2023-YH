@@ -65,11 +65,7 @@ export function SwiperCat() {
                                             <h3>{v.cname}</h3>
                                         </div>
                                     </section>
-                                    <section className="cat-swbox">
-                                        <h2 className="cat-img2">
-                                            <img src="" alt="" />
-                                        </h2>
-                                    </section>
+                                    
                                 </Link>
                             </SwiperSlide>
                         )

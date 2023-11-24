@@ -1,8 +1,8 @@
 /* 패션 인트로 모듈용 CSS - fashion_intro.css */
-
-.fs-page {
+.fs-page{
     height: 100%;
 }
+
 /* 여자패션 이미지영역 */
 #women .imgc{
     flex-basis: 25%;

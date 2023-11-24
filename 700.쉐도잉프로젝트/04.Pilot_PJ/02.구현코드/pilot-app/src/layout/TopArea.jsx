@@ -10,7 +10,7 @@ export function TopArea(props) {
     const makeList = (data) => {
         return gnbData[data].map((v, i) => (
             <li key={i}>
-                <a href={"#"+v}>{v}</a>
+                <a href={"#"}>{v}</a>
             </li>
         ));
     }; ///////////// makeList /////////
