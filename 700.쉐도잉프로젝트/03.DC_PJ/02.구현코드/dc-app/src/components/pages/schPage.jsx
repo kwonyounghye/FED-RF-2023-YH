@@ -14,7 +14,7 @@ export function SchPage() {
     return(
         <>
             <h1 className="tit">Search Result</h1>
-            <Searching />
+            <Searching kword={keyword} />
         </>
     )
 } ///////////// SchPage 컴포넌트 /////////////////

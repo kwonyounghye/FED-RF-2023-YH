@@ -8,10 +8,12 @@ import { SwiperApp } from "../plugin/SwiperApp";
 
 import { pCon } from "../modules/PoliotContext";
 import $ from 'jquery';
+import { SinSang } from "../modules/SinSang";
 
 export function Fashion(props) {
     // props.cat - 서브 카테고리명
     // cat에 담아서 넘김
+    // 컨텍스트 API 사용
     const myCon = useContext(pCon);
     useEffect(()=>{
         // 스크롤바 생성
@@ -28,7 +30,9 @@ export function Fashion(props) {
             <SwiperApp cat={myCon.pgName} />
         </section>
         {/* 2. 신상품영역 */}
-        <section id="c1" className="cont c1 men"></section>
+        <section id="c1" className={"cont c1 "+myCon.pgName}>
+            <SinSang cat={myCon.pgName} />
+        </section>
         {/* 2.5. 상세보기박스 */}
         <div className="bgbx"></div>
         {/* 3. 패럴랙스 */}
