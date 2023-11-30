@@ -38,6 +38,8 @@ export function TotalMenu() {
                         <dd>
                             <a href="#">BEACH WARE</a>
                         </dd>
+                    </dl>
+                    <dl>
                         <dt>
                             <a href="#" onClick={() => goPage("women")}>
                                 WOMEN
@@ -55,6 +57,8 @@ export function TotalMenu() {
                         <dd>
                             <a href="#">BEACH WARE</a>
                         </dd>
+                    </dl>
+                    <dl>
                         <dt>
                             <a href="#" onClick={() => goPage("style")}>
                                 STYLE

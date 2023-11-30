@@ -20,8 +20,8 @@
                 position: relative; /* por */
 
                 /* 위치 이동값 */
-                top: 50px;
-                left: 50px;
+                top: 100px;
+                left: 70px;
                 /*****************************************************
             [ 2. relative 포지션 ]
             - 렐러티브!라고 읽어주세요! 
@@ -81,9 +81,10 @@
 
 
 
-                
-                
             ****************************************************/
+            z-index: 1;
+            /* 먼저 그렸지만 z-index를 1만 줘도 위로 올라감! */
+
                 background: url(./images/ab5.jpg) no-repeat center/cover;
             }
 
@@ -92,14 +93,14 @@
                 position: relative; /* por */
                 bottom: 10px;
                 right: 10px;
-                background: url(./images/ab5.jpg) no-repeat center/cover;
+                background: url(./images/ab4.jpg) no-repeat center/cover;
             }
 
-            #s2 {
+            #s1 {
                 background-color: lightcoral;
             }
-            #s3 {
-                background-color: lightblue;
+            #s2 {
+                background-color: lightgreen;
             }
         </style>
     </head>
