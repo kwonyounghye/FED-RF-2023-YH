@@ -161,6 +161,8 @@ import dFn from "./dom.js";
                 (4) 객체값으로 구성되는 배열일 경우 아래와 같이 변환한다
                 -> 객체를 변환후 map으로 값을 다시 담아준다!
                 객체변수 = 객체
+
+                 [ 한번에 값배열로 변환 : 오브젝트.키쓰.맵! ]
                 새변수 = Object.keys(객체변수).map(v=>객체변수[v])
 
             3. 새로구성한 객체 변환 배열로 기존 배열 메서드를 사용하여
@@ -172,6 +174,7 @@ const arrNumber = [4, 5, 8, 10, 2, 1, 9, 3, 7, 6];
 // 문자값 배열
 const arrString = ["파", "타", "하", "가", "바", "사", "다", "라", "차"];
 
+// sort()는 기본 문자로 처리하므로 숫자는 내부함수로 빼기연산처리함!
 // console.log('숫자 배열: ', arrNumber);
 // console.log('숫자 배열.sort(): ', arrNumber.sort());
 // console.log('숫자 배열.reverse(): ', arrNumber.reverse());
@@ -184,8 +187,10 @@ const arrString = ["파", "타", "하", "가", "바", "사", "다", "라", "차"
 
 // 1. 숫자로만 된 배열의 화면 뿌리기 ////////////////////////////
 // map() 메서드로 배열값을 태그로 감싸서 출력하기
+
 // (1) 출력 대상 : .showNum
 const showNum = dFn.qs(".showNum");
+
 // (2) 배열 숫자 데이터만큼 이미지로 변환하여 출력
 // map().join() 맵쬬잉!
 const showScreen = () =>
@@ -210,7 +215,7 @@ dFn.addEvt(selBox, "change", function () {
         // 오름차순
         // [sort()메서드 내부함수사용법]
         // a > b 일때 true이면 1처리 -> 순서바꿈!
-        arrString.sort((a, b) => (a == b ? 0 : a > b ? 1 : -1));
+        arrNumber.sort((a, b) => (a == b ? 0 : a > b ? 1 : -1));
         // sort() 빼기연산처리 : 앞수-뒷수
         // arrNumber.sort((a,b)=>a-b);
     } ///// if ////
@@ -331,6 +336,7 @@ const upCode = (data, exBox) => {
             </tr>
         </thead>
         <tbody>
+        ${hcode.join("")}
         </tbody>
     </table>`;
 }; /////////// upCode 함수 //////////
@@ -352,9 +358,15 @@ dFn.addEvt(sel3, "change", () => {
 }); //////// change ///////////
 dFn.addEvt(sel3, "change", sortingFn);
 
+// 검색기준 선택박스 변경시 정렬선택 초기화하기 ///
+dFn.addEvt(dFn.qs('.cta3'),'change',()=>{
+    dFn.qs('.sel3').value = '0';
+}); ////////////// change //////////////////
+
 // 정렬변경함수의 데이터 및 출력요소 셋팅변수
 let targetData = list1;
 let targetEle = showList3;
+
 
 // 정렬변경 함수 만들기 ////////////
 function sortingFn() {
@@ -374,10 +386,10 @@ function sortingFn() {
     console.log("바꿔, 정렬", optVal, cta);
 
     // 2. 분기하기
-    // 데이터 대상 : list1 배열
+     // 데이터 대상: targetData 배열
     if (optVal == 1) {
         // 오름차순
-        list1.sort((a, b) =>
+        targetData.sort((a, b) =>
             // a,b는 모두 객체데이터
             // 따라서 내부 속성을 구체적으로 비교함!
             // idx, tit, cont 세가지 중 하나로 비교
@@ -387,11 +399,13 @@ function sortingFn() {
         );
     } /////////////// if ////////////
     else if (optVal == 2) {
+        // 오름차순
+        targetData.sort((a, b) =>{
         // 내림차순
-        return a[cta] == b[cta] ? 0 : a[cta] > b[cta] ? 1 : -1;
-    } ///////////// else if //////////////
-
-    console.log(list1);
+        return a[cta] == b[cta] ? 0 : a[cta] > b[cta] ? -1 : 1;
+    } 
+    );} ///////////// else if //////////////
+    console.log(targetData);
 
   // 리스트 코드 반영하기 : 대상데이터,출력요소는
   // 호출시 설정된 것으로 셋팅됨!
@@ -449,19 +463,19 @@ dFn.addEvt(sel4, "change", sortingFn);
 
 // (5) 검색 기능 버튼 클릭 이벤트 설정하기 //////////
 // - 이벤트 대상 : .sbtn
-dFn.addEvt(".sbtn", "click", searchingFn);
+// 클래스는 dFn.qs('클래스') 형식으로 가져오는 듯
+dFn.addEvt(dFn.qs('.sbtn'), "click", searchingFn);
 
 // (6) 검색함수 만들기 /////////////
 function searchingFn() {
     // 1. 검색어 읽어오기
     // 대상: #stxt
     let stxt = dFn.qs("#stxt").value;
-    console.log("입력문자: ", stxt);
-
+    
     // 2. 검색 대상 항목 읽어오기
     // 대상: .cta4
-    let cta = dFn.qs("cta4").value;
-
+    let cta = dFn.qs(".cta4").value;
+    
     console.log("입력문자: ", stxt, "\n검색기준: ", cta);
 
      // 3. 다중값 리턴 LIKE검색 : 원본데이터(list2)로 검색!
