@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 
 // 캐릭터 상세 페이지 CSS 불러오기
 import "../../css/cat_detail.css";
+import { CatList } from "../modules/CatList";
 
 export function CatDetail(props) {
     // 라우터 호출 시 전달한 값을 받는다!

@@ -5,7 +5,7 @@ import "./css/index.css";
 
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
-import {BrowserRouter, Route, Routes} from "react-router-dom"
+import { HashRouter, Route, Routes} from "react-router-dom"
 import { Layout } from "./components/layout/Layout";
 import { Main } from "./components/pages/Main";
 import { Character } from "./components/pages/Character";
@@ -55,7 +55,12 @@ import { Member } from "./components/pages/Member";
 // 출력해야하기 때문에 스스로 내보내기를 셋팅해야하는 것!
 export default function App() {
   return (
-    <BrowserRouter>
+    // basename 속성은 package.json의 "homepage" 속성값을 읽어옴
+    // <BrowserRouter basename={process.env.PUBLIC_URL}> {/* 배포용 */}
+    // <BrowserRouter> {/* 개발용 */}
+    /* basename 을 안써도 HashRouter는 package.json의 homepage 속성값을 
+    자동으로 연결함 */
+    <HashRouter>
       <Routes>
         {/* 중요!!! 레이아웃 컴포넌트를 루트로 설정! */}
         <Route path="/" element={<Layout />}>{/* 루트가 됨 */}
@@ -76,7 +81,8 @@ export default function App() {
           <Route path="member" element={<Member />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    {/* </BrowserRouter> */}
+      </HashRouter>
   );
 } ///////////// App 컴포넌트 ///////////////////
 

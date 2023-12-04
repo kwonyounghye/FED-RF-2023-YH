@@ -2,6 +2,8 @@
 export const banData = {
     "main1":[
         {
+            // cf. 절대상대경로: /
+            // 상대경로: ./
             "src":"./images/dcm21.jpg",
             "tit1":"GOTHAM GAZETTE",
             "tit2":"WORLDS TRAVELER",
