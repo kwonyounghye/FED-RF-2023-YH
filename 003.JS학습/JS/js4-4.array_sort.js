@@ -314,7 +314,7 @@ const upCode = (data, exBox) => {
     // data - 객체데이터 배열 / exBox - 출력 할 요소
     // 반복 코드 만들기
     // 대상코드 : list1 배열
-    let hcode = list1.map(
+    let hcode = data.map(
         (val) => `
     <tr>
         <td>${val.idx}</td>
@@ -353,8 +353,8 @@ const cta3 = dFn.qs(".cta3");
 // sel3 이벤트 설정하기 //////////////
 // 데이터와 출력 타겟부터 설정후 정렬함수 호출!
 dFn.addEvt(sel3, "change", () => {
-    let targetData = list1;
-    let targetEle = showList3;
+    targetData = list1;
+    targetEle = showList3;
 }); //////// change ///////////
 dFn.addEvt(sel3, "change", sortingFn);
 
@@ -424,6 +424,11 @@ const showList4 = dFn.qs(".showList4");
 // (2) 데이터셋팅 : 객체 데이터 배열
 const list2 = [
     {
+        idx: 58,
+        tit: "당근마켓에 가자",
+        cont: "당근마켓이 항상 좋은건 아니야~!!ㅠ.ㅠ",
+    },
+    {
         idx: 15,
         tit: "당근마켓에 가자",
         cont: "당근마켓이 정말로 싸고 좋다구~!",
@@ -456,8 +461,8 @@ upCode(list2, showList4);
 // 데이터와 출력 타겟부터 설정 후 정렬함수 호출!
 dFn.addEvt(sel4, "change", () => {
     // 정렬용 데이터는 원본 list2 쓰지 않고 newList 사용!
-    let targetData = newList;
-    let targetEle = showList4;
+    targetData = newList;
+    targetEle = showList4;
 }); //////// change ///////////
 dFn.addEvt(sel4, "change", sortingFn);
 
@@ -522,8 +527,13 @@ function initSearch() {
     dFn.qs(".cta4").value = "idx";
 
     // 3. 정렬 초기화
-    dFn.qs("sel4").value = "0";
+    dFn.qs(".sel4").value = "0";
 } ////////////// initSearch 함수 ///////////
+
+// 검색기준 선택박스 변경시 정렬선택 초기화하기 ///
+dFn.addEvt(dFn.qs('.cta4'),'change',()=>{
+    dFn.qs('.sel4').value = '0';
+  }); ////////////// change //////////////////
 
 
 // 샘플 버튼으로 데이터를 검색한 결과를 콘솔에 찍어본다! ////////
@@ -558,21 +568,6 @@ dFn.addEvt(dFn.qs(".sample"), "click", () => {
 
 
   
-    // 3. 다중값 리턴 LIKE 검색 : 원본 데이터(list2)로 검색!
-    // filter() + indexOf() 사용!
-    let res = list2.filter((v) => {
-        // v[객체속성명] -> v[cta]
-        // -> cta 변수에 idx/tit/cont 중 하나 들어옴
-        // indexOf(검색어) -> indexOf(stxt변수값)
-        // 숫자형 데이터일 경우에 에러가 발생하므로
-        // String(숫자데이터) -> 문자형 변환!
-        if (v[cta].indexOf(stxt) != -1) return true;
-    }); ///////// filter ////////////
-
-    console.log("검색결과: ", res);
-
-    // 4. 출력하기 : upCode()
-    upCode(res, showList4);
 }); ///////////// click //////////////
 //  5. 객체원본 배열로 변환하기
 // (1) 데이터 : 객체데이터

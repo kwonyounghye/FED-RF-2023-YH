@@ -133,7 +133,7 @@ context의 value를 입력받음
 [useContext 후크]
 context의 value를 가져올 때 사용
 파라미터로 넘겨받는 값은 
-createContex를 통해 생성된 Context 객체임
+createContext를 통해 생성된 Context 객체임
 
 (위의 useState / useEffect / useContext 는 기본 Hooks라고 부른다!)
 

@@ -1,0 +1,17 @@
+/* 장바구니 리스트 CSS */
+
+/* 전체 부모박스  */
+#cartlist {
+
+}
+#cartlist th {
+    padding: 15px 0;
+
+}
+#cartlist td {
+    padding: 10px 0;
+    border-top: 1px solid #000;
+}
+#cartlist .cbtn span {
+    display: none;
+}
