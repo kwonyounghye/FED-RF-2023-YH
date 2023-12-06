@@ -3,6 +3,7 @@
 // 장바구니 리스트 CSS 불러오기
 import "../css/cartlist.css";
 export function CartList() {
+    console.log(localStorage.getItem('cart'));
     return (
         <>
             <section id="cartlist">
