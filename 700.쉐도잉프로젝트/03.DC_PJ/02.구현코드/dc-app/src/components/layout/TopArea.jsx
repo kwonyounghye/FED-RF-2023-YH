@@ -13,7 +13,7 @@ import $ from "jquery";
 // 폰트어썸 불러오기
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { memo, useContext } from "react";
+import { memo, useState } from "react";
 
 /******************************************************* 
     [ 리액트 라우터와 연결하여 사용되는 라우터 컴포넌트 ]
@@ -35,7 +35,7 @@ import { memo, useContext } from "react";
 // 메모이제이션 기능를 제공하기 때문이다!
 // -> 전달되는 함수가 반드시 useCallback() 처리가 되어야 한다!!
 // export function TopArea() {
-    export const TopArea = memo(({chgPageFn}) => {
+    export const TopArea = memo(({chgPageFn, logSts}) => {
         // 보통 props 등 전달변수만 쓰면 하위 속성명으로
         // 값을 전달하지만 중괄호{}를 사용하면 속성명을
         // 직접사용할 수 있다!
@@ -45,8 +45,7 @@ import { memo, useContext } from "react";
     // 컨텍스트 API 사용
     // const myCon = useContext(dcCon);
 
-    // 라우터 이동 메서드 함수
-    // const goNav = useNavigate();
+   
 
     // 검색관련 함수들
     // 1. 검색창 보이기 함수
@@ -87,6 +86,7 @@ import { memo, useContext } from "react";
         <>
             {/* 1. 상단영역 */}
             <header className="top-area">
+                {/* 로그 msg */}
                 {/* 네비게이션 GNB파트 */}
                 <nav className="gnb">
                     <ul>
@@ -141,13 +141,23 @@ import { memo, useContext } from "react";
                                 <FontAwesomeIcon icon={faSearch} />
                             </a>
                         </li>
-                        {/* 회원가입, 로그인은 로그인 아닌 상태일 때 나옴 */}
+                        {/* 회원가입, 로그인은 로그인 아닌 상태일 때 나옴 */
+                        logSts === null && 
+                        <>
                         <li>
                             <Link to="/member">JOIN US</Link>
                         </li>
                         <li>
                             <Link to="/login">LOGIN</Link>
                         </li>
+                        </>}
+                        {/* 로그인상태일 때 로그아웃버튼만 보임 */
+                        logSts !== null && 
+                        <>
+                        <li>
+                            <a href="#">LOGOUT</a>
+                        </li>
+                        </>}
                     </ul>
                     {/* 모바일용 햄버거 버튼 */}
                     <button className="hambtn"></button>

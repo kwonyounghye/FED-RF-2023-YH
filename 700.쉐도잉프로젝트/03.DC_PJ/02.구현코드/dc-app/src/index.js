@@ -19,7 +19,7 @@ import { SwiperApp } from "./components/plugin/SwiperApp";
 import { CatDetail } from "./components/pages/CatDetail";
 import { SchPage } from "./components/pages/schPage";
 import { Member } from "./components/pages/Member";
-
+import { Login } from "./components/pages/Login";
 /********************************************* 
     [ 리액트 라우터 ]
     -> 컴포넌트를 연결하여 특정 이벤트에 모듈을
@@ -79,6 +79,7 @@ export default function App() {
           <Route path="detail" element={<CatDetail />} />
           <Route path="schpage" element={<SchPage />} />
           <Route path="member" element={<Member />} />
+          <Route path="login" element={<Login />} />
         </Route>
       </Routes>
     {/* </BrowserRouter> */}

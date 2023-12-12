@@ -34,8 +34,11 @@ export function CatDetail(props) {
                     <h2>{cname}</h2>
                     <div className="cdesc">
                         {
-                            // 설명배열
-                            <p>{cdesc}</p>
+                            // 설명배열만큼 p요소로 싸기
+                            cdesc.map((v,i)=>(
+                                <p key={i}>{v}</p>
+
+                            ))
                             }
                     </div>
                 </div>
@@ -47,12 +50,12 @@ export function CatDetail(props) {
                         <table>
                             <tbody>
                                 {
-                                    facts.map((v,i)=>
+                                    facts.map((v,i)=>(
                                     <tr key={i}>
                                         <td>{v.split(':')[0]}:</td>
                                         <td>{v.split(':')[1]}</td>
                                     </tr>
-                                    )
+                                    ))
                                 }
                             </tbody>
                         </table>
