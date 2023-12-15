@@ -96,3 +96,37 @@
     opacity: 1;
     transition: .4s 3s;
   }
+  /* 수량증감 박스 */
+  .cnt-part span,
+  .cnt-part > div {
+    display: flex;
+  }
+  /* 입력창 */
+  .item-cnt {
+    width: 20px;
+  }
+  /* 증감 이미지 버튼 */
+  .btn-cnt {
+  }
+  #cartlist .btn-cnt img {
+    display: block;
+    width: 18px;
+  }
+  /* 반영버튼 */
+  .btn-insert {
+    position: absolute;
+    margin-left: 43px;
+    white-space: nowrap;
+    padding: 0;
+    overflow: hidden;
+    width: 0;
+    transition: .1s .1s;
+    /* display: none; */
+  }
+  /* 입력창에 포커스갈 때 다음 형제요소 반영버튼 보이기 */
+  .item-cnt:focus+.btn-insert {
+    /* outline: 10px dotted red; */
+    width: 34px;
+    transition: none;
+    /* display: inline-block; */
+  }

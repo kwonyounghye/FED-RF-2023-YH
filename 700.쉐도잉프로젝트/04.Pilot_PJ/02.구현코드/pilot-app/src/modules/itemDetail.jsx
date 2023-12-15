@@ -10,8 +10,19 @@ export function ItemDetail({ cat, goods }) {
     // cat - 카테고리명(men,women,style)
     // goods - 상품 아이템 정보(속성코드: m1,m2,...)
 
+    // 카트 사용여부 초기값은 로컬스 'cart'가 있으면 1
+    // 없으면 0으로 셋팅해준다!
+
+    let stsVal=0;
+    let transVal=null;
+
+    if(localStorage.getItem('cart')) {
+        stsVal=1;
+        transVal = JSON.parse(localStorage.getItem('cart'));
+    } //// if //////
+
     // 카트사용여부 상태변수 //////////////
-    const [csts, setCsts] = useState(0);
+    const [csts, setCsts] = useState(localStorage.getItem('cart') ? 1:0);
 
     // 자식 카트 컴포넌트와 함께 상태값 고유할 변수 / 괄호 안: 기본값
     const flag = useRef(true);
