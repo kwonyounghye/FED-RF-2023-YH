@@ -24,7 +24,8 @@ baseData.sort((a, b) => {
 // 초기데이터 셋업하기(원본데이터 담기)
 let orgData;
 // 로컬스가 있으면 그것 넣기
-if (localStorage.getItem("bdata")) orgData = JSON.parse(localStorage.getItem("bdata"));
+if (localStorage.getItem("bdata")) 
+orgData = JSON.parse(localStorage.getItem("bdata"));
 // 로컬스 없으면 제이슨 데이터 넣기
 else orgData = baseData;
 // else orgData = [];
@@ -44,9 +45,6 @@ export function Board() {
     // 2. 전체 레코드수 : 배열데이터 총개수
     const totNum = baseData.length;
     // console.log("페이지 단위수: ", pgBlock, "\n전체 레코드수: ", totNum);
-
-    // 3. 시작 레코드 순번
-    let initSeq = 0;
 
     // [ 상태관리 변수 셋팅 ] ////////
     // 1. 현재 페이지 번호 : 가장 중요한 리스트 바인딩의 핵심!
@@ -249,7 +247,7 @@ export function Board() {
             // 전역 참조변수에 저장하여 리랜더링 시 리턴코드에
             // 이 값이 적용되게 해준다!!
             cData.current = orgData.find((v) => {
-                if (v.idx === cidx) return true;
+                if (Number(v.idx) === Number(cidx)) return true;
             });
 
             console.log("현재 data", cData.current);
@@ -292,139 +290,208 @@ export function Board() {
             // 1. 글쓴이와 이메일은 로그인상태값에서 읽어와서
             // 본 읽기전용 입력창에 넣어준다!
             // 지금은 임시로 tomtom / tom@gmail.com
-            $(() => {
-                // DOM 그려진 후 실행
-                // (1) 글쓴이
-                $(".writeone .name").val("tomtom");
-                // (2) 이메일
-                $(".writeone .email").val("tom@gmail.com");
-            });
+            // $(() => {
+            //     // DOM 그려진 후 실행
+            //     // (1) 글쓴이
+            //     $(".writeone .name").val("tomtom");
+            //     // (2) 이메일
+            //     $(".writeone .email").val("tom@gmail.com");
+            // });
         } ////// else if ///////
 
         // 3-4. 글쓰기 서브밋 /////////
         else if (modeTxt === "S" && bdMode === "C") {
             console.log("글쓰기 서브밋");
 
-            // 1. 제목, 내용 필수입력 체크
-            // 리랜더링 없는 DOM 상태 기능 구현!!
-            const subEle = $(".writeone .subject");
-            const contVal = $(".writeone .content");
+              // 제목,내용 입력요소
+      const subEle = $(".writeone .subject");
+      const contEle = $(".writeone .content");
 
-            if (subEle.val().trim() === "" || contEle.val().trim()) {
+      
+
+
+
+           
+   // 1. 제목, 내용 필수입력 체크
+      // 리랜더링 없는 DOM상태 기능구현!!
+            if (subEle.val().trim() === "" || contEle.val().trim() === "") {
                 window.alert("제목과 내용은 필수입력입니다!");
             }
             // 2. 통과시 실제 데이터 입력하기
             else {
                 const addZero = (x) => (x < 10 ? "0" + x : x);
-                // 1. 날짜 데이터 구성
-                let today = new Date();
-                let yy = today.getFullYear();
-                let mm = today.getMonth() + 1;
-
+        // 1. 날짜 데이터 구성
+        let today = new Date();
+        let yy = today.getFullYear();
+        let mm = today.getMonth() + 1;
+        let dd = today.getDate();
                 // 2. 원본데이터 변수 할당
                 let orgTemp = orgData;
 
-                // 3. 입력 idx 기본키값을 숫자값 중 최대값에 1을 더함!
-                // 3-1. idx값만 모아서 배열로 재구성함(숫자형 변환!)
-                let arrIdx = orgTemp.map(v=>v.idx);
-                // 최대값
-                let maxNum = Math.max(...arrIdx);
-                console.log('idx배열: ',arrIdx);
-                console.log('최대값: ',Math.max(arrIdx));
-                console.log('다른방법 최대값: ', Math.max.apply(null,arrIdx));
-                // 스프레드 연산자 나오기 전에는 항상 apply메서드 사용함
-                // apply(this 객체,배열값) -> this객체 전달 없으므로 null 씀
-                // -> 배열값 내부의 값을 하나씩 전달함!
+                 // 3. 입력idx 기본키값을 숫자값 중 최대값에 1을 더함!
+        // 3-1. idx값만 모아서 배열로 재구성함(숫자형변환!)
+        let arrIdx = orgTemp.map((v) => parseInt(v.idx));
+        // 최대값
+        let maxNum = Math.max(...arrIdx);
+        console.log("idx배열:", arrIdx);
+        console.log("최대값:", maxNum);
+        console.log("다른방법최대값:", Math.max.apply(null, arrIdx));
+        // 스프레드 연산자 나오기 전에는 항상 apply메서드 사용함
+        // apply(this객체,배열값) -> this객체 전달없으므로 null씀
+        // -> 배열값 내부의 값을 하나씩 전달함!
 
-                // Math.max()에서 값을 비교하기 위해 배열값을
-                // 나열하여 입력하면 된다!
-                // 배열값을 나열하는 연산자는? Spread Operator
-                // (스프레드 연산자: ...)
-                // 다른 배열을 합칠 때도 사용함
-                let aa = [1,16];
-                let bb = [300,500];
-                let cc = [...aa,...bb];
-                console.log('');
+        // Math.max() 에서 값을 비교하기 위해 배열값을
+        // 나열하여 입력하면 된다!
+        // 배열값을 나열하는 연산자는? Spread Operator(스프레드연산자 : ...)
+        // 다른배열을 합칠때도 사용함
 
-                // 4. 임시변수에 입력할 객체데이터 생성하기
-                let temp = {
-                    idx: maxNum + 1,
-                    tit: subEle.val().trim(),
-                    cont: contEle.val().trim(),
-                    att: "",
-                    date: `${yy}-${addZero(mm)}-${addZero(dd)}`,
-                    uid: logData.current.uid,
-                    unm: logData.current.unm,
-                    cnt: 0,
-                };
+        // let aa = [1,16];
+        // let bb = [300,500];
+        // let cc = [...aa,...bb];
+        // console.log('합친배열:',cc);
 
-                console.log('입력전 준비 데이터: ', temp);
+        // let test = Math.max(1,2,3,4,5);
+        // console.log('1~5사이최대값:',test);
 
-                // 5. 원본임시변수에 배열데이터 값 push하기
-                orgTemp.push(temp);
+        // 4. 임시변수에 입력할 객체 데이터 생성하기
+let temp = {
+    idx: maxNum + 1,
+    tit: subEle.val().trim(),
+    cont: contEle.val().trim(),
+    att: "",
+    date: `${yy}-${addZero(mm)}-${addZero(dd)}`,
+    uid: logData.current.uid,
+    unm: logData.current.unm,
+    cnt: "0",
+};
+         // console.log("입력전 준비데이터:", temp);
+        
+        // 5. 원본임시변수에 배열데이터 값 push하기
+        orgTemp.push(temp);
+        
+        // console.log("최종반영 전체데이터:",  orgTemp);
 
-                // 6. 로컬스에 반영하기
+        // 6. 로컬스에 반영하기
+        localStorage.setItem('bdata',
+        JSON.stringify(orgTemp))
+
+        // 7. 리스트 페이지로 이동하기
+        setBdMode('L');
+    } //////// else ///////////
+} ////// else if ///////
+
+// 3-5. 수정모드 /////////
+else if (modeTxt === "U") {
+    console.log("수정모드"); 
+    setBdMode("U");
+} ////// else if ///////
+ // 3-6. 수정하기 서브밋 /////////
+ else if (modeTxt === "S" && bdMode === "U") {
+    console.log("수정하기 서브밋");
+
+    // 제목,내용 입력요소
+    const subEle = $(".updateone .subject");
+    const contEle = $(".updateone .content");
+
+    // console.log(subEle.val().trim(),contEle.val().trim());
+
+    // 1. 제목, 내용 필수입력 체크
+    // 리랜더링 없는 DOM상태 기능구현!!
+    if (subEle.val().trim() === "" || contEle.val().trim() === "") {
+      window.alert("제목과 내용은 필수입력입니다!");
+    } /////// if /////////
+
+    // 2. 통과시 실제 데이터 입력하기
+    else {
+      
+      // 2. 원본 데이터 변수할당
+      let orgTemp = orgData;
+
+
+                //    3. 원본에 해당데이터 찾아서 업데이트하기
+                orgTemp.some((v) => {
+                    if (Number(cData.current.idx) === Number(v.idx)) {
+                        // 제목과 내용 업데이트하기
+                        v.tit = subEle.val().trim();
+                        v.cont = contEle.val().trim();
+
+                        // 이 코드를 만나면 여기시 순회 종료
+                        return true;
+                    } //////// if ///////////////
+                }); ////////// Array some ///////////////
+
+                // 4. 로컬스에 반영하기
                 // stringify: 문자화하다.
-                localStorage.setItem('bData', JSON.stringify)
-            } //////// else ///////////
+                localStorage.setItem("bData", JSON.stringify(orgTemp));
+
+                // 5. 리스트페이지로 이동
+                setBdMode("L");
+            } //////// else //////////
+    
         } ////// else if ///////
+           
+            // 3-7. 삭제하기
+            else if(modeTxt==="D"&&bdMode==="U") {
+                if(confirm('정말로 글을 삭제하시겠습니까?')) {
+                    // 데이터를 순회하다가 해당 데디터이면 
+                    // 순번으로 splice(순번,1) 사용 삭제
+                    orgTemp.some((v,i) => {
+                        if (Number(cData.current.idx) === Number(v.idx)) {
+                            // 해당 데이터의 순번으로 삭제
+                            orgData.splice(i,1);
 
-        // 3-5. 수정모드 /////////
-        else if (modeTxt === "U") {
-            console.log("수정모드");
+                            // 이 코드를 만나면 여기 시 순회 종료
+                            return true;
+                            
+                        } //////// if ///////////////
+                    }); ////////// Array some ///////////////
+                       // 2. 로컬스에 반영하기
+        localStorage.setItem('bdata',
+        JSON.stringify(orgData))
 
-            setBdMode("U");
-        } ////// else if ///////
+        // 3. 리스트 페이지로 이동하기
+        setBdMode('L');        
 
-        // 4-2. 쓰기 모드 : 모드변경없이 처리후 리스트보내기
-        // else if(modeTxt==="C" && btxt==="Submit"){
-        //   console.log("쓰기처리");
-        // } ////// else if ///////
-        // 4-3. 수정하기 모드 : 모드변경없이 처리후 리스트보내기
-        // else if(modeTxt==="U" && btxt==="Submit"){
-        //   console.log("수정처리");
-        // } ////// else if ///////
-        // 4-4. 삭제하기 모드 : 모드변경없이 처리후 리스트보내기
-        // else if(modeTxt==="U" && btxt==="Delete"){
-        //   console.log("삭제처리");
-        // } ////// else if ///////
+    } ///// if //////
+
+} ////// else if ///////
     }; ////////// chgMode 함수 ///////////////
 
-      // 사용자 비교함수 //////////
-  // 원본으로 부터 해당 사용자 정보 조회하여
-   // 글쓴이와 로그인사용자가 같으면 btnSts값을 true로 업데이트
-   const compUsr = (usr) => {
-    // usr - 글쓴이 아이디(uid)
-     // 사용자 정보조회 로컬스(mem-info)
-    // 보드 상단에서 null일경우 생성함수 이미 호출!
-    // null을 고려하지 말고 코드작성!
+    // 사용자 비교함수 //////////
+    // 원본으로 부터 해당 사용자 정보 조회하여
+    // 글쓴이와 로그인사용자가 같으면 btnSts값을 true로 업데이트
+    const compUsr = (usr) => {
+        // usr - 글쓴이 아이디(uid)
+        // 사용자 정보조회 로컬스(mem-info)
+        // 보드 상단에서 null일경우 생성함수 이미 호출!
+        // null을 고려하지 말고 코드작성!
 
-     // 로그인 상태일 경우 조회하여
-    // 버튼 상태 업데이트 하기
+        // 로그인 상태일 경우 조회하여
+        // 버튼 상태 업데이트 하기
 
-    if (myCon.logSts !== null) {
-        // 1. 로컬스 원본 데이터 조회
-        const info = JSON.parse(localStorage.getItem("mem-data"));
-        console.log(info);
-  
-        // 2. 원본으로 부터 해당 사용자 정보 조회하여
-        // 글쓴이와 로그인사용자가 같으면 btnSts값을 true로 업데이트
-        const cUser = info.find((v) => {
-          if (v.uid === usr) return true;
-        });
-  
-        console.log(cUser);
-  
-        // 3. 로그인사용자 정보와 조회하기
-        // 아이디로 조회함!
-        const currUsr = JSON.parse(myCon.logSts);
-        if (currUsr.uid === cUser.uid) setBtnSts(true);
-        else setBtnSts(false);
-      } /////// if ////////////
-      else {
-        // 로그인 안한 상태 ////
-        setBtnSts(false);
-      } //////// else ///////////
+        if (myCon.logSts !== null) {
+            // 1. 로컬스 원본 데이터 조회
+            const info = JSON.parse(localStorage.getItem("mem-data"));
+            console.log(info);
+
+            // 2. 원본으로 부터 해당 사용자 정보 조회하여
+            // 글쓴이와 로그인사용자가 같으면 btnSts값을 true로 업데이트
+            const cUser = info.find((v) => {
+                if (v.uid === usr) return true;
+            });
+
+            console.log(cUser);
+
+            // 3. 로그인사용자 정보와 조회하기
+            // 아이디로 조회함!
+            const currUsr = JSON.parse(myCon.logSts);
+            if (currUsr.uid === cUser.uid) setBtnSts(true);
+            else setBtnSts(false);
+        } /////// if ////////////
+        else {
+            // 로그인 안한 상태 ////
+            setBtnSts(false);
+        } //////// else ///////////
     }; ///////// compUsr 함수 ////////
 
     // 리턴코드 ////////////////////
@@ -470,14 +537,26 @@ export function Board() {
                             <tr>
                                 <td>Name</td>
                                 <td>
-                                <input type="text" className="name" size="20" readOnly value={logData.current.unm} />
+                                    <input
+                                        type="text"
+                                        className="name"
+                                        size="20"
+                                        readOnly
+                                        value={logData.current.unm}
+                                    />
                                 </td>
                             </tr>
                             <tr>
                                 <td>Email</td>
                                 <td>
-                                <input type="text" className="email" size="40" readOnly
-                  value={logData.current.eml} />                                </td>
+                                    <input
+                                        type="text"
+                                        className="email"
+                                        size="40"
+                                        readOnly
+                                        value={logData.current.eml}
+                                    />{" "}
+                                </td>
                             </tr>
                             <tr>
                                 <td>Title</td>
@@ -504,13 +583,7 @@ export function Board() {
                             <tr>
                                 <td>Name</td>
                                 <td>
-                                    <input
-                                        type="text"
-                                        className="name"
-                                        size="20"
-                                        readOnly
-                                        value={cData.current.unm}
-                                    />
+                                    <input type="text" className="name" size="20" readOnly value={cData.current.unm} />
                                 </td>
                             </tr>
                             <tr>
@@ -550,26 +623,21 @@ export function Board() {
                             <tr>
                                 <td>Name</td>
                                 <td>
-                                <input
-                    type="text"
-                    className="name"
-                    size="20"
-                    readOnly
-                    value={cData.current.writer}
-                  />
+                                    <input
+                                        type="text"
+                                        className="name"
+                                        size="20"
+                                        readOnly
+                                        value={cData.current.unm}
+                                    />
                                     {/* value는 수정불가! */}
                                 </td>
                             </tr>
                             <tr>
                                 <td>Title</td>
                                 <td>
-                                <input
-                    type="text"
-                    className="subject"
-                    size="60"
-                    defaultValue={cData.current.tit}
-                  />
-                                                      {/* defaultValue로 써야 수정가능! */}
+                                    <input type="text" className="subject" size="60" readOnly value={cData.current.tit} />
+                                    {/* defaultValue로 써야 수정가능! */}
                                 </td>
                             </tr>
                             <tr>
@@ -579,7 +647,8 @@ export function Board() {
                                         className="content"
                                         cols="60"
                                         rows="10"
-                                        defaultValue={cData.current.cont}
+                                        readOnly
+                                        value={cData.current.cont}
                                     ></textarea>
                                     {/* defaultValue로 써야 수정가능! */}
                                 </td>
@@ -613,7 +682,6 @@ export function Board() {
                                         <button onClick={chgMode}>
                                             <a href="#">List</a>
                                         </button>
-                                       
                                     </>
                                 )
                             }
@@ -625,17 +693,15 @@ export function Board() {
                                             <a href="#">List</a>
                                         </button>
                                         {
-                      /* btnSts 상태변수가 true일때 보임
+                                            /* btnSts 상태변수가 true일때 보임
                       -> 글쓴이===로그인사용자 일때 true변경 */
-                      btnSts && (
-                        <button onClick={chgMode}>
-                          <a href="#">Modify</a>
-                        </button>
-                      )
-                    }
-                                        <button onClick={chgMode}>
-                                            <a href="#">Modify</a>
-                                        </button>
+                                            btnSts && (
+                                                <button onClick={chgMode}>
+                                                    <a href="#">Modify</a>
+                                                </button>
+                                            )
+                                        }
+                                 
                                     </>
                                 )
                             }

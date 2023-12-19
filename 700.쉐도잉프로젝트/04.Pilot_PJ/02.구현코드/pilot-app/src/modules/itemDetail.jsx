@@ -10,6 +10,14 @@ export function ItemDetail({ cat, goods }) {
     // cat - 카테고리명(men,women,style)
     // goods - 상품 아이템 정보(속성코드: m1,m2,...)
 
+     // 자식 카트 컴포넌트와 함께 상태값 고유할 변수 / 괄호 안: 기본값
+     const flag = useRef(true);
+     // -> 이 값이 true일 때만 새로 추가하는 데이터가 반영됨!
+     // -> 이 값이 false이면 카트 컴포넌트의 삭제 등 자체 가능이 작동함!
+     // useRef를 사용한 이유는 리랜더링시에도 값을 유지하면서 
+     // 이 값이 변경되어도 리랜더링되지 않아야 하기 때문에 선택함!
+
+
     // 카트 사용여부 초기값은 로컬스 'cart'가 있으면 1
     // 없으면 0으로 셋팅해준다!
 
@@ -21,18 +29,18 @@ export function ItemDetail({ cat, goods }) {
         transVal = JSON.parse(localStorage.getItem('cart'));
     } //// if //////
 
-    // 카트사용여부 상태변수 //////////////
-    const [csts, setCsts] = useState(localStorage.getItem('cart') ? 1:0);
-
-    // 자식 카트 컴포넌트와 함께 상태값 고유할 변수 / 괄호 안: 기본값
-    const flag = useRef(true);
-    // -> 이 값이 true일 때만 새로 추가하는 데이터가 반영됨!
-    // -> 이 값이 false이면 카트 컴포넌트의 삭제 등 자체 가능이 작동함!
-    // useRef를 사용한 이유는 리랜더링시에도 값을 유지하면서 
-    // 이 값이 변경되어도 리랜더링되지 않아야 하기 때문에 선택함!
+    console.log('로컬스 있니?', stsVal);
 
     // 로컬스 변환값 변수 - 상태변수로 리랜더링시 값을 유지하게함!
-    const [transData, setTransData] = useState(null);
+  const [transData, setTransData] = useState(transVal); 
+
+
+    // 카트사용여부 상태변수 //////////////
+    const [csts, setCsts] = useState(stsVal);
+
+   
+
+   
 
     // 카트에 담기버튼 클릭시 호출함수 ///////////////
     const useCart = () => {
@@ -190,6 +198,16 @@ export function ItemDetail({ cat, goods }) {
             // 출력박스 : #total
             $("#total").text(addComma(ginfo[3] * num) + "원");
         });
+          // 카트가 생성된 경우 버튼 보이기
+    // (카트부모박스 .bgbx 보이기)
+    console.log('카트노출상태:',csts);
+
+        if(csts===1) {
+        $('.bgbx').show();
+        // 카트 사이드에 나와라!
+        $('#mycart').addClass('on');
+    }; //////// if ///////////
+
     }, []); // 한번만 실행
 
     // 계속 실행
