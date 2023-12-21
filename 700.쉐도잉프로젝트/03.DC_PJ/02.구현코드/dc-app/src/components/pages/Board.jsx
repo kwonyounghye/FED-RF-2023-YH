@@ -38,30 +38,42 @@ import {
   if (localStorage.getItem("bdata"))
     orgData = JSON.parse(localStorage.getItem("bdata"));
   // 로컬스 없으면 제이슨 데이터 넣기
-  else orgData = baseData;
+  else {
+    // 기본 데이터 제이슨에서 가져온 것 넣기
+    orgData = baseData;
+  } //////////// else //////////////
   // else orgData = [];
   
-  console.log(orgData);
+  // console.log(orgData);
   
   // ******* Borad 컴포넌트 ******* //
   export function Board() {
+    
+    // 보드데이터가 로컬스에 없으면 생성하기!
+    if (!localStorage.getItem("bdata")) { // ! 연산자로 false일 때 실행
+      // 로컬스 'bdata'가 없으므로 여기서 최초 생성하기
+      // -> 조회수 증가 시 로컬스 데이터로 확인하기 때문
+      localStorage.setItem('bdata', JSON.stringify(baseData));
+      
+    } ////////// if ///////////////
+    
     // 기본사용자 정보 셋업 함수 호출
     initData();
-  
+    
     // 컨텍스트 API 사용하기
     const myCon = useContext(dcCon);
-  
+    
     console.log("로그인상태:", myCon.logSts);
-  
+    
     // [컴포넌트 전체 공통변수] /////////////
     // 1. 페이지 단위수 : 한 페이지 당 레코드수
     const pgBlock = 7;
     // 2. 전체 레코드수 : 배열데이터 총개수
     const totNum = orgData.length;
     // console.log("페이지단위수:", pgBlock, "\n전체 레코드수:", totNum);
-  
+    
     // [ 상태관리 변수 셋팅 ] ////////
-  
+    
     // 1. 현재 페이지 번호 : 가장중요한 리스트 바인딩의 핵심!
     const [pgNum, setPgNum] = useState(1);
     // 1. 데이터 변경변수 : 리스트에 표시되는 실제 데이터셋
@@ -72,16 +84,16 @@ import {
     // C - 글쓰기 / R - 글읽기 / U - 글수정 / D - 글삭제(U에포함!)
     // 상태추가 : L - 글목록
     // 전체 5가지 상태값 : CRUD+L
-  
+    
     // 3. 버튼공개 여부 관리변수 : 수정버튼
     const [btnSts, setBtnSts] = useState(false);
-  
+    
     // 리랜더링 루프에 빠지지 않도록 랜더링후 실행구역에
     // 변경코드를 써준다! 단, logSts에 의존성을 설정해준다!
     useEffect(() => {
       // 만약 로그아웃하면 버튼 상태값 false로 변경하기!
       if (myCon.logSts === null) setBtnSts(false);
-  
+      
       // 만약 글쓰기모드(C)에서 로그아웃을 한 경우 리스트페이지이동
       if (myCon.logSts === null && bdMode === "C") setBdMode("L");
     }, [myCon.logSts]);
@@ -90,16 +102,16 @@ import {
     // -> 해결책은 랜더링 후 처리구역에서 변경되는 상태변수를
     // 의존성에 등록하여 그 변경발생시 한번만 실행되도록 설정하는
     // 것이다!!!
-  
+    
     /************************************* 
-      함수명 : bindList
-      기능 : 페이지별 리스트를 생성하여 바인딩함
-    *************************************/
+     함수명 : bindList
+     기능 : 페이지별 리스트를 생성하여 바인딩함
+     *************************************/
     const bindList = () => {
       console.log("다시바인딩!", pgNum);
       // 데이터 선별하기
       const tempData = [];
-  
+      
       // 내림차순 정렬
       orgData.sort((a, b) => {
         return Number(a.idx) === Number(b.idx)

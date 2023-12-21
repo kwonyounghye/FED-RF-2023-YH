@@ -1,0 +1,92 @@
+// 상품 전체 리스트 페이지
+import { useEffect, useRef, useState } from "react";
+import "../css/glist.css";
+
+// 상품데이터 불러오기
+import gdata from "../data/glist-items";
+import { ItemDetail } from "../modules/ItemDetail";
+
+import $ from 'jquery';
+
+export function GList() {
+    // 상태관리 변수
+    // 1. 아이템코드(m1,m2,m3,...)
+    const item = useRef('m1');
+    // 2. 카테고리명(men,women,style)
+    const catName = useRef('men');
+    // 리랜더링을 위한 상태변수 : 무조건 리랜더링 설정 목적
+    const [force, setForce] = useState(null);
+
+
+    // 리스트만들기 함수 ///////////
+    const makeList = () => 
+        gdata.map((v, i) => (
+            <div key={i}>
+                <a href="#" onClick={()=>showDetail(v.ginfo[0],v.cat)}>
+                    [{i + 1}]
+                    <img src={"./images/goods/" + v.cat + "/" + v.ginfo[0] + ".png"} alt="dress" />
+                    <aside>
+                        <h2>{v.ginfo[1]}</h2> 
+                        <h3>{addComma(v.ginfo[3])}원</h3>
+                    </aside>
+                </a>
+            </div>
+        )); ////////// makeList ////////////
+
+        useEffect(() => {
+            window.scrollTo(0, 0);
+          }, []);
+
+     //정규식함수(숫자 세자리마다 콤마해주는 기능)
+  function addComma(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+//   상품클릭시 상세보기 보여주는 함수 //////
+const showDetail = (gCode, catCode) => {
+    // gCode - 상품코드, catCode - 분류명
+    console.log('상세보여!', gCode, catCode);
+    // 값 업데이트
+    item.current = gCode;
+    catName.current = catCode;
+
+    // 2. 리랜더링 상태 변경
+    setForce(Math.random());
+    // -> 리랜더링 시 변경된 부분만 업데이트한다!
+    // -> ItemDetail 컴포넌트 파트가 업데이트됨!
+
+    // 대상보이기
+    $('.bgbx').slideDown(600);
+
+
+}; ////// showDetail 함수 //////////////
+    return (
+            <main id="cont">
+            <h1 className="tit">All ITEMS LIST</h1>
+                <section>
+                    <div id="optbx">
+                        <label for="men">남성</label> 
+                        <input type="checkbox" id="men" defaultChecked /> 
+                        <label for="women">여성</label>
+                        <input type="checkbox" id="women" defaultChecked /> 
+                        <label for="style">스타일</label>
+                        <input type="checkbox" id="style" defaultChecked />
+                    </div>
+                    <div class="grid">{makeList()}</div>
+                </section>
+                {
+                    /* 2.5. 상세보기박스 */
+                    (
+                    <div className="bgbx" style={{position:"fixed",
+                    top: 0,
+                    paddingTop: "12vh",
+                    backdropFilter: "blur(8px)",
+                    height: "100vh",
+                    zIndex: 9999,}}>
+                        <ItemDetail goods={item.current} cat={catName.current} />
+                    </div>
+    )
+                }
+            </main>
+    );
+} ////////// GList 컴포넌트 /////////
