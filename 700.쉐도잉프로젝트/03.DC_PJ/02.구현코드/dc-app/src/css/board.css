@@ -163,3 +163,10 @@
 .btngrp button:hover a{
     color: #fff;
 }
+#board tbody td a {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: min(361px,40vw);
+}
