@@ -58,16 +58,20 @@ export function Board() {
   // console.log("로그인상태:", myCon.logSts);
 
   // [컴포넌트 전체 공통변수] /////////////
-  // 1. 페이지 단위수 : 한 페이지 당 레코드수
+  // 1-1. 페이지 단위수 : 한 페이지 당 레코드수
   const pgBlock = 7;
+    // 1-2. 페이징의 페이지 단위수 : 페이징 표시 개수
+    const pgPgBlock = 4;
   // 2. 전체 레코드수 : 배열데이터 총개수
   const totNum = orgData.length;
   // // console.log("페이지단위수:", pgBlock, "\n전체 레코드수:", totNum);
 
   // [ 상태관리 변수 셋팅 ] ////////
 
-  // 1. 현재 페이지 번호 : 가장중요한 리스트 바인딩의 핵심!
+  // 1-1. 현재 페이지 번호 : 가장중요한 리스트 바인딩의 핵심!
   const [pgNum, setPgNum] = useState(1);
+  // 1-2. 페이징의 현재페이지 번호 : 참고변수로 생성
+  const pgPgNum = useRef(1);
 
   // 1. 데이터 변경변수 : 리스트에 표시되는 실제 데이터셋
   // const [currData, setCurrData] = useState(null);
@@ -87,6 +91,11 @@ export function Board() {
 
   // 5. 검색상태 관리변수 : 값유지만 하도록 참조변수로 생성
   const searchSts = useRef(false);
+
+    // 6. 최초 랜더링시 상태관리변수 : 처음 한번만 내림차순적용하기
+    const firstSts = useRef(true);
+    // 주의: 참조변수는 최초 랜더링시에만 초기값 셋팅되고
+    // 리랜더링시엔 다시 셋팅되지 않는다!!!
 
   // 리랜더링 루프에 빠지지 않도록 랜더링후 실행구역에
   // 변경코드를 써준다! 단, logSts에 의존성을 설정해준다!
@@ -126,25 +135,42 @@ export function Board() {
  const rawData = () => {
     // orgData를 로컬스 데이터로 덮어쓰기
     // 단, 내림차순으로 정렬하여 넣어준다!
-    orgData = sortData(JSON.parse(localStorage.getItem('bdata'),[-1,1]));
+    // orgData = sortData(JSON.parse(localStorage.getItem('bdata'),[-1,1]));
+    orgData = JSON.parse(localStorage.getItem("bdata"), [-1, 1]);
  }; ///////////// rawData /////////////
+
+  ///////////////////////////////////////
+  // 최초랜더링 시에만 한번 실행하기 ///////
+  ////////////////////////////////////////
+  // -> 경우에 따라 내림차순 필요한 경우 firstSts값을
+  // true로만 변경하면 리랜더링시 bindList() 위에서 
+  // 먼저 적용된다! (글쓰기후 리스트오기/검색직후에 적용함!)
+  if (firstSts.current){ 
+    // 내림차순 정렬적용하기
+    sortData(orgData, [-1, 1]);
+    // 정렬선택박스 내림차순으로 변경하기
+    $('#sel').val('0');
+  } /////// if ///////
 
   /************************************* 
     함수명 : bindList
     기능 : 페이지별 리스트를 생성하여 바인딩함
   *************************************/
   const bindList = () => {
+     // 바인드시 최초상태 false로 업데이트!
+     firstSts.current = false;
     // console.log("다시바인딩!", pgNum);
     // 데이터 선별하기
     const tempData = [];
 
     // 내림차순 정렬 함수호출
-    sortData(orgData,[-1,1]);
+    // sortData(orgData,[-1,1]);
 
-    // 시작값 : (페이지번호-1)*블록단위수
-    let initNum = (pgNum - 1) * pgBlock;
-    // 한계값 : 블록단위수*페이지번호
-    let limitNum = pgBlock * pgNum;
+      // 시작값 : (페이지번호-1)*블록단위수
+      let initNum = (pgNum - 1) * pgBlock;
+      // 한계값 : 블록단위수*페이지번호
+      let limitNum = pgBlock * pgNum;  
+
 
     // 블록단위가 7일 경우 첫페이지는 0~7, 7~14,...
     // // console.log("시작값:", initNum, "\n한계값:", limitNum);
@@ -205,6 +231,12 @@ export function Board() {
     // 최종 한계수 -> 여분레코드 존재에 따라 1더하기
     const limit = blockCnt + (blockPad === 0 ? 0 : 1);
 
+    // 페이징의 페이징 한계수 구하기
+    const pgBlockCnt = Math.floor(limit / pgPgBlock);
+    const pgBlockPad = limit % pgPgBlock;
+    const pgLimit = pgBlockCnt + (pgBlockPad === 0 ? 0 : 1);
+
+
     // // console.log(
     //   "블록개수:",
     //   blockCnt,
@@ -220,24 +252,68 @@ export function Board() {
     // 리턴 코드 //////////
     // 만약 빈태그 묶음에 key를 심어야할 경우
     // 불가하므로 Fragment 조각 가상태그를 사용한다!
-    for (let i = 0; i < limit; i++) {
+
+    
+    // 시작값 : (페페넘-1)*블록단위수
+    let initNum = (pgPgNum.current - 1) * pgPgBlock;
+    // 한계값 : 페페블럭 * 페페넘
+    let limitNum = pgPgBlock * pgPgNum.current;
+
+    for (let i = initNum; i < limitNum; i++) {
+      // 맨끝 페이지 번호보다 크면 나가라.
+      if(i>=limit) break;
+
+      {/* 1. 페이징 링크 만들기 */}
       pgCode[i] = (
         <Fragment key={i}>
           {pgNum - 1 === i ? (
             <b>{i + 1}</b>
-          ) : (
-            <a href="#" onClick={chgList}>
+            ) : (
+              <a href="#" onClick={chgList}>
               {i + 1}
             </a>
           )}
 
-          {i < limit - 1 ? " | " : ""}
+        {/* 바 출력 조건 : 
+        페이징의 체이징에서 끝번호 전번호일 때와
+        동시에 전체한계값이 전체페이지 끝 이전번호보다 작을 때 */
+          (i < limitNum-1 && i < limit-1) ? " | " : ""}
         </Fragment>
       );
     } ////// for /////
 
+    {/* 2. 페이징 이전 블록 이동 버튼 - 배열 맨앞에 추가 
+  기준: 1페이지가 아니면 보임!*/}
+    {
+      pgCode.unshift
+      (pgPgNum.current===1?
+      '' :
+      <a href="#">◀</a>)
+    }
+    // 3. 페이징 다음 블록 이동 버튼
+    // 기준: 페이징의 페이징 블록 끝번호가 아니면 보임
+    pgCode.push(pgPgNum.current===pgLimit?
+      "": <Fragment key={-2}>
+      <a href="#" onClick={(e)=>{
+        e.preventDefault();
+        goPaging(1);
+      }}>▷</a>
+    </Fragment>);
+
     return pgCode;
   }; /////////// pagingLink 함수 ////////
+
+  // 페이징의 페이징 이동함수
+  const goPaging = (dir) => {
+    // dir 이동 방향(오른쪽:+1, 왼쪽:-1)
+    const newPgPgNum = pgPgNum.current + dir;
+    const newPgNum = ((newPgPgNum-1) * pgPgBlock)+1;
+
+    // 페이징의 페이징번호 업데이트
+    pgPgNum.current = newPgPgNum;
+    // 이동할 페이지번호 : 다음 블록의 첫페이지로 이동
+    setPgNum(newPgNum); // -> 리랜더링!
+  };
 
   /************************************* 
     함수명 : chgList
@@ -267,7 +343,7 @@ export function Board() {
     // 기본막기
     e.preventDefault();
 
-    // 만약 검색상태였다면 searchSts값이 treu이므로
+    // 만약 검색상태였다면 searchSts값이 true이므로
     // 이때 false로 업데이트와 함께 orgData도 초기화해준다!
     if(searchSts.current){
       // searchSts값 true 업데이트
@@ -708,6 +784,11 @@ export function Board() {
     // 5. 리스트 업데이트 하기
     orgData = resData;
 
+     // 내림차순 정렬하도록 firstSts값을 true로 변경하면
+    // 리랜더링시 정렬 적용될까? bindList 전에 적용되야함!
+    firstSts.current = true; //-> 효과있음!
+    // bindList() 위의 내림차순코드가 실행됨!
+
     // 6. 강제 리랜더링하기
     // 조건: 기존 1페이지일때만 실행
     // 다른 페이지에서 검색하면 1페이지로 변경(이때 리랜더링됨)
@@ -720,6 +801,11 @@ export function Board() {
   // 소멸자로 원본데이터 초기화 셋팅 함수를 
   // 호출해준다!!
   useEffect(()=>{
+     // 처음 한번 들어왔을때 내림차순 정렬은 효과 있는가?
+    // 화면 랜더링 전에 정렬을 해야 바로 반영되므로
+    // 여기서 정렬은 효과 없음!
+    // sortData(orgData,[-1,1]);
+
     // 소멸자
     return(()=>{
       rawData();
@@ -754,9 +840,8 @@ export function Board() {
               // 강제 리랜더링
               setForce(Math.random());
             }}>
-                <option value="0">JungYeol</option>
+                <option value="0">Descending</option>
                 <option value="1">Ascending</option>
-                <option value="2">Descending</option>
               </select>
               <input id="stxt" type="text" maxLength="50" 
               onKeyUp={(e)=>{
@@ -955,6 +1040,7 @@ export function Board() {
                       rawData();
                       setForce(Math.random());
                       $('#stxt').val('');
+                      $("#cta").val("tit");
                     }}>
                       <a href="#">List</a>
                     </button>
