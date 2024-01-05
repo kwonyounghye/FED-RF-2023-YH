@@ -107,21 +107,21 @@ export const banData = {
     ],
     "SERIES":[
         {
-            "src":"/images/banner/series/ban1.jpg",
+            "src":"/images/banner/series/1.jpg",
             "tit1":"",
             "tit2":"",
             "cont":"",
             "btn":"",
         },
         {
-            "src":"/images/banner/series/ban2.jpg",
+            "src":"/images/banner/series/2.jpg",
             "tit1":"",
             "tit2":"",
             "cont":"",
             "btn":"Own on Digital",
         },
         {
-            "src":"/images/banner/series/ban3.jpg",
+            "src":"/images/banner/series/3.jpg",
             "tit1":"",
             "tit2":"",
             "cont":"",

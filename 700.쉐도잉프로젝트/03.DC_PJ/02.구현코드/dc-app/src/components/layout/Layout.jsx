@@ -39,7 +39,7 @@ export function Layout() {
     
     // 페이지 이동시 스크롤위치 상단이동
     window.scrollTo(0,0);
-  }); /////////// useEffect ///////////
+  }); /////////// useLayEffect ///////////
   
   // 랜더링후 실행구역 한번만 ///////
   useEffect(()=>{

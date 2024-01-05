@@ -6,7 +6,7 @@ import { secIntroData } from "../data/sec_intro";
 import "../../css/sec_intro.css";
 
 // 컨텍스트 API를 사용하는 컴포넌트 파일에서 불러옴
-import { dcCon } from './dcContext';
+import { dcCon } from "./dcContext";
 import { useContext } from "react";
 // 링크 이동을 위한 라우터 불러오기
 // import { useNavigate } from "react-router-dom"
@@ -27,28 +27,30 @@ export function SecIntro() {
     return (
         <>
             <section className="sec-intro">
-                {
-                selData.map((v, i) => {
+                {selData.map((v, i) => (
                     <div key={i}>
                         {/* 1. 이미지박스 */}
                         <div className="imbx">
-                            <img src={process.env.PUBLIC_URL+v.isrc} alt={v.tit.split('^')[0]} />
+                            <img src={process.env.PUBLIC_URL + v.isrc} alt={v.tit.split("^")[0]} />
                         </div>
                         {/* 2. 타이틀박스 */}
                         <div className="titbx">
-                            <h3>{v.tit.split('^')[0]}</h3>
-                            <h2>{v.tit.split('^')[1].toUpperCase()}</h2>
+                            <h3>{v.tit.split("^")[0]}</h3>
+                            <h2>{v.tit.split("^")[1].toUpperCase()}</h2>
                         </div>
                         {/* 3. 버튼박스 */}
                         <div className="btnbx">
-                            <button onClick={()=>
-                            // 컨텍스트 API 함수 호출
-                                myCon.chgPage(v.link,{})}>
+                            <button
+                                onClick={() =>
+                                    // 컨텍스트 API 함수 호출
+                                    myCon.chgPage(v.link, {})
+                                }
+                            >
                                 {v.btn.toUpperCase()}
                             </button>
                         </div>
-                    </div>;
-                })}
+                    </div>
+                ))}
             </section>
         </>
     );

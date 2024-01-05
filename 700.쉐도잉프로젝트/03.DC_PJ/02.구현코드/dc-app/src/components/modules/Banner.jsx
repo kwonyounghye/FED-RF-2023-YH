@@ -37,7 +37,7 @@ const goSlide = (e) => {
     // (1) 슬라이드 : 클릭된 버튼으로부터 잡아줌!
     const sldBox = $(tg).siblings(".slider");
     // (2) 슬라이드 블릿
-    const indic = $(".indic").find("li");
+    const indic = $(tg).siblings(".indic").find("li");
     // console.log('블릿',indic);
     // (3) 슬라이드 개수
     const sCnt = sldBox.find('li').length;
@@ -113,7 +113,7 @@ const goSlide = (e) => {
                     <h3>{v.tit1}</h3>
                     <h2>{v.tit2}</h2>
                     <p>{v.cont}</p>
-                    <button>{v.btn}</button>
+                    {v.btn!=''&&<button>{v.btn}</button>}
                 </section>
             </li>
         ));

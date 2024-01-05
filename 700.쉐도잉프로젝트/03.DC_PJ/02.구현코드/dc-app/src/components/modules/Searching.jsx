@@ -198,6 +198,11 @@ export function Searching(props) {
                 // 스프레드 연산자(...) 사용!
                 lastList = [...temp, ...nowList];
             } ///// if ///////
+            else{ // 하나일때
+                lastList = nowList;
+              }
+        
+            } /////////// if /////////
             // (2) 체크박스가 false일 때 데이터 지우기
             else {
                 console.log("지울 데이터: ", cid);
@@ -220,13 +225,12 @@ export function Searching(props) {
 
                 // 결과처리하기 : 삭제처리된 temp를 결과에 넣기!
 
-                lastList = nowList;
+                lastList = temp
             }
-        } ///////// if //////////////
 
         // 6. 검색결과 리스트 업데이트하기
-        setSelData([temp], 2);
-        setCnt(temp.lenth);
+        setSelData([lastList,2]);
+        setCnt(lastList.length);
     }; ////////////// chkSearch 함수 //////////
 
     // 리스트 정렬 함수

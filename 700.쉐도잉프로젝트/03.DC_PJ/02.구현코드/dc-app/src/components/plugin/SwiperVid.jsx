@@ -44,7 +44,7 @@ export function SwiperVid(props) {
     const cbtn = $('.cbtn')
     // 2. 변경하기
     // 2-1. 아이프레임 src 경로 넣기
-    itit.attr('src',src+"?autoplay=1");
+    ifr.attr('src',src+"?autoplay=1");
     // 2-2. 비디오 타이틀 넣기
     itit.text(tit);
     // 2-3. 전체박스 나타나기
@@ -92,7 +92,7 @@ export function SwiperVid(props) {
                         onClick={()=>showVid(v.vsrc,v.tit)}>
                             {/* 동영상 이미지 박스 */}
                             <div className="vid-img">
-                                <img src={v.isrc} alt={v.tit} />
+                                <img src={process.env.PUBLIC_URL+v.isrc} alt={v.tit} />
                             {/* 폰트 어썸 아이콘 */}
                             <FontAwesomeIcon
                             icon={faCirclePlay} 

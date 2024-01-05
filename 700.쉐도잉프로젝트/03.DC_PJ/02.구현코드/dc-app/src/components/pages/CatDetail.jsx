@@ -8,7 +8,7 @@ import { useLocation } from "react-router-dom";
 import "../../css/cat_detail.css";
 import { CatList } from "../modules/CatList";
 
-export function CatDetail(props) {
+export function CatDetail() {
     // 라우터 호출 시 전달한 값을 받는다!
     // 라우터 전달값을 받기 위해 useLocation 생성하기!
     const loc = useLocation();
@@ -19,7 +19,8 @@ export function CatDetail(props) {
     let cdesc=loc.state.cdesc;
     cdesc=cdesc.split('^');
     // 3. 캐릭터 명세 : "^"로 명세 항목별 구분함
-    const facts=loc.state.facts;
+    let facts = loc.state.facts;
+    facts = facts.split("^");
 
     // console.log(cname,cdesc,facts);
 

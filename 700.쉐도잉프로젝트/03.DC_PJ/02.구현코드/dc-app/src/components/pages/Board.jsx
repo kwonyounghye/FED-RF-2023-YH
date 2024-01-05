@@ -269,7 +269,10 @@ export function Board() {
           {pgNum - 1 === i ? (
             <b>{i + 1}</b>
             ) : (
-              <a href="#" onClick={chgList}>
+              <a href="#" onClick={(e)=>{
+                e.preventDefault();
+                chgList(e);
+                }}>
               {i + 1}
             </a>
           )}
@@ -288,7 +291,10 @@ export function Board() {
       pgCode.unshift
       (pgPgNum.current===1?
       '' :
-      <a href="#">◀</a>)
+      <a href="#" onClick={(e)=>{
+        e.preventDefault();
+        goPaging(-1);
+      }}>◀</a>)
     }
     // 3. 페이징 다음 블록 이동 버튼
     // 기준: 페이징의 페이징 블록 끝번호가 아니면 보임
