@@ -1,6 +1,6 @@
 // Pilot PJ - 패션 인트로 컴포넌트 /////////////////////
 import { useContext } from "react";
-import { pCon } from "./PoliotContext";
+import { pCon } from "./PilotContext";
 // 패션 인트로 데이터 불러오기
 import { fsData } from "../data/fashion_intro";
 

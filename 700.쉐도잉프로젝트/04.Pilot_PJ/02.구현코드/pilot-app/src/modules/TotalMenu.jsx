@@ -1,6 +1,6 @@
 // Pilot PJ 전체 메뉴 컴포넌트
 import { useContext } from "react";
-import { pCon } from "./PoliotContext";
+import { pCon } from "./PilotContext";
 
 export function TotalMenu() {
     // pcon이라는 컨텍스트 api 사용 -> 객체로 만듦

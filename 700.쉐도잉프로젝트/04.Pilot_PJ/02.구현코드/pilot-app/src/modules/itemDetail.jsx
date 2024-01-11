@@ -3,7 +3,7 @@ import { useEffect} from "react";
 // 신상품데이터 가져오기
 import gdata from "../data/glist-items";
 // 컨텍스트 API 불러오기
-import { pCon } from "./PoliotContext";
+import { pCon } from "./PilotContext";
 
 
 import $ from "jquery";

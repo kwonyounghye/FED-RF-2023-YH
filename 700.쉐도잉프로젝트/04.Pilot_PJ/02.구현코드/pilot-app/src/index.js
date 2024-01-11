@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import ReactDOM, { createRoot } from "react-dom/client";
 // 컨텍스트 API 불러오기
-import { pCon } from "./modules/PoliotContext";
+import { pCon } from "./modules/PilotContext";
 
 import { TopArea } from "./layout/TopArea";
 import { MainArea } from "./layout/MainArea";
