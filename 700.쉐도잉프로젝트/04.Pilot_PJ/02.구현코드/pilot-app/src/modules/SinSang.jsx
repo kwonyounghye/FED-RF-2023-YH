@@ -12,8 +12,6 @@ export function SinSang({cat, chgItemFn}) {
   // cat - 카테고리 분류명
   // chgItemFn - 선택상품정보 변경 부모함수
 
-  // 이전 카테고리 저장용 참조변수
-  const afterCat = useRef(null);
   
   // 신상품 리스트 이동함수 사용변수 ///
 // 위치값변수(left값) -> 리랜더링 시 기존값을 유지하도록
@@ -23,13 +21,8 @@ const lpos = useRef(0);
 const callSts = useRef(1);
 
 
-// 확인
-console.log('신상 cat: ', cat, '/신상 afterCat: ', afterCat.current);
 
-// 들어온 cat 파라미터값과 이전 cat을 저장한 afterCat값이 다를 때
-// 새로운 cat으로 변경되었으므로 초기화를 실행함
-if(cat !==afterCat.current) {
-} ////////// if /////////////
+
 
 useLayoutEffect(()=>{
 
@@ -39,8 +32,6 @@ useLayoutEffect(()=>{
   callSts.current = 1;
 },[cat])
 
-  // cat을 afterCat 담아서 다음번에 비교하게 한다!
-  afterCat.current = cat;
   
   // 컨텍스트 API 사용하기
   const myCon = useContext(pCon);
@@ -159,7 +150,7 @@ const removeInfo = (e) => {
         <button onClick={()=>myCon.chgPgName('glist')}>전체리스트</button>
       </h2>
       <div className="flowbx" 
-      onMouseEnter={()=>callSts=0} 
+      onMouseEnter={()=>callSts.current=0} 
       onMouseLeave={()=>{
         callSts.current=1;
         flowList($('.flist'));}}>

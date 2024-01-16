@@ -1,5 +1,5 @@
 // 메인페이지 컨텐츠 컴포넌트
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { Banner } from "../modules/Banner";
 
 // 자동스크롤 JS 불러오기
@@ -17,8 +17,9 @@ export function MainCont() {
     useEffect(() => {
         //////////// 랜더링 후 한번만 적용!
         // console.log('렌더링 OK');
-
-         // 스크롤바 없애기
+        
+        if($(window).width()>800) {   
+        // 스크롤바 없애기
     $('html,body').css({overflow:'hidden'});
 
         // (((중요!!!!!!!!!!!!)))
@@ -34,11 +35,13 @@ export function MainCont() {
         // 메뉴+인디케이터 이벤트 기능 설정 함수 호출
         evtFn(); 
 
-        // 초기화함수 호출
+        // 초기화함수 호출 : 조건(모바일 아닐 때)
+        // 모바일은 가로크기 800px 이하
         initSet();
 
         // 페이지번호 초기화 호출
         zeroPno();
+        } ///////// 모바일 아닐때만 실행
         
         // 드래그배너 호출
         dragBanner();
@@ -57,6 +60,13 @@ export function MainCont() {
         }
             ); /// 소멸자 return //////////
         }, []); ///////////// useEffect ///////////////
+
+            // 처음 로딩 시 스크롤 상단 이동 ///////
+    useLayoutEffect(() => {
+        // 어디로 가라
+        window.scrollTo(0, 0);
+    },[]); /////////// useLayoutEffect ///////////
+
         return (
             <>
                 {/* 1. 배너페이지 */}
@@ -66,15 +76,15 @@ export function MainCont() {
                 </section>
                 {/* 2. 남성패션 페이지 */}
                 <section className="page">
-                    <FashionIntro cat="men" />
+                    <FashionIntro cat="men" subcat="etc" />
                 </section>
                 {/* 3. 여성패션페이지 */}
                 <section className="page">
-                    <FashionIntro cat="women" />
+                    <FashionIntro cat="women" subcat="etc" />
                 </section>
                 {/* 4. 스타일패션 페이지 */}
                 <section className="page">
-                    <FashionIntro cat="style" />
+                    <FashionIntro cat="style" subcat="etc" />
                 </section>
                 {/* 메인에만 나오는 사이드 인디케이터 */}
                 <nav className="indic">

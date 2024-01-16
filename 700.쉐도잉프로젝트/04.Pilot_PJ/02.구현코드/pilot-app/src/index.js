@@ -15,6 +15,8 @@ import "jquery-ui-dist/jquery-ui";
 
 // 페이지 공통 CSS
 import "./css/common.css";
+// 페이지 공통 미디어쿼리(max-width:800px)
+import "./css/media.css";
 import { useRef } from "react";
 
 // 최상위 Root 컴포넌트 /////////////
@@ -37,14 +39,14 @@ function App() {
     // 카트 사용여부 초기값은 로컬스 'cart'가 있으면 1
     // 없으면 0으로 셋팅해준다!
 
-    let stsVal = 0;
+    let stsVal = false;
     let transVal = null;
 
     if (localStorage.getItem("cart")) {
         // 로컬스가 있으므로 객체화하기!
         transVal = JSON.parse(localStorage.getItem("cart"));
         // 로컬스 객체화 데이터 개수가 0이 아닐때만 상태값 1로 노출하기
-        if (transVal.length !== 0) stsVal = 1;
+        if (transVal.length !== 0) stsVal = true;
     } //// if //////
 
     console.log("로컬스 있니?", stsVal);
@@ -92,11 +94,7 @@ function App() {
         // 렌더링구역 한번만 실행 : 옵션 []
     }, []); //////////// useEffect //////////
 
-    // 처음 로딩 시 스크롤 상단 이동 ///////
-    useLayoutEffect(() => {
-        // 어디로 가라
-        window.scrollTo(0, 0);
-    },[]); /////////// useLayoutEffect ///////////
+
 
     /***********************************  
      * [ 컨텍스트 API 공개 변수들 ]
