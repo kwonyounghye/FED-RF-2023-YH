@@ -151,7 +151,7 @@ body{
     animation:flame-ani 40s linear infinite alternate;
 }
 /* 태양이 이글거리는 애니메이션 키프레임 */
-@keyframes flame {
+@keyframes flame-ani {
     to{
         transform: scale(1.5);
     }
@@ -190,28 +190,53 @@ body{
         */
     }
     to{
-        transform: rotate(360deg) translateX(-250px) rotate(-360deg);
+        transform: 
+        rotate(360deg) translateX(var(--earth-trans-size)) rotate(-360deg);
     }
 } /* 지구회전 키프레임 */
 
 /* 달 */
 #moon{
     position: absolute;
+    top: calc(50% - var(--moon-size)/2);
+    left: calc(50% - var(--moon-size)/2);
+    /* 부모는? #solar */
+    width: var(--moon-size);
+    height: var(--moon-size);
+    /* 배경이미지 */
+    background: 
+    url(../images/moon.png) no-repeat 0/100% 100%;
+
+    /* 애니메이션 호출 */
+    animation: rotate-moon-ani 4s linear infinite;
 }
 
 /* 달회전 키프레임 */
-@keyframes moon {
+@keyframes rotate-moon-ani {
     from{
-        
+        transform: 
+        rotate(0deg) translateX(var(--moon-trans-size)) rotate(0deg);
     }
     to{
-        
+        transform: 
+        rotate(360deg) translateX(var(--moon-trans-size)) rotate(-360deg);
     }
 } /* 달회전 키프레임 */
 
 /* 목성 */
 #jupiter{
     position: absolute;
+    top: calc(50% - var(--jupiter-size)/2);
+    left: calc(50% - var(--jupiter-size)/2);
+    /* 부모는? #solar */
+    width: var(--jupiter-size);
+    height: var(--jupiter-size);
+    /* 배경이미지 */
+    background: 
+    url(../images/jupiter.png) no-repeat 0/100% 100%;
+
+    /* 애니메이션 호출 */
+    animation: rotate-jupiter-ani 35s linear infinite;
     
 }
 
@@ -221,14 +246,22 @@ body{
         transform: rotate(0deg) translateX(var(--jupiter-trans-size)) rotate(0deg);
     }
     to{
-        
+        transform: 
+        rotate(360deg) translateX(var(--jupiter-trans-size)) rotate(-360deg);
     }
 } /* 목성회전 키프레임 */
 
 /* 토성 */
 #saturn{
     position: absolute;
-    
+    top: calc(50% - var(--saturn-size)/2);
+    left: calc(50% - var(--saturn-size)/2);
+    /* 부모는? #solar */
+    width: var(--saturn-size);
+    height: var(--saturn-size);
+
+    /* 애니메이션 호출 */
+    animation: rotate-saturn-ani 45s linear infinite;
 }
 /* 가상요소로 토성이미지 배경으로 넣기 */
 #saturn::before{
@@ -243,26 +276,41 @@ body{
 
 
 /* 토성회전 키프레임 */
-@keyframes saturn {
+@keyframes rotate-saturn-ani {
     from{
-        
+        transform: 
+        rotate(0deg) translateY(var(--saturn-trans-size)) rotate(0deg);
     }
     to{
-        
+        transform: 
+        rotate(360deg) translateY(var(--saturn-trans-size)) rotate(-360deg);
     }
 } /* 토성회전 키프레임 */
 
 /* 명왕성 */
 #pluto{
     position: absolute;
+    top: calc(50% - var(--pluto-size)/2);
+    left: calc(50% - var(--pluto-size)/2);
+    /* 부모는? #solar */
+    width: var(--pluto-size);
+    height: var(--pluto-size);
+    /* 배경이미지 */
+    background: 
+    url(../images/pluto.png) no-repeat 0/100% 100%;
+
+    /* 애니메이션 호출 */
+    animation: rotate-pluto-ani 55s linear infinite;
 }
 
 /* 명왕성회전 키프레임 */
-@keyframes pluto {
+@keyframes rotate-pluto-ani {
     from{
-        
+        transform: 
+        rotate(0deg) translateY(var(--pluto-trans-size)) rotate(0deg);
     }
     to{
-        
+        transform: 
+        rotate(360deg) translateY(var(--pluto-trans-size)) rotate(-360deg);
     }
 } /* 명왕성회전 키프레임 */

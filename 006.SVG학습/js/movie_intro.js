@@ -12,8 +12,22 @@ const logoAni = $('#mlogo');
 
 // [2] 시차로 애니메이션 대상에 클래스 넣기
 // 공통 적용 클래스명: anion
+/ 타임아웃 설정 공통 함수 //////
+const setTime = (ele, time) => {
+  setTimeout(() => {
+    ele.addClass("anion");
+  }, time);
+}; /////// setTime함수 ////////
+// 1. 2초후 라인애니
+setTime(lineAni, 2000);
 
-// 1. 2초 후 라인애니
+// 2. 6초후 스틸컷애니
+setTime(stcAni, 6000);
+
+// 3. 12초후 로고애니
+setTime(logoAni, 12000);
+
+/* // 1. 2초 후 라인애니
 setTimeout(() => {
     lineAni.addClass('anion');
 }, 2000);
@@ -25,7 +39,7 @@ setTimeout(() => {
 // 3. 8초 후 로고 애니
 setTimeout(() => {
     logoAni.addClass('anion')
-}, 12000);
+}, 12000); */
 // 오디오 컨트롤하기
 // 대상: .play-box
 $('.play-box').hover(
