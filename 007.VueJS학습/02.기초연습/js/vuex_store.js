@@ -5,6 +5,40 @@
 import  store  from "./store.js";
 // default로 내보내기 후 기본이름은 store임!
 
+// 라우터 템플릿 만들기
+let Trip = {
+    template: `<div class="trip router">World Trip</div>`
+}
+let Foods = {
+    template: `<div class="foods router">World Foods</div>`
+}
+// 라우터 연결 옵션 셋팅하기
+// 배열 안에 객체 형태로 셋팅하기
+// let routes = [{},{}]
+let routes = [
+    // 첫번째 루트
+    {
+        // router-link의 to 속성값과 동일
+        path: '/trip',
+        // 연결할 컴포넌트
+        component: Trip,
+    },
+    // 두번째 루트
+    {
+        // router-link의 to 속성값과 동일
+        path: '/foods',
+        // 연결할 컴포넌트
+        component: Foods,
+    },
+]
+
+// 라우터 옵션 연결하여 인스턴스 생성하기 !!!
+const router = new VueRouter({
+    routes // 위의 라우트 셋팅 배열변수
+});
+// [중요!!] 뷰인스턴스에 라우터를 등록해줘야 함!
+// -> new Vue({el:"", router, methods:{}})
+
 // [중요!!]
 // 뷰 인스턴스에 스토아를 사용할 수 있게 등록해줘야함!
 // 등록방법: new Vue({el:"", store, methods:{}})
@@ -112,6 +146,7 @@ new Vue({
     // 대상선정
     el:"#app",
     store, // 중요!! 뷰엑스 스토아 등록!
+    router, // 중요!! 라우터 등록!
     data:{
         // 변수:값
     },
@@ -129,7 +164,11 @@ new Vue({
         store.commit('initSet',{
             url:"https://img.freepik.com/premium-vector/city-illustration_23-2147514701.jpg",
             txt:"도시소개에 오신것을 환영합니다!",
-        })
+        });
+
+        // actions 메서드 호출하기! : dispatch(메서드명,전달값)
+        store.dispatch('myAct','나야나');
+        
     }, /////// created ////
     // DOM 생성 후 실행구역(mounted) : 제이쿼리(JS) 코드
     mounted() {

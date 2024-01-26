@@ -10,3 +10,6 @@
 
 <!-- 제이쿼리 UI CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+
+        <!-- 뷰JS 라우터 CDN -->
+        <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
